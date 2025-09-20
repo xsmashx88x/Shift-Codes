@@ -1,84 +1,178 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>All SHiFT Codes</title>
+    <title>SHiFT Codes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background: #f5f5f5; }
-        .container { max-width: 600px; margin: 0 auto; }
-        .code-box { background: #667eea; color: white; padding: 20px; margin: 15px 0; border-radius: 10px; }
-        .code-box.expired { background: #ff6b6b; }
-        .code-text { font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; margin-bottom: 15px; }
-        .copy-btn { background: rgba(255,255,255,0.2); border: 2px solid white; color: white; padding: 10px 20px; border-radius: 20px; cursor: pointer; }
-        .status { font-weight: bold; margin-top: 10px; }
-        .active { color: #90EE90; }
-        .expired { color: #ffcccc; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+        .code-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .code-text {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
+            word-break: break-all;
+        }
+        .copy-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s;
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+        .countdown {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 15px 0;
+        }
+        .status {
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .active {
+            background: #d4edda;
+            color: #155724;
+        }
+        .expired {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .copied-message {
+            color: #90ee90;
+            font-weight: bold;
+            display: none;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🔄 All SHiFT Codes</h1>
-        <div id="codes-container"></div>
+        <h1>🎮 SHiFT Codes</h1>
+        <div id="codes-container">
+            <!-- Codes will be inserted here by JavaScript -->
+        </div>
     </div>
 
     <script>
         // ==================== CONFIGURATION ====================
-        // ADD ALL YOUR CODES AND THEIR EXPIRY DATES HERE
-        const allShiftCodes = [
-            {
-                codes: ["3ZXJB-53STT-56T3W-B3TT3-HTS95", "BSRT3-FTZBJ-K6BTW-JB3T3-WXT99"],
-                expiryDate: new Date(2024, 8, 19, 11, 58, 0), // September 19, 2024
-                title: "September 2024 Codes"
-            },
-            {
-                codes: ["NEW1-CODE2-HERE3-45678-90123", "ANOT-HERCO-DEHER-45678-90123"],
-                expiryDate: new Date(2024, 9, 1, 12, 0, 0), // October 1, 2024
-                title: "October 2024 Codes"
-            }
-            // ADD NEW SETS ABOVE THIS LINE
-        ];
+        // ONLY CHANGE THESE LINES:
+        const SHIFT_CODES = ["3ZXJB-53STT-56T3W-B3TT3-HTS95", "BSRT3-FTZBJ-K6BTW-JB3T3-WXT99"];
+        const EXPIRE_DATE = new Date(2025, 8, 19, 11, 58, 0); // Year, Month-1, Day, Hour, Minute, Second
         // =======================================================
 
-        function initializePage() {
-            const container = document.getElementById('codes-container');
-            const now = new Date();
-
-            allShiftCodes.forEach((codeSet, setIndex) => {
-                const isExpired = now > codeSet.expiryDate;
-                const box = document.createElement('div');
-                box.className = `code-box ${isExpired ? 'expired' : ''}`;
-
-                let html = `<h3>${codeSet.title}</h3>`;
-                codeSet.codes.forEach((code, codeIndex) => {
-                    html += `
-                        <div class="code-text">${code}</div>
-                        <button class="copy-btn" onclick="copyCode('${code}')">📋 Copy</button>
-                    `;
-                });
-                html += `<div class="status ${isExpired ? 'expired' : 'active'}">`;
-                html += isExpired ? '❌ EXPIRED' : `✅ ACTIVE (Expires: ${formatDate(codeSet.expiryDate)})`;
-                html += `</div>`;
-
-                box.innerHTML = html;
-                container.appendChild(box);
-            });
+        function createCodeBox(code, index) {
+            return `
+                <div class="code-box">
+                    <div class="code-text">${code}</div>
+                    <button class="copy-btn" onclick="copyToClipboard('${code}', ${index})">
+                        📋 Copy Code
+                    </button>
+                    <span id="copied-${index}" class="copied-message">✓ Copied!</span>
+                </div>
+            `;
         }
 
-        function copyCode(text) {
-            navigator.clipboard.writeText(text).then().catch(err => {
+        function copyToClipboard(text, index) {
+            navigator.clipboard.writeText(text).then(() => {
+                const message = document.getElementById(`copied-${index}`);
+                message.style.display = 'inline';
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                // Fallback for older browsers
                 const textArea = document.createElement('textarea');
                 textArea.value = text;
                 document.body.appendChild(textArea);
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
+                
+                const message = document.getElementById(`copied-${index}`);
+                message.style.display = 'inline';
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 2000);
             });
         }
 
-        function formatDate(date) {
-            return date.toLocaleString();
+        function updateCountdown() {
+            const now = new Date();
+            const timeLeft = EXPIRE_DATE - now;
+            
+            if (timeLeft <= 0) {
+                document.getElementById('countdown').innerHTML = 'EXPIRED';
+                document.getElementById('status').className = 'status expired';
+                document.getElementById('status').textContent = '❌ These codes have expired';
+                return;
+            }
+            
+            // Calculate time units
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = 
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
 
+        function initializePage() {
+            const container = document.getElementById('codes-container');
+            
+            // Create code boxes
+            SHIFT_CODES.forEach((code, index) => {
+                container.innerHTML += createCodeBox(code, index);
+            });
+            
+            // Add countdown timer
+            container.innerHTML += `
+                <div class="status active" id="status">✅ Active - Expires in:</div>
+                <div class="countdown" id="countdown">Loading...</div>
+            `;
+            
+            // Start countdown
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        // Start everything when page loads
         window.addEventListener('load', initializePage);
     </script>
 </body>
