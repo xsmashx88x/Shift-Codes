@@ -126,6 +126,19 @@
         .expired-section.show {
             display: block;
         }
+        .title-container {
+            font-size: 14px;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+            min-height: 20px;
+        }
+        .title-container a {
+            color: #a0e0ff;
+            text-decoration: underline;
+        }
+        .title-container a:hover {
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -161,16 +174,17 @@
     <script>
         // ==================== CONFIGURATION ====================
         // ADD YOUR CODES HERE WITH EXPIRATION DATES
+        // You can use HTML in the title field for hyperlinks
         const ALL_CODES_CONFIG = [
             {
                 code: "3H63J-Z3S3J-KR3BK-BTJ33-ZWKTK",
                 expires: new Date(2025, 8, 22, 12, 36, 0), // Sept 22, 2025, 12:36 PM
-                title: "Gold Key"
+                title: 'Gold Key - <a href="https://borderlands.com/en-US/shift-codes/" target="_blank">More Info</a>'
             },
             {
                 code: "TSR3B-J5S3T-KRBJW-BTTBJ-JRCXX",
                 expires: new Date(2025, 8, 22, 12, 36, 0),  // Sept 25, 2025, 6:00 PM
-                title: "Gold Key"
+                title: 'Gold Key - <a href="https://borderlands.com/en-US/shift-codes/" target="_blank">Redeem Now</a>'
             },
             {
                 code: "BSRT3-FTZBJ-K6BTW-JB3T3-WXT99",
@@ -215,7 +229,7 @@
             
             return `
                 <div class="code-box">
-                    <div style="font-size: 14px; color: #e0e0e0; margin-bottom: 10px;">${codeData.title}</div>
+                    <div class="title-container">${codeData.title}</div>
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
                     <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
@@ -230,7 +244,7 @@
         function createExpiredCodeBox(codeData, index) {
             return `
                 <div class="expired-code-box">
-                    <div style="font-size: 14px; color: #888; margin-bottom: 10px;">${codeData.title}</div>
+                    <div class="title-container" style="color: #888;">${codeData.title}</div>
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
                     <div style="color: #ff4444; font-weight: bold; margin-top: 10px;">❌ EXPIRED</div>
