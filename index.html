@@ -146,7 +146,7 @@
             padding: 12px 24px;
             text-decoration: none;
             border-radius: 4px;
-            margin: 8px 0 20px 0;
+            margin: 8px 0 15px 0;
             font-weight: bold;
             transition: all 0.3s;
             font-size: 16px;
@@ -160,6 +160,28 @@
             background: linear-gradient(to bottom, #ff8c00, #ff6a00);
             transform: scale(1.05);
             box-shadow: 0 0 10px #ffc600;
+        }
+        .info-button {
+            background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            margin: 0 0 20px 0;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 16px;
+            text-transform: uppercase;
+            border: 2px solid #888;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+            font-family: 'Chakra Petch', sans-serif;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .info-button:hover {
+            background: linear-gradient(to bottom, #5a5a5a, #3a3a3a);
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
         .collapse-btn {
             background: linear-gradient(to bottom, #555, #333);
@@ -201,6 +223,7 @@
             color: #ffc600;
             text-decoration: underline;
             text-shadow: 1px 1px 0 #000;
+            font-weight: bold;
         }
         .title-container a:hover {
             color: #ff7c00;
@@ -255,13 +278,20 @@
     <div class="scanlines"></div>
     
     <div class="container">
-        <h1><span class="vault-symbol">🤖</span> SHiFT Codes</h1>
+        <h1><span class="vault-symbol"></span>🤖SHiFT Codes🤖</h1>
         
         <!-- Redeem Link at the TOP -->
         <div>
             <a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
                 🔗 Redeem Codes on SHiFT Website
             </a>
+        </div>
+
+        <!-- Customizable Text Button -->
+        <div>
+            <button class="info-button" onclick="showInfo()">
+                📖 SHiFT Code Info & FAQ
+            </button>
         </div>
 
         <!-- Active Codes Section -->
@@ -316,70 +346,18 @@
         ];
         // =======================================================
 
-        function organizeCodes() {
-            const now = new Date();
-            const activeCodes = [];
-            const expiredCodes = [];
-            
-            ALL_CODES_CONFIG.forEach(codeData => {
-                if (codeData.expires > now) {
-                    activeCodes.push(codeData);
-                } else {
-                    expiredCodes.push(codeData);
-                }
-            });
-            
-            return { activeCodes, expiredCodes };
+        // Function to show info (customize this as needed)
+        function showInfo() {
+            alert("When Was This Last Updated?? : 9/20/2025 \n\nWhy Was This Made : For peeps to know if codes are expired and be able to copy them more easy via the button \n ");
         }
 
-        function formatDate(date) {
-            return date.toLocaleString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
+        // Function to toggle expired codes section
+        function toggleExpired() {
+            const expiredSection = document.getElementById('expired-section');
+            expiredSection.classList.toggle('show');
         }
 
-        function createActiveCodeBox(codeData, index) {
-            const timeLeft = codeData.expires - new Date();
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            
-            return `
-                <div class="code-box">
-                    <div class="code-header">
-                        <span class="key-icon">🔑</span>
-                        <div class="title-container">${codeData.title}</div>
-                    </div>
-                    <div class="code-text">${codeData.code}</div>
-                    <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
-                    <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
-                    <button class="copy-btn" onclick="copyToClipboard('${codeData.code}', ${index})">
-                        📋 Copy Code
-                    </button>
-                    <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
-                </div>
-            `;
-        }
-
-        function createExpiredCodeBox(codeData, index) {
-            return `
-                <div class="expired-code-box">
-                    <div class="code-header">
-                        <span class="key-icon">🔑</span>
-                        <div class="title-container" style="color: #888;">${codeData.title}</div>
-                    </div>
-                    <div class="code-text">${codeData.code}</div>
-                    <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
-                    <div style="color: #ff4444; font-weight: bold; margin-top: 8px; font-size: 13px;">❌ EXPIRED</div>
-                </div>
-            `;
-        }
-
+        // Function to copy code to clipboard
         function copyToClipboard(text, index) {
             navigator.clipboard.writeText(text).then(() => {
                 const message = document.getElementById(`copied-active-${index}`);
@@ -403,11 +381,75 @@
             });
         }
 
-        function toggleExpired() {
-            const expiredSection = document.getElementById('expired-section');
-            expiredSection.classList.toggle('show');
+        // Function to organize codes into active and expired
+        function organizeCodes() {
+            const now = new Date();
+            const activeCodes = [];
+            const expiredCodes = [];
+            
+            ALL_CODES_CONFIG.forEach(codeData => {
+                if (codeData.expires > now) {
+                    activeCodes.push(codeData);
+                } else {
+                    expiredCodes.push(codeData);
+                }
+            });
+            
+            return { activeCodes, expiredCodes };
         }
 
+        // Function to format date
+        function formatDate(date) {
+            return date.toLocaleString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Function to create active code box HTML
+        function createActiveCodeBox(codeData, index) {
+            const timeLeft = codeData.expires - new Date();
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            
+            return `
+                <div class="code-box">
+                    <div class="code-header">
+                        <span class="key-icon">🔑</span>
+                        <div class="title-container">${codeData.title}</div>
+                    </div>
+                    <div class="code-text">${codeData.code}</div>
+                    <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
+                    <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
+                    <button class="copy-btn" onclick="copyToClipboard('${codeData.code}', ${index})">
+                        📋 Copy Code
+                    </button>
+                    <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
+                </div>
+            `;
+        }
+
+        // Function to create expired code box HTML
+        function createExpiredCodeBox(codeData, index) {
+            return `
+                <div class="expired-code-box">
+                    <div class="code-header">
+                        <span class="key-icon">🔑</span>
+                        <div class="title-container" style="color: #888;">${codeData.title}</div>
+                    </div>
+                    <div class="code-text">${codeData.code}</div>
+                    <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
+                    <div style="color: #ff4444; font-weight: bold; margin-top: 8px; font-size: 13px;">❌ EXPIRED</div>
+                </div>
+            `;
+        }
+
+        // Function to update countdowns
         function updateCountdowns() {
             const now = new Date();
             const countdownElements = document.querySelectorAll('.countdown');
@@ -422,10 +464,13 @@
                 const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
                 
-                countdownElements[index].textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+                if (countdownElements[index]) {
+                    countdownElements[index].textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+                }
             });
         }
 
+        // Function to initialize the page
         function initializePage() {
             const activeContainer = document.getElementById('active-codes-container');
             const expiredContainer = document.getElementById('expired-codes-container');
