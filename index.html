@@ -69,24 +69,19 @@
             transform: scale(1.05);
         }
         .countdown {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
-            color: #2c3e50;
-            margin: 15px 0;
-        }
-        .status {
-            font-weight: bold;
+            color: #e0e0e0;
             margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 5px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
         }
-        .active {
-            background: #d4edda;
-            color: #155724;
-        }
-        .expired {
-            background: #f8d7da;
-            color: #721c24;
+        .expire-date {
+            font-size: 14px;
+            color: #e0e0e0;
+            margin: 5px 0;
+            font-style: italic;
         }
         .copied-message {
             color: #90ee90;
@@ -165,25 +160,66 @@
 
     <script>
         // ==================== CONFIGURATION ====================
-        // ACTIVE CODES (With expiration)
-        const ACTIVE_CODES = [
-            "3H63J-Z3S3J-KR3BK-BTJ33-ZWKTK",
-            "TSR3B-J5S3T-KRBJW-BTTBJ-JRCXX"
-        ];
-        const EXPIRE_DATE = new Date(2025, 8, 22, 12, 36, 0); // Monday, September 22, 2025 at 12:36:00 pm
-
-        // EXPIRED CODES (Permanent list - no copy buttons)
-        const EXPIRED_CODES = [
-            "3ZXJB-53STT-56T3W-B3TT3-HTS95",
-            "BSRT3-FTZBJ-K6BTW-JB3T3-WXT99"
+        // ADD YOUR CODES HERE WITH EXPIRATION DATES
+        const ALL_CODES_CONFIG = [
+            {
+                code: "3H63J-Z3S3J-KR3BK-BTJ33-ZWKTK",
+                expires: new Date(2025, 8, 22, 12, 36, 0), // Sept 22, 2025, 12:36 PM
+                title: "Gold Key Code"
+            },
+            {
+                code: "TSR3B-J5S3T-KRBJW-BTTBJ-JRCXX",
+                expires: new Date(2025, 8, 25, 18, 0, 0),  // Sept 25, 2025, 6:00 PM
+                title: "Diamond Key Code"
+            },
+            {
+                code: "NEW1-CODE2-HERE3-45678-90123",
+                expires: new Date(2024, 8, 19, 12, 0, 0),   // PAST DATE - Will be in expired
+                title: "Test Expired Code"
+            }
         ];
         // =======================================================
 
-        function createActiveCodeBox(code, index) {
+        function organizeCodes() {
+            const now = new Date();
+            const activeCodes = [];
+            const expiredCodes = [];
+            
+            ALL_CODES_CONFIG.forEach(codeData => {
+                if (codeData.expires > now) {
+                    activeCodes.push(codeData);
+                } else {
+                    expiredCodes.push(codeData);
+                }
+            });
+            
+            return { activeCodes, expiredCodes };
+        }
+
+        function formatDate(date) {
+            return date.toLocaleString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function createActiveCodeBox(codeData, index) {
+            const timeLeft = codeData.expires - new Date();
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            
             return `
                 <div class="code-box">
-                    <div class="code-text">${code}</div>
-                    <button class="copy-btn" onclick="copyToClipboard('${code}', ${index})">
+                    <div style="font-size: 14px; color: #e0e0e0; margin-bottom: 10px;">${codeData.title}</div>
+                    <div class="code-text">${codeData.code}</div>
+                    <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
+                    <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
+                    <button class="copy-btn" onclick="copyToClipboard('${codeData.code}', ${index})">
                         📋 Copy Code
                     </button>
                     <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
@@ -191,10 +227,12 @@
             `;
         }
 
-        function createExpiredCodeBox(code, index) {
+        function createExpiredCodeBox(codeData, index) {
             return `
                 <div class="expired-code-box">
-                    <div class="code-text">${code}</div>
+                    <div style="font-size: 14px; color: #888; margin-bottom: 10px;">${codeData.title}</div>
+                    <div class="code-text">${codeData.code}</div>
+                    <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
                     <div style="color: #ff4444; font-weight: bold; margin-top: 10px;">❌ EXPIRED</div>
                 </div>
             `;
@@ -208,7 +246,6 @@
                     message.style.display = 'none';
                 }, 2000);
             }).catch(err => {
-                // Fallback for older browsers
                 const textArea = document.createElement('textarea');
                 textArea.value = text;
                 document.body.appendChild(textArea);
@@ -229,50 +266,48 @@
             expiredSection.classList.toggle('show');
         }
 
-        function updateCountdown() {
+        function updateCountdowns() {
             const now = new Date();
-            const timeLeft = EXPIRE_DATE - now;
+            const countdownElements = document.querySelectorAll('.countdown');
+            const { activeCodes } = organizeCodes();
             
-            if (timeLeft <= 0) {
-                document.getElementById('countdown').innerHTML = 'EXPIRED';
-                document.getElementById('status').className = 'status expired';
-                document.getElementById('status').textContent = '❌ These codes have expired';
-                return;
-            }
-            
-            // Calculate time units
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            document.getElementById('countdown').innerHTML = 
-                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            activeCodes.forEach((codeData, index) => {
+                const timeLeft = codeData.expires - now;
+                if (timeLeft <= 0) return;
+                
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                countdownElements[index].textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            });
         }
 
         function initializePage() {
             const activeContainer = document.getElementById('active-codes-container');
             const expiredContainer = document.getElementById('expired-codes-container');
             
-            // Create active code boxes with copy buttons
-            ACTIVE_CODES.forEach((code, index) => {
-                activeContainer.innerHTML += createActiveCodeBox(code, index);
+            const { activeCodes, expiredCodes } = organizeCodes();
+            
+            // Create active code boxes
+            activeCodes.forEach((codeData, index) => {
+                activeContainer.innerHTML += createActiveCodeBox(codeData, index);
             });
             
-            // Create expired code boxes (no copy buttons)
-            EXPIRED_CODES.forEach((code, index) => {
-                expiredContainer.innerHTML += createExpiredCodeBox(code, index);
+            // Create expired code boxes
+            expiredCodes.forEach((codeData, index) => {
+                expiredContainer.innerHTML += createExpiredCodeBox(codeData, index);
             });
             
-            // Add countdown timer to active section
-            activeContainer.innerHTML += `
-                <div class="status active" id="status">✅ Active - Expires on Monday, September 22, 2025 at 12:36:00 PM</div>
-                <div class="countdown" id="countdown">Loading...</div>
-            `;
+            // Show message if no active codes
+            if (activeCodes.length === 0) {
+                activeContainer.innerHTML = '<div style="color: #666; padding: 20px;">No active codes at the moment. Check back later!</div>';
+            }
             
-            // Start countdown
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+            // Start countdown updates
+            updateCountdowns();
+            setInterval(updateCountdowns, 1000);
         }
 
         // Start everything when page loads
