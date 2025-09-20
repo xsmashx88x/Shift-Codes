@@ -12,7 +12,7 @@
             color: #333;
         }
         .container {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
             background: white;
             padding: 30px;
@@ -23,6 +23,12 @@
             color: #2c3e50;
             margin-bottom: 25px;
         }
+        h2 {
+            color: #2c3e50;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
         .code-box {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -30,6 +36,15 @@
             margin: 20px 0;
             border-radius: 10px;
             text-align: center;
+        }
+        .expired-code-box {
+            background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
+            color: #666;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            text-align: center;
+            opacity: 0.7;
         }
         .code-text {
             font-family: 'Courier New', monospace;
@@ -79,38 +94,87 @@
             display: none;
             margin-left: 10px;
         }
+        .rewards-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 20px 0;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .rewards-link:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🎮 SHiFT Codes</h1>
-        <div id="codes-container">
-            <!-- Codes will be inserted here by JavaScript -->
+        
+        <!-- Active Codes Section -->
+        <h2>✅ Active Codes</h2>
+        <div id="active-codes-container">
+            <!-- Active codes will be inserted here by JavaScript -->
+        </div>
+
+        <!-- Expired Codes Section -->
+        <h2>❌ Expired Codes</h2>
+        <div id="expired-codes-container">
+            <!-- Expired codes will be inserted here by JavaScript -->
+        </div>
+
+        <!-- Redeem Link -->
+        <div>
+            <a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
+                🔗 Redeem Codes on SHiFT Website
+            </a>
         </div>
     </div>
 
     <script>
         // ==================== CONFIGURATION ====================
-        // ONLY CHANGE THESE LINES:
-        const SHIFT_CODES = ["3ZXJB-53STT-56T3W-B3TT3-HTS95", "BSRT3-FTZBJ-K6BTW-JB3T3-WXT99"];
-        const EXPIRE_DATE = new Date(2025, 8, 19, 11, 58, 0); // Year, Month-1, Day, Hour, Minute, Second
+        // ACTIVE CODES (With expiration)
+        const ACTIVE_CODES = [
+            "3H63J-Z3S3J-KR3BK-BTJ33-ZWKTK",
+            "TSR3B-J5S3T-KRBJW-BTTBJ-JRCXX"
+        ];
+        const EXPIRE_DATE = new Date(2025, 8, 22, 12, 36, 0); // Monday, September 22, 2025 at 12:36:00 pm
+
+        // EXPIRED CODES (Permanent list - no copy buttons)
+        const EXPIRED_CODES = [
+            "3ZXJB-53STT-56T3W-B3TT3-HTS95",
+            "BSRT3-FTZBJ-K6BTW-JB3T3-WXT99"
+        ];
         // =======================================================
 
-        function createCodeBox(code, index) {
+        function createActiveCodeBox(code, index) {
             return `
                 <div class="code-box">
                     <div class="code-text">${code}</div>
                     <button class="copy-btn" onclick="copyToClipboard('${code}', ${index})">
                         📋 Copy Code
                     </button>
-                    <span id="copied-${index}" class="copied-message">✓ Copied!</span>
+                    <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
+                </div>
+            `;
+        }
+
+        function createExpiredCodeBox(code, index) {
+            return `
+                <div class="expired-code-box">
+                    <div class="code-text">${code}</div>
+                    <div style="color: #ff4444; font-weight: bold; margin-top: 10px;">❌ EXPIRED</div>
                 </div>
             `;
         }
 
         function copyToClipboard(text, index) {
             navigator.clipboard.writeText(text).then(() => {
-                const message = document.getElementById(`copied-${index}`);
+                const message = document.getElementById(`copied-active-${index}`);
                 message.style.display = 'inline';
                 setTimeout(() => {
                     message.style.display = 'none';
@@ -124,7 +188,7 @@
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
                 
-                const message = document.getElementById(`copied-${index}`);
+                const message = document.getElementById(`copied-active-${index}`);
                 message.style.display = 'inline';
                 setTimeout(() => {
                     message.style.display = 'none';
@@ -154,16 +218,22 @@
         }
 
         function initializePage() {
-            const container = document.getElementById('codes-container');
+            const activeContainer = document.getElementById('active-codes-container');
+            const expiredContainer = document.getElementById('expired-codes-container');
             
-            // Create code boxes
-            SHIFT_CODES.forEach((code, index) => {
-                container.innerHTML += createCodeBox(code, index);
+            // Create active code boxes with copy buttons
+            ACTIVE_CODES.forEach((code, index) => {
+                activeContainer.innerHTML += createActiveCodeBox(code, index);
             });
             
-            // Add countdown timer
-            container.innerHTML += `
-                <div class="status active" id="status">✅ Active - Expires in:</div>
+            // Create expired code boxes (no copy buttons)
+            EXPIRED_CODES.forEach((code, index) => {
+                expiredContainer.innerHTML += createExpiredCodeBox(code, index);
+            });
+            
+            // Add countdown timer to active section
+            activeContainer.innerHTML += `
+                <div class="status active" id="status">✅ Active - Expires on Monday, September 22, 2025 at 12:36:00 PM</div>
                 <div class="countdown" id="countdown">Loading...</div>
             `;
             
