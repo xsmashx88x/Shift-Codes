@@ -21,7 +21,7 @@
         }
         h1 {
             color: #2c3e50;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         h2 {
             color: #2c3e50;
@@ -101,7 +101,7 @@
             padding: 12px 25px;
             text-decoration: none;
             border-radius: 25px;
-            margin: 20px 0;
+            margin: 10px 0 25px 0;
             font-weight: bold;
             transition: all 0.3s;
         }
@@ -109,29 +109,57 @@
             background: #218838;
             transform: scale(1.05);
         }
+        .collapse-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        .collapse-btn:hover {
+            background: #5a6268;
+            transform: scale(1.05);
+        }
+        .expired-section {
+            display: none;
+            margin-top: 10px;
+        }
+        .expired-section.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🎮 SHiFT Codes</h1>
         
+        <!-- Redeem Link at the TOP -->
+        <div>
+            <a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
+                🔗 Redeem Codes on SHiFT Website
+            </a>
+        </div>
+
         <!-- Active Codes Section -->
         <h2>✅ Active Codes</h2>
         <div id="active-codes-container">
             <!-- Active codes will be inserted here by JavaScript -->
         </div>
 
-        <!-- Expired Codes Section -->
-        <h2>❌ Expired Codes</h2>
-        <div id="expired-codes-container">
-            <!-- Expired codes will be inserted here by JavaScript -->
-        </div>
-
-        <!-- Redeem Link -->
-        <div>
-            <a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
-                🔗 Redeem Codes on SHiFT Website
-            </a>
+        <!-- Expired Codes Section (Collapsible) -->
+        <button class="collapse-btn" onclick="toggleExpired()">
+            📁 Show/Hide Expired Codes
+        </button>
+        
+        <div id="expired-section" class="expired-section">
+            <h2>❌ Expired Codes</h2>
+            <div id="expired-codes-container">
+                <!-- Expired codes will be inserted here by JavaScript -->
+            </div>
         </div>
     </div>
 
@@ -194,6 +222,11 @@
                     message.style.display = 'none';
                 }, 2000);
             });
+        }
+
+        function toggleExpired() {
+            const expiredSection = document.getElementById('expired-section');
+            expiredSection.classList.toggle('show');
         }
 
         function updateCountdown() {
