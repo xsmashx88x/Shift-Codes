@@ -15,90 +15,101 @@
             max-width: 650px;
             margin: 0 auto;
             background: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         h1 {
             color: #2c3e50;
             margin-bottom: 15px;
+            font-size: 28px;
         }
         h2 {
             color: #2c3e50;
-            margin: 30px 0 15px 0;
-            padding-bottom: 10px;
+            margin: 25px 0 12px 0;
+            padding-bottom: 8px;
             border-bottom: 2px solid #eee;
+            font-size: 20px;
         }
         .code-box {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 15px;
+            margin: 15px 0;
             border-radius: 10px;
             text-align: center;
+            transition: transform 0.2s;
+        }
+        .code-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(0,0,0,0.15);
         }
         .expired-code-box {
             background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
             color: #666;
-            padding: 20px;
-            margin: 15px 0;
+            padding: 15px;
+            margin: 12px 0;
             border-radius: 10px;
             text-align: center;
             opacity: 0.7;
         }
         .code-text {
             font-family: 'Courier New', monospace;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            margin: 15px 0;
+            margin: 12px 0;
             word-break: break-all;
+            letter-spacing: 0.5px;
         }
         .copy-btn {
             background: rgba(255,255,255,0.2);
             border: 2px solid white;
             color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 8px 16px;
+            border-radius: 18px;
             cursor: pointer;
             font-weight: bold;
-            margin: 10px 5px;
+            margin: 8px 4px;
             transition: all 0.3s;
+            font-size: 14px;
         }
         .copy-btn:hover {
             background: rgba(255,255,255,0.3);
             transform: scale(1.05);
         }
         .countdown {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             color: #e0e0e0;
-            margin: 10px 0;
-            padding: 5px;
+            margin: 8px 0;
+            padding: 4px;
             background: rgba(0,0,0,0.2);
-            border-radius: 10px;
+            border-radius: 8px;
         }
         .expire-date {
-            font-size: 14px;
+            font-size: 13px;
             color: #e0e0e0;
-            margin: 5px 0;
+            margin: 4px 0;
             font-style: italic;
         }
         .copied-message {
             color: #90ee90;
             font-weight: bold;
             display: none;
-            margin-left: 10px;
+            margin-left: 8px;
+            font-size: 13px;
         }
         .rewards-link {
             display: inline-block;
             background: #28a745;
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
             text-decoration: none;
-            border-radius: 25px;
-            margin: 10px 0 25px 0;
+            border-radius: 22px;
+            margin: 8px 0 20px 0;
             font-weight: bold;
             transition: all 0.3s;
+            font-size: 14px;
         }
         .rewards-link:hover {
             background: #218838;
@@ -108,12 +119,13 @@
             background: #6c757d;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 9px 18px;
+            border-radius: 18px;
             cursor: pointer;
             font-weight: bold;
-            margin: 10px 0;
+            margin: 8px 0;
             transition: all 0.3s;
+            font-size: 14px;
         }
         .collapse-btn:hover {
             background: #5a6268;
@@ -121,16 +133,16 @@
         }
         .expired-section {
             display: none;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         .expired-section.show {
             display: block;
         }
         .title-container {
-            font-size: 14px;
+            font-size: 13px;
             color: #e0e0e0;
-            margin-bottom: 10px;
-            min-height: 20px;
+            margin-bottom: 8px;
+            min-height: 18px;
         }
         .title-container a {
             color: #a0e0ff;
@@ -138,6 +150,16 @@
         }
         .title-container a:hover {
             color: #ffffff;
+        }
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .key-icon {
+            font-size: 18px;
         }
     </style>
 </head>
@@ -186,7 +208,7 @@
                 expires: new Date(2025, 8, 22, 12, 36, 0),  // Sept 25, 2025, 6:00 PM
                 title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>'
             },
-                        {
+            {
                 code: "3ZXJB-53STT-56T3W-B3TT3-HTS95",
                 expires: new Date(2025, 8, 21, 11, 58, 1),  // Sept 25, 2025, 6:00 PM
                 title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969068501215170641" target="_blank">From Twitter</a>'
@@ -239,7 +261,10 @@
             
             return `
                 <div class="code-box">
-                    <div class="title-container">${codeData.title}</div>
+                    <div class="code-header">
+                        <span class="key-icon">🔑</span>
+                        <div class="title-container">${codeData.title}</div>
+                    </div>
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
                     <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
@@ -254,10 +279,13 @@
         function createExpiredCodeBox(codeData, index) {
             return `
                 <div class="expired-code-box">
-                    <div class="title-container" style="color: #888;">${codeData.title}</div>
+                    <div class="code-header">
+                        <span class="key-icon">🔑</span>
+                        <div class="title-container" style="color: #888;">${codeData.title}</div>
+                    </div>
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
-                    <div style="color: #ff4444; font-weight: bold; margin-top: 10px;">❌ EXPIRED</div>
+                    <div style="color: #ff4444; font-weight: bold; margin-top: 8px; font-size: 13px;">❌ EXPIRED</div>
                 </div>
             `;
         }
