@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>SHiFT Codes - Borderlands Style</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHiFT Codes - Borderlands Style</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         
         body {
             font-family: 'Chakra Petch', sans-serif;
@@ -12,10 +19,12 @@
             padding: 20px;
             background: #2c1b2d;
             color: #fff;
+            min-height: 100vh;
             background-image: 
                 radial-gradient(circle at 20% 30%, #3d2942 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, #482c4d 0%, transparent 50%);
         }
+        
         .container {
             max-width: 650px;
             margin: 0 auto;
@@ -27,6 +36,7 @@
             position: relative;
             overflow: hidden;
         }
+        
         .container:before {
             content: '';
             position: absolute;
@@ -37,6 +47,7 @@
             background: linear-gradient(90deg, #ffc600, #ff7c00, #ffc600);
             box-shadow: 0 0 10px #ffc600;
         }
+        
         h1 {
             color: #ffc600;
             margin-bottom: 15px;
@@ -46,6 +57,7 @@
             text-shadow: 2px 2px 0 #000, 0 0 10px rgba(255, 198, 0, 0.7);
             font-weight: 700;
         }
+        
         h2 {
             color: #ffc600;
             margin: 25px 0 12px 0;
@@ -56,6 +68,7 @@
             letter-spacing: 1px;
             text-shadow: 1px 1px 0 #000;
         }
+        
         .code-box {
             background: linear-gradient(135deg, #3a2c3f 0%, #2a1c2f 100%);
             color: white;
@@ -68,10 +81,30 @@
             box-shadow: 0 0 8px rgba(255, 198, 0, 0.3);
             position: relative;
         }
+        
         .code-box:hover {
             transform: translateY(-3px);
             box-shadow: 0 0 12px rgba(255, 198, 0, 0.5);
         }
+        
+        .permanent-code-box {
+            background: linear-gradient(135deg, #1b3b6a 0%, #0f2552 100%);
+            color: white;
+            padding: 8px 10px;
+            margin: 6px 0;
+            border-radius: 3px;
+            text-align: left;
+            transition: transform 0.2s;
+            border: 1px solid #4a90e2;
+            box-shadow: 0 0 4px rgba(74, 144, 226, 0.4);
+            position: relative;
+        }
+        
+        .permanent-code-box:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 6px rgba(74, 144, 226, 0.6);
+        }
+        
         .expired-code-box {
             background: linear-gradient(135deg, #333 0%, #222 100%);
             color: #999;
@@ -82,6 +115,7 @@
             border: 2px solid #666;
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
         }
+        
         .code-text {
             font-family: 'Courier New', monospace;
             font-size: 18px;
@@ -92,6 +126,19 @@
             color: #ffc600;
             text-shadow: 1px 1px 0 #000;
         }
+        
+        .permanent-code-text {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 4px 0;
+            word-break: break-all;
+            letter-spacing: 0.5px;
+            color: #ffc600; /* Changed to gold/yellow like active codes */
+            text-shadow: 1px 1px 0 #000, 0 0 5px rgba(255, 198, 0, 0.7);
+            line-height: 1.2;
+        }
+        
         .copy-btn {
             background: linear-gradient(to bottom, #ff7c00, #e56a00);
             border: 2px solid #ffc600;
@@ -108,11 +155,37 @@
             text-shadow: 1px 1px 0 #000;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
+        
+        .permanent-copy-btn {
+            background: linear-gradient(to bottom, #4a90e2, #2a70c2);
+            border: 1px solid #6ba8ff;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0;
+            transition: all 0.3s;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-family: 'Chakra Petch', sans-serif;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            float: right;
+        }
+        
         .copy-btn:hover {
             background: linear-gradient(to bottom, #ff8c00, #ff6a00);
             transform: scale(1.05);
             box-shadow: 0 0 8px #ffc600;
         }
+        
+        .permanent-copy-btn:hover {
+            background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
+            transform: scale(1.05);
+            box-shadow: 0 0 4px #6ba8ff;
+        }
+        
         .countdown {
             font-size: 14px;
             font-weight: bold;
@@ -124,6 +197,7 @@
             text-shadow: 1px 1px 0 #000;
             border: 1px solid #ff7c00;
         }
+        
         .expire-date {
             font-size: 13px;
             color: #ff9e40;
@@ -131,6 +205,16 @@
             font-style: italic;
             text-shadow: 1px 1px 0 #000;
         }
+        
+        .permanent-text {
+            font-size: 10px;
+            color: #6ba8ff;
+            margin: 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 #000, 0 0 3px rgba(107, 168, 255, 0.5);
+            display: inline-block;
+        }
+        
         .copied-message {
             color: #7cff7c;
             font-weight: bold;
@@ -139,6 +223,17 @@
             font-size: 13px;
             text-shadow: 1px 1px 0 #000;
         }
+        
+        .permanent-copied-message {
+            color: #7cff7c;
+            font-weight: bold;
+            display: none;
+            margin-left: 3px;
+            font-size: 9px;
+            text-shadow: 1px 1px 0 #000;
+            float: right;
+        }
+        
         .rewards-link {
             display: inline-block;
             background: linear-gradient(to bottom, #ff7c00, #e56a00);
@@ -156,11 +251,13 @@
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
             font-family: 'Chakra Petch', sans-serif;
         }
+        
         .rewards-link:hover {
             background: linear-gradient(to bottom, #ff8c00, #ff6a00);
             transform: scale(1.05);
             box-shadow: 0 0 10px #ffc600;
         }
+        
         .info-button {
             background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
             color: white;
@@ -178,11 +275,13 @@
             cursor: pointer;
             display: inline-block;
         }
+        
         .info-button:hover {
             background: linear-gradient(to bottom, #5a5a5a, #3a3a3a);
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
+        
         .collapse-btn {
             background: linear-gradient(to bottom, #555, #333);
             color: white;
@@ -200,18 +299,22 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             font-family: 'Chakra Petch', sans-serif;
         }
+        
         .collapse-btn:hover {
             background: linear-gradient(to bottom, #666, #444);
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
         }
+        
         .expired-section {
             display: none;
             margin-top: 8px;
         }
+        
         .expired-section.show {
             display: block;
         }
+        
         .title-container {
             font-size: 14px;
             color: #ff9e40;
@@ -219,15 +322,28 @@
             min-height: 18px;
             text-shadow: 1px 1px 0 #000;
         }
-        .title-container a {
+        
+        .permanent-title-container {
+            font-size: 11px;
+            color: #ffffff; /* Changed to white */
+            margin: 0 0 2px 0;
+            min-height: 12px;
+            text-shadow: 1px 1px 0 #000;
+            line-height: 1.2;
+            text-align: left;
+        }
+        
+        .title-container a, .permanent-title-container a {
             color: #ffc600;
             text-decoration: underline;
             text-shadow: 1px 1px 0 #000;
             font-weight: bold;
         }
-        .title-container a:hover {
+        
+        .title-container a:hover, .permanent-title-container a:hover {
             color: #ff7c00;
         }
+        
         .code-header {
             display: flex;
             align-items: center;
@@ -235,17 +351,32 @@
             gap: 8px;
             margin-bottom: 8px;
         }
+        
+        .permanent-code-header {
+            display: block;
+            margin-bottom: 2px;
+        }
+        
         .key-icon {
             font-size: 18px;
             color: #ffc600;
             text-shadow: 1px 1px 0 #000;
         }
+        
+        .permanent-key-icon {
+            font-size: 12px;
+            color: #6ba8ff;
+            text-shadow: 1px 1px 0 #000, 0 0 3px rgba(107, 168, 255, 0.5);
+            margin-right: 4px;
+        }
+        
         .vault-symbol {
             font-size: 24px;
             margin-right: 10px;
             color: #ffc600;
             text-shadow: 1px 1px 0 #000, 0 0 5px rgba(255, 198, 0, 0.5);
         }
+        
         .scanlines {
             position: fixed;
             top: 0;
@@ -260,6 +391,7 @@
             z-index: 999;
             opacity: 0.2;
         }
+        
         .noise {
             position: fixed;
             top: 0;
@@ -270,6 +402,24 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
             z-index: 998;
             opacity: 0.1;
+        }
+        
+        .permanent-code-footer {
+            display: block;
+            margin-top: 3px;
+            text-align: right;
+        }
+        
+        .no-codes {
+            color: #ff9e40;
+            padding: 20px;
+            text-shadow: 1px 1px 0 #000;
+        }
+        
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
         }
     </style>
 </head>
@@ -292,6 +442,12 @@
             <button class="info-button" onclick="showInfo()">
                 📖 SHiFT Code Info & FAQ
             </button>
+        </div>
+
+        <!-- Permanent Codes Section -->
+        <h2>🔵 Permanent Codes Kinda</h2>
+        <div id="permanent-codes-container">
+            <!-- Permanent codes will be inserted here by JavaScript -->
         </div>
 
         <!-- Active Codes Section -->
@@ -325,7 +481,7 @@
             },
             {
                 code: "TSR3B-J5S3T-KRBJW-BTTBJ-JRCXX",
-                expires: new Date(2025, 8, 22, 12, 36, 0),  // Sept 25, 2025, 6:00 PM
+                expires: new Date(2025, 8, 22, 12, 36, 0),  // Sept 22, 2025, 12:36 PM
                 title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>'
             },
             {
@@ -344,6 +500,26 @@
                 title: "Gold Key"
             }
         ];
+
+        // PERMANENT CODES (never expire) 
+        const PERMANENT_CODES = [
+		    {
+                code: "T9RJB-BFKRR-3RBTW-B33TB-KCZB9",
+                title: 'Gold Key'
+            },
+            {
+                code: "WEWJB-XH3SX-39CZW-H3BBB-BPF55",
+                title: 'Requires linked My2K Games account - <a href="https://shift.gearboxsoftware.com/associations" target="_blank">Associate Account</a>'
+            },
+            {
+                code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJSSR",
+                title: "Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin<br><br>Code Expiration: January 1, 2031 at 2:49am"
+            },
+			{
+                code: "Butterfinger ECHO-4 Drone Skin",
+                title: 'This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a>'
+            }
+        ];
         // =======================================================
 
         // Function to show info (customize this as needed)
@@ -358,13 +534,15 @@
         }
 
         // Function to copy code to clipboard
-        function copyToClipboard(text, index) {
+        function copyToClipboard(text, index, type) {
             navigator.clipboard.writeText(text).then(() => {
-                const message = document.getElementById(`copied-active-${index}`);
-                message.style.display = 'inline';
-                setTimeout(() => {
-                    message.style.display = 'none';
-                }, 2000);
+                const message = document.getElementById(`copied-${type}-${index}`);
+                if (message) {
+                    message.style.display = 'inline';
+                    setTimeout(() => {
+                        message.style.display = 'none';
+                    }, 2000);
+                }
             }).catch(err => {
                 const textArea = document.createElement('textarea');
                 textArea.value = text;
@@ -373,11 +551,13 @@
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
                 
-                const message = document.getElementById(`copied-active-${index}`);
-                message.style.display = 'inline';
-                setTimeout(() => {
-                    message.style.display = 'none';
-                }, 2000);
+                const message = document.getElementById(`copied-${type}-${index}`);
+                if (message) {
+                    message.style.display = 'inline';
+                    setTimeout(() => {
+                        message.style.display = 'none';
+                    }, 2000);
+                }
             });
         }
 
@@ -410,6 +590,24 @@
             });
         }
 
+        // Function to create permanent code box HTML
+        function createPermanentCodeBox(codeData, index) {
+            return `
+                <div class="permanent-code-box clearfix">
+                    <div class="permanent-code-header">
+                        <div class="permanent-code-text">${codeData.code}</div>
+                        <div class="permanent-title-container">${codeData.title}</div>
+                    </div>
+                    <div class="permanent-code-footer">
+                        <button class="permanent-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'permanent')">
+                            COPY
+                        </button>
+                        <span id="copied-permanent-${index}" class="permanent-copied-message">✓ Copied!</span>
+                    </div>
+                </div>
+            `;
+        }
+
         // Function to create active code box HTML
         function createActiveCodeBox(codeData, index) {
             const timeLeft = codeData.expires - new Date();
@@ -426,7 +624,7 @@
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
                     <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
-                    <button class="copy-btn" onclick="copyToClipboard('${codeData.code}', ${index})">
+                    <button class="copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
                         📋 Copy Code
                     </button>
                     <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
@@ -472,24 +670,37 @@
 
         // Function to initialize the page
         function initializePage() {
+            const permanentContainer = document.getElementById('permanent-codes-container');
             const activeContainer = document.getElementById('active-codes-container');
             const expiredContainer = document.getElementById('expired-codes-container');
             
             const { activeCodes, expiredCodes } = organizeCodes();
             
+            // Create permanent code boxes
+            if (PERMANENT_CODES.length > 0) {
+                PERMANENT_CODES.forEach((codeData, index) => {
+                    permanentContainer.innerHTML += createPermanentCodeBox(codeData, index);
+                });
+            } else {
+                permanentContainer.innerHTML = '<div class="no-codes">No permanent codes available at this time.</div>';
+            }
+            
             // Create active code boxes
-            activeCodes.forEach((codeData, index) => {
-                activeContainer.innerHTML += createActiveCodeBox(codeData, index);
-            });
+            if (activeCodes.length > 0) {
+                activeCodes.forEach((codeData, index) => {
+                    activeContainer.innerHTML += createActiveCodeBox(codeData, index);
+                });
+            } else {
+                activeContainer.innerHTML = '<div class="no-codes">No active codes at the moment. Check back later, Vault Hunter!</div>';
+            }
             
             // Create expired code boxes
-            expiredCodes.forEach((codeData, index) => {
-                expiredContainer.innerHTML += createExpiredCodeBox(codeData, index);
-            });
-            
-            // Show message if no active codes
-            if (activeCodes.length === 0) {
-                activeContainer.innerHTML = '<div style="color: #ff9e40; padding: 20px; text-shadow: 1px 1px 0 #000;">No active codes at the moment. Check back later, Vault Hunter!</div>';
+            if (expiredCodes.length > 0) {
+                expiredCodes.forEach((codeData, index) => {
+                    expiredContainer.innerHTML += createExpiredCodeBox(codeData, index);
+                });
+            } else {
+                expiredContainer.innerHTML = '<div class="no-codes">No expired codes to display.</div>';
             }
             
             // Start countdown updates
@@ -498,7 +709,7 @@
         }
 
         // Start everything when page loads
-        window.addEventListener('load', initializePage);
+        document.addEventListener('DOMContentLoaded', initializePage);
     </script>
 </body>
 </html>
