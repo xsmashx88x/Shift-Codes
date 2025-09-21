@@ -337,12 +337,12 @@
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
         }
         
-        .expired-section {
+        .expired-section, .permanent-section {
             display: none;
             margin-top: 8px;
         }
         
-        .expired-section.show {
+        .expired-section.show, .permanent-section.show {
             display: block;
         }
         
@@ -561,10 +561,16 @@
             </button>
         </div>
 
-        <!-- Permanent Codes Section -->
-        <h2>🔵 Permanent Codes Kinda</h2>
-        <div id="permanent-codes-container">
-            <!-- Permanent codes will be inserted here by JavaScript -->
+        <!-- Permanent Codes Section (Now behind a button) -->
+        <button class="collapse-btn" onclick="togglePermanent()">
+            🔵 Show/Hide Permanent Codes
+        </button>
+        
+        <div id="permanent-section" class="permanent-section">
+            <h2>🔵 Permanent Codes</h2>
+            <div id="permanent-codes-container">
+                <!-- Permanent codes will be inserted here by JavaScript -->
+            </div>
         </div>
 
         <!-- Active Codes Section -->
@@ -648,6 +654,12 @@
         function toggleExpired() {
             const expiredSection = document.getElementById('expired-section');
             expiredSection.classList.toggle('show');
+        }
+
+        // NEW: Function to toggle permanent codes section
+        function togglePermanent() {
+            const permanentSection = document.getElementById('permanent-section');
+            permanentSection.classList.toggle('show');
         }
 
         // Function to copy code to clipboard
