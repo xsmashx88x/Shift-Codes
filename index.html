@@ -421,6 +421,73 @@
             clear: both;
             display: table;
         }
+		
+		        /* Add these new styles for the redemption checkbox */
+        .redeem-checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        
+        .redeem-checkbox input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ffc600;
+            border-radius: 3px;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+        
+        .redeem-checkbox input[type="checkbox"]:checked::before {
+            content: "✓";
+            position: absolute;
+            color: #ffc600;
+            font-size: 14px;
+            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 0 0 3px #000;
+        }
+        
+        .redeem-checkbox label {
+            color: #ffc600;
+            font-size: 14px;
+            cursor: pointer;
+            text-shadow: 1px 1px 0 #000;
+        }
+        
+        .redeemed {
+            opacity: 0.7;
+            position: relative;
+        }
+        
+        .redeemed::after {
+            content: "REDEEMED";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 24px;
+            font-weight: bold;
+            color: #7cff7c;
+            text-shadow: 2px 2px 0 #000, 0 0 10px rgba(124, 255, 124, 0.7);
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        .permanent-redeemed {
+            opacity: 0.7;
+        }
+        
+        .permanent-redeemed .permanent-code-text {
+            color: #7cff7c !important;
+        }
     </style>
 </head>
 <body>
@@ -524,7 +591,7 @@
 
         // Function to show info (customize this as needed)
         function showInfo() {
-            alert("When Was This Last Updated?? : 9/20/2025 \n\nWhy Was This Made : For peeps to know if codes are expired and be able to copy them more easy via the button \n\nPSA: if linked multi systems can redeem on each :) from what I hear ");
+            alert("When Was This Last Updated?? : 9/21/2025 \n\nWhy Was This Made : For peeps to know if codes are expired and be able to copy them more easy via the button \n\nPSA: if linked multi systems can redeem on each :) from what I hear \n\nNEW: You can now mark codes as redeemed and the site will remember your selection!");
         }
 
         // Function to toggle expired codes section
@@ -561,6 +628,52 @@
             });
         }
 
+        // Function to save redemption status to localStorage
+        function saveRedemptionStatus(code, isRedeemed) {
+            try {
+                const redeemedCodes = JSON.parse(localStorage.getItem('shiftRedeemedCodes')) || {};
+                redeemedCodes[code] = isRedeemed;
+                localStorage.setItem('shiftRedeemedCodes', JSON.stringify(redeemedCodes));
+            } catch (e) {
+                console.error("Error saving to localStorage:", e);
+            }
+        }
+
+        // Function to get redemption status from localStorage
+        function getRedemptionStatus(code) {
+            try {
+                const redeemedCodes = JSON.parse(localStorage.getItem('shiftRedeemedCodes')) || {};
+                return redeemedCodes[code] || false;
+            } catch (e) {
+                console.error("Error reading from localStorage:", e);
+                return false;
+            }
+        }
+
+        // Function to handle redemption checkbox change
+        function handleRedemptionChange(code, checkbox, container) {
+            const isRedeemed = checkbox.checked;
+            saveRedemptionStatus(code, isRedeemed);
+            
+            if (isRedeemed) {
+                container.classList.add('redeemed');
+            } else {
+                container.classList.remove('redeemed');
+            }
+        }
+
+        // Function to handle permanent code redemption checkbox change
+        function handlePermanentRedemptionChange(code, checkbox, container) {
+            const isRedeemed = checkbox.checked;
+            saveRedemptionStatus(code, isRedeemed);
+            
+            if (isRedeemed) {
+                container.classList.add('permanent-redeemed');
+            } else {
+                container.classList.remove('permanent-redeemed');
+            }
+        }
+
         // Function to organize codes into active and expired
         function organizeCodes() {
             const now = new Date();
@@ -592,13 +705,21 @@
 
         // Function to create permanent code box HTML
         function createPermanentCodeBox(codeData, index) {
+            const isRedeemed = getRedemptionStatus(codeData.code);
+            const redeemedClass = isRedeemed ? 'permanent-redeemed' : '';
+            
             return `
-                <div class="permanent-code-box clearfix">
+                <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
                     <div class="permanent-code-header">
                         <div class="permanent-code-text">${codeData.code}</div>
                         <div class="permanent-title-container">${codeData.title}</div>
                     </div>
                     <div class="permanent-code-footer">
+                        <div class="redeem-checkbox">
+                            <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                                onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))">
+                            <label for="permanent-redeemed-${index}">Mark as redeemed</label>
+                        </div>
                         <button class="permanent-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'permanent')">
                             COPY
                         </button>
@@ -614,9 +735,11 @@
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const isRedeemed = getRedemptionStatus(codeData.code);
+            const redeemedClass = isRedeemed ? 'redeemed' : '';
             
             return `
-                <div class="code-box">
+                <div class="code-box ${redeemedClass}" id="active-${index}">
                     <div class="code-header">
                         <span class="key-icon">🔑</span>
                         <div class="title-container">${codeData.title}</div>
@@ -624,6 +747,11 @@
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
                     <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
+                    <div class="redeem-checkbox">
+                        <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                            onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
+                        <label for="redeemed-${index}">Mark as redeemed</label>
+                    </div>
                     <button class="copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
                         📋 Copy Code
                     </button>
@@ -634,14 +762,22 @@
 
         // Function to create expired code box HTML
         function createExpiredCodeBox(codeData, index) {
+            const isRedeemed = getRedemptionStatus(codeData.code);
+            const redeemedClass = isRedeemed ? 'redeemed' : '';
+            
             return `
-                <div class="expired-code-box">
+                <div class="expired-code-box ${redeemedClass}" id="expired-${index}">
                     <div class="code-header">
                         <span class="key-icon">🔑</span>
                         <div class="title-container" style="color: #888;">${codeData.title}</div>
                     </div>
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
+                    <div class="redeem-checkbox">
+                        <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                            onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
+                        <label for="expired-redeemed-${index}">Mark as redeemed</label>
+                    </div>
                     <div style="color: #ff4444; font-weight: bold; margin-top: 8px; font-size: 13px;">❌ EXPIRED</div>
                 </div>
             `;
