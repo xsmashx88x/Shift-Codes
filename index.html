@@ -656,11 +656,11 @@
 
         <!-- Permanent Codes Section (Now behind a button) -->
         <button class="collapse-btn" onclick="togglePermanent()">
-            🔵 Show/Hide Permanent Codes
+            🔵 Show/Hide Permanent Codes/Unknown Expire Times
         </button>
         
         <div id="permanent-section" class="permanent-section">
-            <h2>🔵 Permanent Codes</h2>
+            <h2>🔵 Permanent Codes/Unknown Expire Times</h2>
             <div id="permanent-codes-container">
                 <!-- Permanent codes will be inserted here by JavaScript -->
             </div>
@@ -744,15 +744,16 @@
                 code: "3SRBB-X9RBJ-CRTBW-3BBB3-KJFW6",
                 expires: new Date(2025, 8, 10, 12, 0, 0),   // PAST DATE - Will be in expired
                 title: "Gold Key"
-            }
+            },
+            {
+                code: "WEWJB-XH3SX-39CZW-H3BBB-BPF55",
+                expires: new Date(2025, 8, 20, 12, 0, 0),   // PAST DATE - Will be in expired
+                title: 'Gold Key - Requires linked My2K Games account - <a href="https://shift.gearboxsoftware.com/associations" target="_blank">Associate Account</a>'
+            }		
         ];
 
         // PERMANENT CODES (never expire) 
         const PERMANENT_CODES = [
-            {
-                code: "WEWJB-XH3SX-39CZW-H3BBB-BPF55",
-                title: 'Requires linked My2K Games account - <a href="https://shift.gearboxsoftware.com/associations" target="_blank">Associate Account</a>'
-            },
             {
                 code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJSSR",
                 title: "Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin<br><br>Code Expiration: January 1, 2031 at 2:49am"
