@@ -394,6 +394,30 @@
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
         }
+		
+        .collapse-btn-Perm {
+            background: linear-gradient(to bottom, #f70, #A0F);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 8px 0;
+            transition: all 0.3s;
+            font-size: 14px;
+            text-transform: uppercase;
+            border: 1px solid #666;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Chakra Petch', sans-serif;
+        }
+        
+        .collapse-btn-Perm:hover {
+            background: linear-gradient(to bottom, #F90, #A4F);
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        }		
         
         .expired-section, .permanent-section, .info-section {
             display: none;
@@ -657,6 +681,31 @@
                 padding: 6px 10px;
             }
         }
+		.title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 25px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #ffc600;
+}
+
+.title-text {
+    color: #ffc600;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #000, 0 0 10px rgba(255, 198, 0, 0.7);
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffc600;
+}
     </style>
 </head>
 <body>
@@ -664,7 +713,11 @@
     <div class="scanlines"></div>
     
     <div class="container">
-        <h1><span class="vault-symbol"></span>🤖SHiFT Codes🤖</h1>
+<div class="title-bar">
+    <img src="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png" alt="Left Icon" class="icon">
+    <div class="title-text">ShiftT Codes</div>
+    <img src="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png" alt="Right Icon" class="icon">
+</div>
         
         <div class="social-links">
             <a href="https://x.com/xsmashx88x" target="_blank">🐦 Twitter</a>
@@ -717,12 +770,12 @@
             </a>
         </div>
 
-        <button class="collapse-btn" onclick="togglePermanent()">
-            🔵 [Show/Hide] Permanent Codes/Unknown Expire Times
+        <button class="collapse-btn-Perm" onclick="togglePermanent()">
+            ❓ [Show/Hide] Permanent/Unknown Expire Time Codes + Drop + More
         </button>
         
         <div id="permanent-section" class="permanent-section">
-            <h2>🔵 Permanent Codes/Unknown Expire Times</h2>
+            <h2>❓ Permanent/Unknown Expire Time Codes + Drop + More</h2>
             <div id="permanent-codes-container">
                 <!-- Permanent codes will be inserted here by JavaScript -->
             </div>
@@ -835,6 +888,21 @@
         ];
 
         const PERMANENT_CODES = [
+		            {
+                code: "Twitch Drops 1 : Watch, Drop, and Roll ECHO-4 Drone Skin cosmetic",
+                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>August 29, 2025 - September 29, 2025<br><br>• Watch any livestream in the Borderlands 4 category on the official <a href="http://twitch.tv/Borderlands" target="_blank">Borderlands 4 Twitch channel</a> or <a href="https://www.twitch.tv/gearboxofficial" target="_blank">Gearbox Twitch channel</a> for 20 minutes and claim the reward: <br><br><a href="https://github.com/xsmashx88x/Shift-Codes/blob/gh-pages/BL4_Echobot_Drop_Wide_textless.png?raw=true" target="_blank">Watch, Drop, and Roll ECHO-4 Drone Skin cosmetic | Preview Image</a>',
+                icon: "🎁"
+            },
+					            {
+                code: "Twitch Drops 2 : Forsaken Chaos Legendary shotgun",
+                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> for 2 hours and claim the reward: <br><br><a href="https://github.com/xsmashx88x/Shift-Codes/blob/gh-pages/BL4_ForsakenChaos.png?raw=true" target="_blank">Forsaken Chaos Legendary shotgun | Preview Image</a>',
+                icon: "🎁"
+            },
+								            {
+                code: "Twitch Drops 3 : Midnight Defiance Legendary sniper rifle",
+                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> hosted by a <a href="https://borderlands.2k.com/borderlands-4/partnered-creators/" target="_blank">partnered creator</a> for 2 hours and claim the reward: <br><br><a href="https://github.com/xsmashx88x/Shift-Codes/blob/gh-pages/BL4_MidnightDefiance.png?raw=true" target="_blank">Midnight Defiance Legendary sniper rifle | Preview Image</a>',
+                icon: "🎁"
+            },
             {
                 code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJSSR",
                 title: '<a href="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/breakfree.png" target="_blank">Click For Preview</a><br> Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin<br><br>Code Expiration: January 1, 2031 at 2:49am',
