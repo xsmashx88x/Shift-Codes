@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="shortcut icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
-<link rel="icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
-<div class="scrolling-banner">
-    <div class="scrolling-text">• FAV AND CHECK BACK DAILY •</div>
-</div>
+    <link rel="shortcut icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
+    <link rel="icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
+    <div class="scrolling-banner">
+        <div class="scrolling-text">• FAV AND CHECK BACK DAILY •</div>
+    </div>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHiFT Codes - Borderlands Style</title>
@@ -74,7 +74,7 @@
             text-shadow: 1px 1px 0 #000;
         }
         
-        /* NEW: Social links styling */
+        /* Social links styling */
         .social-links {
             display: flex;
             justify-content: center;
@@ -111,7 +111,7 @@
             padding: 15px;
             margin: 15px 0;
             border-radius: 4px;
-            text-align: center;
+            text-align: left;
             transition: transform 0.2s;
             border: 2px solid #ffc600;
             box-shadow: 0 0 8px rgba(255, 198, 0, 0.3);
@@ -126,9 +126,9 @@
         .permanent-code-box {
             background: linear-gradient(135deg, #1b3b6a 0%, #0f2552 100%);
             color: white;
-            padding: 8px 10px;
-            margin: 6px 0;
-            border-radius: 3px;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
             text-align: left;
             transition: transform 0.2s;
             border: 1px solid #4a90e2;
@@ -142,15 +142,47 @@
         }
         
         .expired-code-box {
-            background: linear-gradient(135deg, #333 0%, #222 100%);
-            color: #999;
+            background: linear-gradient(135deg, #5a2c2c 0%, #3a1c1c 100%);
+            color: #ff9999;
             padding: 15px;
             margin: 12px 0;
             border-radius: 4px;
-            text-align: center;
-            border: 2px solid #666;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+            text-align: left;
+            border: 2px solid #ff4444;
+            box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
             position: relative;
+        }
+        
+        .expired-code-box .code-text {
+            color: #ff6666;
+            text-shadow: 1px 1px 0 #400000;
+        }
+        
+        .expired-code-box .title-container {
+            color: #ff9999;
+        }
+        
+        .expired-code-box .expire-date {
+            color: #ffaaaa;
+        }
+        
+        .expired-code-box.redeemed {
+            background: linear-gradient(135deg, #2c5a2c 0%, #1c3a1c 100%);
+            border: 2px solid #44ff44;
+            box-shadow: 0 0 5px rgba(68, 255, 68, 0.3);
+        }
+        
+        .expired-code-box.redeemed .code-text {
+            color: #7cff7c !important;
+            text-shadow: 1px 1px 0 #004000;
+        }
+        
+        .expired-code-box.redeemed .title-container {
+            color: #9eff9e;
+        }
+        
+        .expired-code-box.redeemed .expire-date {
+            color: #aaffaa;
         }
         
         .code-text {
@@ -176,45 +208,64 @@
             line-height: 1.2;
         }
         
-        .copy-btn {
+        .code-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 198, 0, 0.3);
+        }
+        
+        .permanent-code-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(107, 168, 255, 0.3);
+        }
+        
+        .small-copy-btn {
             background: linear-gradient(to bottom, #ff7c00, #e56a00);
-            border: 2px solid #ffc600;
+            border: 1px solid #ffc600;
             color: #fff;
-            padding: 8px 16px;
-            border-radius: 4px;
+            padding: 6px 12px;
+            border-radius: 3px;
             cursor: pointer;
             font-weight: bold;
-            margin: 8px 4px;
+            margin: 0;
             transition: all 0.3s;
-            font-size: 14px;
+            font-size: 12px;
             text-transform: uppercase;
             font-family: 'Chakra Petch', sans-serif;
             text-shadow: 1px 1px 0 #000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            order: 2;
+        }
+        
+        .small-copy-btn:hover {
+            background: linear-gradient(to bottom, #ff8c00, #ff6a00);
+            transform: scale(1.05);
+            box-shadow: 0 0 6px #ffc600;
         }
         
         .permanent-copy-btn {
             background: linear-gradient(to bottom, #4a90e2, #2a70c2);
             border: 1px solid #6ba8ff;
             color: #fff;
-            padding: 3px 8px;
-            border-radius: 2px;
+            padding: 6px 12px;
+            border-radius: 3px;
             cursor: pointer;
             font-weight: bold;
             margin: 0;
             transition: all 0.3s;
-            font-size: 10px;
+            font-size: 12px;
             text-transform: uppercase;
             font-family: 'Chakra Petch', sans-serif;
             text-shadow: 1px 1px 0 #000;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            float: right;
-        }
-        
-        .copy-btn:hover {
-            background: linear-gradient(to bottom, #ff8c00, #ff6a00);
-            transform: scale(1.05);
-            box-shadow: 0 0 8px #ffc600;
+            order: 2;
         }
         
         .permanent-copy-btn:hover {
@@ -256,44 +307,21 @@
             color: #7cff7c;
             font-weight: bold;
             display: none;
-            margin-left: 8px;
-            font-size: 13px;
+            margin-left: 5px;
+            font-size: 11px;
             text-shadow: 1px 1px 0 #000;
+            order: 3;
         }
         
         .permanent-copied-message {
             color: #7cff7c;
             font-weight: bold;
             display: none;
-            margin-left: 3px;
-            font-size: 9px;
+            margin-left: 5px;
+            font-size: 11px;
             text-shadow: 1px 1px 0 #000;
-            float: right;
+            order: 3;
         }
-		
-       .redeem-ish {
-            display: inline-block;
-            background: linear-gradient(to bottom, #ff7c00, #e56a00);
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 4px;
-            margin: 8px 0 15px 0;
-            font-weight: bold;
-            transition: all 0.3s;
-            font-size: 16px;
-            text-transform: uppercase;
-            border: 2px solid #ffc600;
-            text-shadow: 1px 1px 0 #000;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
-            font-family: 'Chakra Petch', sans-serif;
-        }
-        
-        .redeem-ish:hover {
-            background: linear-gradient(to bottom, #ff8c00, #ff6a00);
-            transform: scale(1.05);
-            box-shadow: 0 0 10px #ffc600;
-        }		
         
         .rewards-link {
             display: inline-block;
@@ -386,7 +414,7 @@
         
         .permanent-title-container {
             font-size: 11px;
-            color: #ffffff;
+            color: #ffc600;
             margin: 0 0 2px 0;
             min-height: 12px;
             text-shadow: 1px 1px 0 #000;
@@ -408,13 +436,14 @@
         .code-header {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
             margin-bottom: 8px;
         }
         
         .permanent-code-header {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             margin-bottom: 2px;
         }
         
@@ -428,7 +457,20 @@
             font-size: 12px;
             color: #6ba8ff;
             text-shadow: 1px 1px 0 #000, 0 0 3px rgba(107, 168, 255, 0.5);
-            margin-right: 4px;
+        }
+        
+        .custom-icon {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+        
+        .permanent-custom-icon {
+            width: 12px;
+            height: 12px;
+            object-fit: contain;
+            vertical-align: middle;
         }
         
         .vault-symbol {
@@ -465,12 +507,6 @@
             opacity: 0.1;
         }
         
-        .permanent-code-footer {
-            display: block;
-            margin-top: 3px;
-            text-align: right;
-        }
-        
         .no-codes {
             color: #ff9e40;
             padding: 20px;
@@ -482,13 +518,12 @@
             clear: both;
             display: table;
         }
-		
-		/* Add these new styles for the redemption checkbox */
+        
         .redeem-checkbox {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 10px 0;
+            margin: 0;
+            order: 1;
         }
         
         .redeem-checkbox input[type="checkbox"] {
@@ -542,15 +577,41 @@
             pointer-events: none;
         }
         
+        .redeemed .code-text {
+            color: #7cff7c !important;
+        }
+        
         .permanent-redeemed {
             opacity: 0.7;
+            position: relative;
+        }
+        
+        .permanent-redeemed::after {
+            content: "REDEEMED";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 16px;
+            font-weight: bold;
+            color: #7cff7c;
+            text-shadow: 2px 2px 0 #000, 0 0 10px rgba(124, 255, 124, 0.7);
+            z-index: 10;
+            pointer-events: none;
         }
         
         .permanent-redeemed .permanent-code-text {
             color: #7cff7c !important;
         }
         
-        /* NEW: Info section styling */
+        .expired-text {
+            color: #ff4444;
+            font-weight: bold;
+            margin-top: 8px;
+            font-size: 13px;
+            text-shadow: 1px 1px 0 #400000;
+        }
+        
         .info-content {
             background: linear-gradient(to bottom, #555, #333);
             color: white;
@@ -586,7 +647,6 @@
             color: #ff7c00;
         }
         
-        /* Responsive adjustments for social links */
         @media (max-width: 600px) {
             .social-links {
                 gap: 10px;
@@ -606,14 +666,12 @@
     <div class="container">
         <h1><span class="vault-symbol"></span>🤖SHiFT Codes🤖</h1>
         
-        <!-- NEW: Social links section -->
         <div class="social-links">
             <a href="https://x.com/xsmashx88x" target="_blank">🐦 Twitter</a>
             <a href="https://discord.com/users/97484502628052992" target="_blank">💬 Discord</a>
             <a href="https://www.reddit.com/user/smashcanuckgamer/" target="_blank">👾 Reddit</a>
         </div>
 
-        <!-- Info Button and Section -->
         <button class="info-button" onclick="toggleInfo('info-section')">
             📖 Info & FAQ
         </button>
@@ -632,7 +690,6 @@
             </div>
         </div>
 
-        <!-- Redeem Button and Section -->
         <button class="info-button" onclick="toggleInfo('redeem-section')">
             🔗 How To Redeem On Console
         </button>
@@ -651,15 +708,12 @@
             </div>
         </div>
 
-
-        <!-- Redeem Link at the TOP -->
         <div>
             <a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
                 🔗 Redeem Codes on SHiFT Website
             </a>
         </div>
 
-        <!-- Permanent Codes Section (Now behind a button) -->
         <button class="collapse-btn" onclick="togglePermanent()">
             🔵 [Show/Hide] Permanent Codes/Unknown Expire Times
         </button>
@@ -671,13 +725,11 @@
             </div>
         </div>
 
-        <!-- Active Codes Section -->
         <h2>✅ Active Codes (New At Top)</h2>
         <div id="active-codes-container">
             <!-- Active codes will be inserted here by JavaScript -->
         </div>
 
-        <!-- Expired Codes Section (Collapsible) -->
         <button class="collapse-btn" onclick="toggleExpired()">
             📁 Show/Hide Expired Codes
         </button>
@@ -692,113 +744,123 @@
 
     <script>
         // ==================== CONFIGURATION ====================
-        // ADD YOUR CODES HERE WITH EXPIRATION DATES
-        // You can use HTML in the title field for hyperlinks
         const ALL_CODES_CONFIG = [
-				            {
+            {
                 code: "J9XBB-KK9T3-CRTBW-BBT3T-KTBTW",
-                expires: new Date(2025, 8, 24, 12, 28, 0), // Sept 24, 2025, 12:28 PM
-                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1970163226441547832" target="_blank">From Twitter</a>'
+                expires: new Date(2025, 8, 24, 12, 28, 0),
+                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1970163226441547832" target="_blank">From Twitter</a>',
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
-			            {
+            {
                 code: "JHFTJ-R5HBT-KF3TK-TBJT3-JJTHH",
-                expires: new Date(2025, 8, 24, 12, 28, 0), // Sept 24, 2025, 12:28 PM 
-                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1970163226441547832" target="_blank">From Twitter</a>'
+                expires: new Date(2025, 8, 24, 12, 28, 0),
+                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1970163226441547832" target="_blank">From Twitter</a>',
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
-		            {
+            {
                 code: "T9RJB-BFKRR-3RBTW-B33TB-KCZB9",
-                expires: new Date(2025, 9, 1), // Oct 1, 2025
-                title: 'Gold Key'
+                expires: new Date(2025, 9, 1),
+                title: 'Gold Key',
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
-			            {
+            {
                 code: "THRBT-WW6CB-56TB5-3B3BJ-XBW3X",
-                expires: new Date(2025, 8, 30), // Sept 30, 2025
-                title: 'Gold Key'
+                expires: new Date(2025, 8, 30),
+                title: 'Gold Key',
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
             {
                 code: "3H63J-Z3S3J-KR3BK-BTJ33-ZWKTK",
-                expires: new Date(2025, 8, 22, 12, 36, 0), // Sept 22, 2025, 12:36 PM
-                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>'
+                expires: new Date(2025, 8, 22, 12, 36, 0),
+                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>',
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
             {
                 code: "TSR3B-J5S3T-KRBJW-BTTBJ-JRCXX",
-                expires: new Date(2025, 8, 22, 12, 36, 0),  // Sept 22, 2025, 12:36 PM
-                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>'
+                expires: new Date(2025, 8, 22, 12, 36, 0),
+                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>',
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
             {
                 code: "3ZXJB-53STT-56T3W-B3TT3-HTS95",
-                expires: new Date(2025, 8, 21, 11, 58, 1),  // Sept 25, 2025, 11:58 AM
-                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969068501215170641" target="_blank">From Twitter</a>'
+                expires: new Date(2025, 8, 21, 11, 58, 1),
+                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969068501215170641" target="_blank">From Twitter</a>',
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
             {
                 code: "BSRT3-FTZBJ-K6BTW-JB3T3-WXT99",
-                expires: new Date(2025, 8, 21, 11, 58, 1),  // Sept 25, 2025, 11:58 AM
-                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969068501215170641" target="_blank">From Twitter</a>'
+                expires: new Date(2025, 8, 21, 11, 58, 1),
+                title: 'Gold Key - <a href="https://x.com/DuvalMagic/status/1969068501215170641" target="_blank">From Twitter</a>',
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
-			{
+            {
                 code: "B9XT3-HX6TT-W6BBW-TTJT3-JTFKX",
-                expires: new Date(2025, 8, 10, 12, 0, 0),   // PAST DATE - Will be in expired
-                title: "Gold Key"
+                expires: new Date(2025, 8, 10, 12, 0, 0),
+                title: "Gold Key",
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },				
-			{
+            {
                 code: "39RTT-3ZR3T-5FJBK-3J3J3-C5CRT",
-                expires: new Date(2025, 8, 10, 12, 0, 0),   // PAST DATE - Will be in expired
-                title: "Gold Key"
+                expires: new Date(2025, 8, 10, 12, 0, 0),
+                title: "Gold Key",
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },			
-			{
+            {
                 code: "WHWJB-XH3SX-39CZW-H3BBB-BTF55",
-                expires: new Date(2025, 8, 10, 12, 0, 0),   // PAST DATE - Will be in expired
-                title: "Gold Key"
+                expires: new Date(2025, 8, 10, 12, 0, 0),
+                title: "Gold Key",
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },			
-			{
+            {
                 code: "3SR3J-CS63T-CFB3K-J3JTT-RZ5JR",
-                expires: new Date(2025, 8, 10, 12, 0, 0),   // PAST DATE - Will be in expired
-                title: "Gold Key"
+                expires: new Date(2025, 8, 10, 12, 0, 0),
+                title: "Gold Key",
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
             {
                 code: "3SRBB-X9RBJ-CRTBW-3BBB3-KJFW6",
-                expires: new Date(2025, 8, 10, 12, 0, 0),   // PAST DATE - Will be in expired
-                title: "Gold Key"
+                expires: new Date(2025, 8, 10, 12, 0, 0),
+                title: "Gold Key",
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             },
             {
                 code: "WEWJB-XH3SX-39CZW-H3BBB-BPF55",
-                expires: new Date(2025, 8, 20, 12, 0, 0),   // PAST DATE - Will be in expired
-                title: 'Gold Key - Requires linked My2K Games account - <a href="https://shift.gearboxsoftware.com/associations" target="_blank">Associate Account</a>'
+                expires: new Date(2025, 8, 20, 12, 0, 0),
+                title: 'Gold Key - Requires linked My2K Games account - <a href="https://shift.gearboxsoftware.com/associations" target="_blank">Associate Account</a>',
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
             }		
         ];
 
-        // PERMANENT CODES (never expire) 
         const PERMANENT_CODES = [
             {
                 code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJSSR",
-                title: "Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin<br><br>Code Expiration: January 1, 2031 at 2:49am"
+                title: "Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin<br><br>Code Expiration: January 1, 2031 at 2:49am",
+                icon: "🎁"
             },
-			{
+            {
                 code: "Butterfinger ECHO-4 Drone Skin",
-                title: 'This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a> <br><i>USE A VPN, then search and use a fake usa number/address gen, if live outside the usa, Its what I did and I  got emailed the key :)</i>'
+                title: '<a href="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/image.png" target="_blank">CLICK ME FOR A PREVIEW OF WHAT IT LOOKS LIKE.</a><br><br>This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a> <br><i>USE A VPN, then search and use a fake usa number/address gen, if live outside the usa, Its what I did and I  got emailed the key :)</i>',
+                icon: "🍫"
             }
         ];
+
         // =======================================================
 
-        // Function to toggle info sections
         function toggleInfo(sectionId) {
             const section = document.getElementById(sectionId);
             section.classList.toggle('show');
         }
 
-        // Function to toggle expired codes section
         function toggleExpired() {
             const expiredSection = document.getElementById('expired-section');
             expiredSection.classList.toggle('show');
         }
 
-        // NEW: Function to toggle permanent codes section
         function togglePermanent() {
             const permanentSection = document.getElementById('permanent-section');
             permanentSection.classList.toggle('show');
         }
 
-        // Function to copy code to clipboard
         function copyToClipboard(text, index, type) {
             navigator.clipboard.writeText(text).then(() => {
                 const message = document.getElementById(`copied-${type}-${index}`);
@@ -826,7 +888,6 @@
             });
         }
 
-        // Function to save redemption status to localStorage
         function saveRedemptionStatus(code, isRedeemed) {
             try {
                 const redeemedCodes = JSON.parse(localStorage.getItem('shiftRedeemedCodes')) || {};
@@ -837,7 +898,6 @@
             }
         }
 
-        // Function to get redemption status from localStorage
         function getRedemptionStatus(code) {
             try {
                 const redeemedCodes = JSON.parse(localStorage.getItem('shiftRedeemedCodes')) || {};
@@ -848,7 +908,6 @@
             }
         }
 
-        // Function to handle redemption checkbox change
         function handleRedemptionChange(code, checkbox, container) {
             const isRedeemed = checkbox.checked;
             saveRedemptionStatus(code, isRedeemed);
@@ -860,7 +919,6 @@
             }
         }
 
-        // Function to handle permanent code redemption checkbox change
         function handlePermanentRedemptionChange(code, checkbox, container) {
             const isRedeemed = checkbox.checked;
             saveRedemptionStatus(code, isRedeemed);
@@ -872,7 +930,22 @@
             }
         }
 
-        // Function to organize codes into active and expired
+        function isImageUrl(str) {
+            return str.match(/\.(jpeg|jpg|gif|png|svg|webp)$/) !== null;
+        }
+
+        function createIconHtml(icon, isPermanent = false) {
+            if (!icon) return isPermanent ? '<span class="permanent-key-icon">🔑</span>' : '<span class="key-icon">🔑</span>';
+            
+            if (isImageUrl(icon)) {
+                const className = isPermanent ? 'permanent-custom-icon' : 'custom-icon';
+                return `<img src="${icon}" class="${className}" alt="Icon">`;
+            } else {
+                const className = isPermanent ? 'permanent-key-icon' : 'key-icon';
+                return `<span class="${className}">${icon}</span>`;
+            }
+        }
+
         function organizeCodes() {
             const now = new Date();
             const activeCodes = [];
@@ -889,7 +962,6 @@
             return { activeCodes, expiredCodes };
         }
 
-        // Function to format date
         function formatDate(date) {
             return date.toLocaleString('en-US', {
                 weekday: 'long',
@@ -901,17 +973,18 @@
             });
         }
 
-        // Function to create permanent code box HTML
         function createPermanentCodeBox(codeData, index) {
             const isRedeemed = getRedemptionStatus(codeData.code);
             const redeemedClass = isRedeemed ? 'permanent-redeemed' : '';
+            const iconHtml = createIconHtml(codeData.icon, true);
             
             return `
                 <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
                     <div class="permanent-code-header">
+                        ${iconHtml}
                         <div class="permanent-code-text">${codeData.code}</div>
-                        <div class="permanent-title-container">${codeData.title}</div>
                     </div>
+                    <div class="permanent-title-container">${codeData.title}</div>
                     <div class="permanent-code-footer">
                         <div class="redeem-checkbox">
                             <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
@@ -927,7 +1000,6 @@
             `;
         }
 
-        // Function to create active code box HTML
         function createActiveCodeBox(codeData, index) {
             const timeLeft = codeData.expires - new Date();
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
@@ -935,53 +1007,61 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const isRedeemed = getRedemptionStatus(codeData.code);
             const redeemedClass = isRedeemed ? 'redeemed' : '';
+            const iconHtml = createIconHtml(codeData.icon, false);
             
             return `
                 <div class="code-box ${redeemedClass}" id="active-${index}">
                     <div class="code-header">
-                        <span class="key-icon">🔑</span>
+                        ${iconHtml}
                         <div class="title-container">${codeData.title}</div>
                     </div>
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
                     <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
-                    <div class="redeem-checkbox">
-                        <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                            onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
-                        <label for="redeemed-${index}">Mark as redeemed</label>
+                    <div class="code-footer">
+                        <div class="redeem-checkbox">
+                            <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                                onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
+                            <label for="redeemed-${index}">Mark as redeemed</label>
+                        </div>
+                        <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
+                            COPY
+                        </button>
+                        <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
                     </div>
-                    <button class="copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
-                        📋 Copy Code
-                    </button>
-                    <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
                 </div>
             `;
         }
 
-        // Function to create expired code box HTML
         function createExpiredCodeBox(codeData, index) {
             const isRedeemed = getRedemptionStatus(codeData.code);
             const redeemedClass = isRedeemed ? 'redeemed' : '';
+            const iconHtml = createIconHtml(codeData.icon, false);
             
             return `
                 <div class="expired-code-box ${redeemedClass}" id="expired-${index}">
                     <div class="code-header">
-                        <span class="key-icon">🔑</span>
-                        <div class="title-container" style="color: #888;">${codeData.title}</div>
+                        ${iconHtml}
+                        <div class="title-container">${codeData.title}</div>
                     </div>
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
-                    <div class="redeem-checkbox">
-                        <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                            onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
-                        <label for="expired-redeemed-${index}">Mark as redeemed</label>
+                    <div class="code-footer">
+                        <div class="redeem-checkbox">
+                            <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                                onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
+                            <label for="expired-redeemed-${index}">Mark as redeemed</label>
+                        </div>
+                        <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
+                            COPY
+                        </button>
+                        <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
                     </div>
-                    <div style="color: #ff4444; font-weight: bold; margin-top: 8px; font-size: 13px;">❌ EXPIRED</div>
+                    <div class="expired-text">❌ EXPIRED</div>
                 </div>
             `;
         }
 
-        // Function to update countdowns
         function updateCountdowns() {
             const now = new Date();
             const countdownElements = document.querySelectorAll('.countdown');
@@ -1002,7 +1082,6 @@
             });
         }
 
-        // Function to initialize the page
         function initializePage() {
             const permanentContainer = document.getElementById('permanent-codes-container');
             const activeContainer = document.getElementById('active-codes-container');
@@ -1010,7 +1089,6 @@
             
             const { activeCodes, expiredCodes } = organizeCodes();
             
-            // Create permanent code boxes
             if (PERMANENT_CODES.length > 0) {
                 PERMANENT_CODES.forEach((codeData, index) => {
                     permanentContainer.innerHTML += createPermanentCodeBox(codeData, index);
@@ -1019,7 +1097,6 @@
                 permanentContainer.innerHTML = '<div class="no-codes">No permanent codes available at this time.</div>';
             }
             
-            // Create active code boxes
             if (activeCodes.length > 0) {
                 activeCodes.forEach((codeData, index) => {
                     activeContainer.innerHTML += createActiveCodeBox(codeData, index);
@@ -1028,7 +1105,6 @@
                 activeContainer.innerHTML = '<div class="no-codes">No active codes at the moment. Check back later, Vault Hunter!</div>';
             }
             
-            // Create expired code boxes
             if (expiredCodes.length > 0) {
                 expiredCodes.forEach((codeData, index) => {
                     expiredContainer.innerHTML += createExpiredCodeBox(codeData, index);
@@ -1037,12 +1113,10 @@
                 expiredContainer.innerHTML = '<div class="no-codes">No expired codes to display.</div>';
             }
             
-            // Start countdown updates
             updateCountdowns();
             setInterval(updateCountdowns, 1000);
         }
 
-        // Start everything when page loads
         document.addEventListener('DOMContentLoaded', initializePage);
     </script>
 </body>
