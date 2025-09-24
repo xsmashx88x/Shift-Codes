@@ -1218,16 +1218,16 @@ function organizeCodes() {
     return { activeCodes, expiredCodes };
 }
 
-        function formatDate(date) {
-            return date.toLocaleString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-        }
+function formatDate(date) {
+    return date.toLocaleString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
 
 function createPermanentCodeBox(codeData, index) {
     const hasCopyButton = codeData.showCopyButton !== false;
@@ -1292,16 +1292,15 @@ function createPermanentCodeBox(codeData, index) {
 function createActiveCodeBox(codeData, index) {
     const hasCopyButton = codeData.showCopyButton !== false;
     const hasPreviewButton = codeData.showPreviewButton;
-    const timeLeft = codeData.expires.getTime() - new Date().getTime(); // Use getTime()
+    const timeLeft = codeData.expires.getTime() - new Date().getTime();
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            const isRedeemed = getRedemptionStatus(codeData.code);
-            const redeemedClass = isRedeemed ? 'redeemed' : '';
-            const iconHtml = createIconHtml(codeData.icon, false);
-            
- let copyButtonHtml = '';
+    const isRedeemed = getRedemptionStatus(codeData.code);
+    const redeemedClass = isRedeemed ? 'redeemed' : '';
+    const iconHtml = createIconHtml(codeData.icon, false);
+    
+    let copyButtonHtml = '';
     if (hasCopyButton) {
         copyButtonHtml = `
             <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
@@ -1332,13 +1331,13 @@ function createActiveCodeBox(codeData, index) {
     `;
 }
 
-  function createExpiredCodeBox(codeData, index) {
-    const hasPreviewButton = codeData.showPreviewButton;  // Add this line
+function createExpiredCodeBox(codeData, index) {
+    const hasPreviewButton = codeData.showPreviewButton;
     const isRedeemed = getRedemptionStatus(codeData.code);
     const redeemedClass = isRedeemed ? 'redeemed' : '';
     const iconHtml = createIconHtml(codeData.icon, false);
     
-    let previewButtonHtml = '';  // Add this section
+    let previewButtonHtml = '';
     if (hasPreviewButton) {
         previewButtonHtml = `
             <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
@@ -1364,7 +1363,7 @@ function createActiveCodeBox(codeData, index) {
                 <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
                     COPY
                 </button>
-                ${previewButtonHtml}  <!-- Add the preview button here -->
+                ${previewButtonHtml}
                 <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
             </div>
             <div class="expired-text">❌ EXPIRED</div>
@@ -1372,19 +1371,21 @@ function createActiveCodeBox(codeData, index) {
     `;
 }
 
-
 function updateCountdowns() {
     const now = new Date();
-    let needsRefresh = false;
     
     // Update active codes
     const activeContainers = document.querySelectorAll('#active-codes-container .code-box');
     activeContainers.forEach((container, index) => {
         const countdownElement = container.querySelector('.countdown');
-        if (!countdownElement) return;
+        const codeTextElement = container.querySelector('.code-text');
         
-        // Get the original expiration date from the config
-        const codeData = ALL_CODES_CONFIG[index];
+        if (!countdownElement || !codeTextElement) return;
+        
+        // Find the correct code data by matching the actual code text
+        const codeText = codeTextElement.textContent;
+        const codeData = ALL_CODES_CONFIG.find(code => code.code === codeText);
+        
         if (!codeData) return;
         
         const expireDate = codeData.expires;
@@ -1393,11 +1394,6 @@ function updateCountdowns() {
         if (timeLeft <= 0) {
             countdownElement.textContent = 'EXPIRED';
             countdownElement.style.color = '#ff4444';
-            
-            // Mark that we need to refresh, but don't auto-refresh
-            if (timeLeft <= -1000) {
-                needsRefresh = true;
-            }
         } else {
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -1413,9 +1409,14 @@ function updateCountdowns() {
     const permanentContainers = document.querySelectorAll('#permanent-codes-container .permanent-code-box');
     permanentContainers.forEach((container, index) => {
         const countdownElement = container.querySelector('.countdown');
-        if (!countdownElement) return;
+        const codeTextElement = container.querySelector('.permanent-code-text');
         
-        const codeData = PERMANENT_CODES[index];
+        if (!countdownElement || !codeTextElement) return;
+        
+        // Find the correct code data by matching the actual code text
+        const codeText = codeTextElement.textContent;
+        const codeData = PERMANENT_CODES.find(code => code.code === codeText);
+        
         if (!codeData || !codeData.expires) return;
         
         const expireDate = codeData.expires;
@@ -1424,11 +1425,6 @@ function updateCountdowns() {
         if (timeLeft <= 0) {
             countdownElement.textContent = 'EXPIRED';
             countdownElement.style.color = '#ff4444';
-            
-            // Mark that we need to refresh, but don't auto-refresh
-            if (timeLeft <= -1000) {
-                needsRefresh = true;
-            }
         } else {
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -1439,54 +1435,6 @@ function updateCountdowns() {
             countdownElement.style.color = '#ff7c00';
         }
     });
-    
-    // Instead of auto-refreshing, show a subtle notification
-    if (needsRefresh) {
-        showRefreshNotification();
-    }
-}
-
-function showRefreshNotification() {
-    // Check if notification already exists
-    let notification = document.getElementById('refresh-notification');
-    
-    if (!notification) {
-        // Create a subtle notification
-        notification = document.createElement('div');
-        notification.id = 'refresh-notification';
-        notification.innerHTML = `
-            <div style="
-                position: fixed;
-                top: 10px;
-                right: 10px;
-                background: rgba(255, 198, 0, 0.9);
-                color: #000;
-                padding: 10px 15px;
-                border-radius: 5px;
-                font-weight: bold;
-                z-index: 1000;
-                border: 2px solid #ff7c00;
-                cursor: pointer;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            ">
-                Codes updated! Click to refresh ↻
-            </div>
-        `;
-        
-        // Add click handler to refresh
-        notification.onclick = function() {
-            location.reload();
-        };
-        
-        document.body.appendChild(notification);
-        
-        // Auto-remove after 10 seconds
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 10000);
-    }
 }
 
 function initializePage() {
@@ -1531,7 +1479,8 @@ function initializePage() {
     updateCountdowns();
     setInterval(updateCountdowns, 1000);
 }
-        document.addEventListener('DOMContentLoaded', initializePage);
+
+document.addEventListener('DOMContentLoaded', initializePage);
     </script>
 </body>
 </html>
