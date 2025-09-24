@@ -1193,9 +1193,9 @@ function organizeCodes() {
     const activeCodes = [];
     const expiredCodes = [];
     
-    // Check regular codes
+    // Check regular codes - use getTime() for accurate comparison
     ALL_CODES_CONFIG.forEach(codeData => {
-        if (codeData.expires > now) {
+        if (codeData.expires.getTime() > now.getTime()) {
             activeCodes.push(codeData);
         } else {
             expiredCodes.push(codeData);
@@ -1204,14 +1204,12 @@ function organizeCodes() {
     
     // Check permanent codes for expiration and move expired ones
     PERMANENT_CODES.forEach(codeData => {
-        if (codeData.expires && codeData.expires <= now) {
-            // Add to expired section with a marker that it was a permanent code
+        if (codeData.expires && codeData.expires.getTime() <= now.getTime()) {
             expiredCodes.push({
                 ...codeData,
                 wasPermanent: true
             });
         }
-        // Unexpired permanent codes stay in permanent section
     });
     
     return { activeCodes, expiredCodes };
@@ -1288,12 +1286,14 @@ function createPermanentCodeBox(codeData, index) {
     `;
 }
 
-        function createActiveCodeBox(codeData, index) {
-		    const hasCopyButton = codeData.showCopyButton !== false; // ← ADD THIS LINE
-            const timeLeft = codeData.expires - new Date();
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+function createActiveCodeBox(codeData, index) {
+    const hasCopyButton = codeData.showCopyButton !== false;
+    const hasPreviewButton = codeData.showPreviewButton;
+    const timeLeft = codeData.expires.getTime() - new Date().getTime(); // Use getTime()
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
             const isRedeemed = getRedemptionStatus(codeData.code);
             const redeemedClass = isRedeemed ? 'redeemed' : '';
             const iconHtml = createIconHtml(codeData.icon, false);
@@ -1360,36 +1360,64 @@ function createPermanentCodeBox(codeData, index) {
 
 function updateCountdowns() {
     const now = new Date();
-    const countdownElements = document.querySelectorAll('.countdown');
     
     // Update active codes
-    const { activeCodes } = organizeCodes();
-    activeCodes.forEach((codeData, index) => {
-        const timeLeft = codeData.expires - now;
-        if (timeLeft <= 0) return;
+    const activeContainers = document.querySelectorAll('#active-codes-container .code-box');
+    activeContainers.forEach((container, index) => {
+        const countdownElement = container.querySelector('.countdown');
+        if (!countdownElement) return;
         
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        // Get the original expiration date from the config
+        const codeData = ALL_CODES_CONFIG[index];
+        if (!codeData) return;
         
-        if (countdownElements[index]) {
-            countdownElements[index].textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
-    });
-    // Update permanent codes with expiration
-    PERMANENT_CODES.forEach((codeData, index) => {
-        if (codeData.expires && codeData.expires > now) {
-            const timeLeft = codeData.expires - now;
+        const expireDate = codeData.expires;
+        const timeLeft = expireDate.getTime() - now.getTime();
+        
+        if (timeLeft <= 0) {
+            countdownElement.textContent = 'EXPIRED';
+            countdownElement.style.color = '#ff4444';
+            
+            // Move to expired section if not already
+            if (timeLeft <= -1000) { // Only if expired for more than 1 second
+                setTimeout(() => {
+                    location.reload(); // Reload to reorganize codes
+                }, 2000);
+            }
+        } else {
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
             
-            const permanentCountdown = document.querySelector(`#permanent-${index} .countdown`);
-            if (permanentCountdown) {
-                permanentCountdown.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-            }
+            countdownElement.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.style.color = '#ff7c00';
+        }
+    });
+    
+    // Similar fix for permanent codes...
+    const permanentContainers = document.querySelectorAll('#permanent-codes-container .permanent-code-box');
+    permanentContainers.forEach((container, index) => {
+        const countdownElement = container.querySelector('.countdown');
+        if (!countdownElement) return;
+        
+        const codeData = PERMANENT_CODES[index];
+        if (!codeData || !codeData.expires) return;
+        
+        const expireDate = codeData.expires;
+        const timeLeft = expireDate.getTime() - now.getTime();
+        
+        if (timeLeft <= 0) {
+            countdownElement.textContent = 'EXPIRED';
+            countdownElement.style.color = '#ff4444';
+        } else {
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            countdownElement.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.style.color = '#ff7c00';
         }
     });
 }
