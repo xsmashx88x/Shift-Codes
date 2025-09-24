@@ -1296,8 +1296,17 @@ function organizeCodes() {
 }
 
 function formatDate(date) {
-    // This automatically converts the expiration time from EST to user's local timezone
-    const userLocalExpire = date.toLocaleString('en-US', {
+    // Extract the EST time components and create a new date in user's timezone
+    const estHours = date.getHours();
+    const estMinutes = date.getMinutes();
+    const estDate = date.getDate();
+    const estMonth = date.getMonth();
+    const estYear = date.getFullYear();
+    
+    // Create a new date that should be interpreted in user's local timezone
+    const userDate = new Date(estYear, estMonth, estDate, estHours, estMinutes);
+    
+    const userLocalExpire = userDate.toLocaleString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
