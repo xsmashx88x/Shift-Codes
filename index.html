@@ -1296,11 +1296,8 @@ function organizeCodes() {
 }
 
 function formatDate(date) {
-    // Convert EST date to user's local time
-    const estDate = new Date(date.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-    const localDate = new Date(estDate.toLocaleString('en-US', { timeZone: 'UTC' }));
-    
-    return localDate.toLocaleString('en-US', {
+    // Get the full date in user's local timezone (this shows EDT because it's converting from your time)
+    const userFullTime = date.toLocaleString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -1309,6 +1306,16 @@ function formatDate(date) {
         minute: '2-digit',
         timeZoneName: 'short'
     });
+    
+    // Get the current time in user's actual local timezone
+    const now = new Date();
+    const userCurrentTime = now.toLocaleString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZoneName: 'short'
+    });
+    
+    return `Expires: ${userFullTime} (${userCurrentTime} Your Local Time)`;
 }
 
 function createPermanentCodeBox(codeData, index) {
