@@ -1196,7 +1196,7 @@ function organizeCodes() {
     const activeCodes = [];
     const expiredCodes = [];
     
-    // Check regular codes - use getTime() for accurate comparison
+    // Check regular codes
     ALL_CODES_CONFIG.forEach(codeData => {
         if (codeData.expires.getTime() > now.getTime()) {
             activeCodes.push(codeData);
@@ -1375,6 +1375,7 @@ function createActiveCodeBox(codeData, index) {
 
 function updateCountdowns() {
     const now = new Date();
+    let needsRefresh = false;
     
     // Update active codes
     const activeContainers = document.querySelectorAll('#active-codes-container .code-box');
@@ -1393,11 +1394,9 @@ function updateCountdowns() {
             countdownElement.textContent = 'EXPIRED';
             countdownElement.style.color = '#ff4444';
             
-            // Move to expired section if not already
-            if (timeLeft <= -1000) { // Only if expired for more than 1 second
-                setTimeout(() => {
-                    location.reload(); // Reload to reorganize codes
-                }, 2000);
+            // Mark that we need to refresh, but don't auto-refresh
+            if (timeLeft <= -1000) {
+                needsRefresh = true;
             }
         } else {
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
@@ -1410,7 +1409,7 @@ function updateCountdowns() {
         }
     });
     
-    // Similar fix for permanent codes...
+    // Update permanent codes countdowns
     const permanentContainers = document.querySelectorAll('#permanent-codes-container .permanent-code-box');
     permanentContainers.forEach((container, index) => {
         const countdownElement = container.querySelector('.countdown');
@@ -1425,6 +1424,11 @@ function updateCountdowns() {
         if (timeLeft <= 0) {
             countdownElement.textContent = 'EXPIRED';
             countdownElement.style.color = '#ff4444';
+            
+            // Mark that we need to refresh, but don't auto-refresh
+            if (timeLeft <= -1000) {
+                needsRefresh = true;
+            }
         } else {
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -1435,6 +1439,54 @@ function updateCountdowns() {
             countdownElement.style.color = '#ff7c00';
         }
     });
+    
+    // Instead of auto-refreshing, show a subtle notification
+    if (needsRefresh) {
+        showRefreshNotification();
+    }
+}
+
+function showRefreshNotification() {
+    // Check if notification already exists
+    let notification = document.getElementById('refresh-notification');
+    
+    if (!notification) {
+        // Create a subtle notification
+        notification = document.createElement('div');
+        notification.id = 'refresh-notification';
+        notification.innerHTML = `
+            <div style="
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                background: rgba(255, 198, 0, 0.9);
+                color: #000;
+                padding: 10px 15px;
+                border-radius: 5px;
+                font-weight: bold;
+                z-index: 1000;
+                border: 2px solid #ff7c00;
+                cursor: pointer;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            ">
+                Codes updated! Click to refresh ↻
+            </div>
+        `;
+        
+        // Add click handler to refresh
+        notification.onclick = function() {
+            location.reload();
+        };
+        
+        document.body.appendChild(notification);
+        
+        // Auto-remove after 10 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 10000);
+    }
 }
 
 function initializePage() {
