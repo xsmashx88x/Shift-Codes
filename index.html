@@ -1055,7 +1055,9 @@
                 code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJSSR",
                 title: '<a href="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/breakfree.png" target="_blank">Click For Preview</a><br> Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin<br><br>Code Expiration: January 1, 2031 at 2:49am',
                 icon: "🎁",
-				showCopyButton: true		
+				showCopyButton: true,
+				showPreviewButton: true,
+                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/breakfree.png"
             },
             {
                 code: "Butterfinger ECHO-4 Drone Skin",
@@ -1329,34 +1331,46 @@ function createActiveCodeBox(codeData, index) {
     `;
 }
 
-        function createExpiredCodeBox(codeData, index) {
-            const isRedeemed = getRedemptionStatus(codeData.code);
-            const redeemedClass = isRedeemed ? 'redeemed' : '';
-            const iconHtml = createIconHtml(codeData.icon, false);
-            
-            return `
-                <div class="expired-code-box ${redeemedClass}" id="expired-${index}">
-                    <div class="code-header">
-                        ${iconHtml}
-                        <div class="title-container">${codeData.title}</div>
-                    </div>
-                    <div class="code-text">${codeData.code}</div>
-                    <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
-                    <div class="code-footer">
-                        <div class="redeem-checkbox">
-                            <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                                onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
-                            <label for="expired-redeemed-${index}">Mark as redeemed</label>
-                        </div>
-                        <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
-                            COPY
-                        </button>
-                        <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
-                    </div>
-                    <div class="expired-text">❌ EXPIRED</div>
+  function createExpiredCodeBox(codeData, index) {
+    const hasPreviewButton = codeData.showPreviewButton;  // Add this line
+    const isRedeemed = getRedemptionStatus(codeData.code);
+    const redeemedClass = isRedeemed ? 'redeemed' : '';
+    const iconHtml = createIconHtml(codeData.icon, false);
+    
+    let previewButtonHtml = '';  // Add this section
+    if (hasPreviewButton) {
+        previewButtonHtml = `
+            <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
+                📷 PREVIEW
+            </button>
+        `;
+    }
+    
+    return `
+        <div class="expired-code-box ${redeemedClass}" id="expired-${index}">
+            <div class="code-header">
+                ${iconHtml}
+                <div class="title-container">${codeData.title}</div>
+            </div>
+            <div class="code-text">${codeData.code}</div>
+            <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
+            <div class="code-footer">
+                <div class="redeem-checkbox">
+                    <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                        onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
+                    <label for="expired-redeemed-${index}">Mark as redeemed</label>
                 </div>
-            `;
-        }
+                <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
+                    COPY
+                </button>
+                ${previewButtonHtml}  <!-- Add the preview button here -->
+                <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
+            </div>
+            <div class="expired-text">❌ EXPIRED</div>
+        </div>
+    `;
+}
+
 
 function updateCountdowns() {
     const now = new Date();
