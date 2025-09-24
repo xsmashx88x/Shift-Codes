@@ -4,13 +4,14 @@
     <link rel="shortcut icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
     <link rel="icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
     <div class="scrolling-banner">
-        <div class="scrolling-text">• FAV AND CHECK BACK DAILY •<br>• Any Issues Contact Me Via Links Below •</div>
+        <div class="scrolling-text">• FAV AND CHECK BACK DAILY<br> (Refresh Page Every Once In Ahile)<br>• Any Issues Contact Me Via Links Below •</div>
     </div>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHiFT Codes - Borderlands Style</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
+        
         
         * {
             box-sizing: border-box;
@@ -347,15 +348,16 @@
             box-shadow: 0 0 10px #ffc600;
         }
         
+        /* BUTTONS SIDE BY SIDE */
         .info-button {
             background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
             color: white;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 4px;
-            margin: 0 0 20px 0;
+            margin: 0;
             font-weight: bold;
             transition: all 0.3s;
-            font-size: 16px;
+            font-size: 14px;
             text-transform: uppercase;
             border: 2px solid #888;
             text-shadow: 1px 1px 0 #000;
@@ -363,48 +365,72 @@
             font-family: 'Chakra Petch', sans-serif;
             cursor: pointer;
             display: inline-block;
+            width: auto;
+            flex: 1;
+            min-width: 0;
         }
-        
+
+        /* Container for the button row */
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
         .info-button:hover {
             background: linear-gradient(to bottom, #5a5a5a, #3a3a3a);
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
-		
-		/* ADD THIS RIGHT AFTER YOUR EXISTING .info-button STYLES */
-.container > .info-button {
-    display: block;
-    width: auto;
-    margin: 0 auto 10px auto; /* centers the button */
-    padding-left: 30px;
-    padding-right: 30px;
-}
 
-/* Optional: green-blue style for the second button */
-.info-button:nth-of-type(2) {
-    background: linear-gradient(to bottom, #00aa00, #0055aa);
-    border: 2px solid #00ccff;
-}
+        /* First button (INFO & FAQ) - Gray */
+        .info-button:nth-of-type(1) {
+            background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
+            border: 2px solid #888;
+        }
 
-.info-button:nth-of-type(2):hover {
-    background: linear-gradient(to bottom, #00cc00, #0077cc);
-    box-shadow: 0 0 8px #00ccff;
-}
+        .info-button:nth-of-type(1):hover {
+            background: linear-gradient(to bottom, #5a5a5a, #3a3a3a);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
 
-#redeem-section .info-content {
-    background: linear-gradient(to bottom, #00aa00, #0055aa);
-    border: 2px solid #00ccff;
-    color: white;
-}
+        /* Second button (CHANGE LOG) - Gray */
+        .info-button:nth-of-type(2) {
+            background: linear-gradient(to bottom, #6c757d, #495057);
+            border: 2px solid #adb5bd;
+        }
 
-#redeem-section .info-content a {
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
-}
+        .info-button:nth-of-type(2):hover {
+            background: linear-gradient(to bottom, #5a6268, #495057);
+            box-shadow: 0 0 8px #adb5bd;
+        }
 
-#redeem-section .info-content a:hover {
-    color: #ffffff;
-}
+        /* Third button (HOW TO REDEEM) - Green-blue */
+        .info-button:nth-of-type(3) {
+            background: linear-gradient(to bottom, #00aa00, #0055aa);
+            border: 2px solid #00ccff;
+        }
+
+        .info-button:nth-of-type(3):hover {
+            background: linear-gradient(to bottom, #00cc00, #0077cc);
+            box-shadow: 0 0 8px #00ccff;
+        }
+
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            .button-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .info-button {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+        }
         
         .collapse-btn {
             background: linear-gradient(to bottom, #555, #333);
@@ -831,6 +857,43 @@
     font-weight: bold;
 }
 
+/* Info content sections */
+#info-section .info-content {
+    background: linear-gradient(to bottom, #555, #333);
+    border: 2px solid #888;
+    color: white;
+}
+
+#changelog-section .info-content {
+    background: linear-gradient(to bottom, #6c757d, #495057);
+    border: 2px solid #adb5bd;
+    color: white;
+}
+
+#changelog-section .info-content a {
+    color: #e9ecef;
+    text-shadow: 0 0 5px #e9ecef;
+}
+
+#changelog-section .info-content a:hover {
+    color: #ffffff;
+}
+
+#redeem-section .info-content {
+    background: linear-gradient(to bottom, #00aa00, #0055aa);
+    border: 2px solid #00ccff;
+    color: white;
+}
+
+#redeem-section .info-content a {
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+#redeem-section .info-content a:hover {
+    color: #ffffff;
+}
+
     </style>
 </head>
 <div id="image-preview-modal" class="image-preview-modal">
@@ -860,15 +923,15 @@
     📖 Info & FAQ
 </button>
 
+<button class="info-button" onclick="toggleInfo('changelog-section')">
+    📋 Change Log
+</button>
+
 <div id="info-section" class="info-section">
     <div class="info-content">
-        <p><strong>This is not for followers/fame</strong></p>
+        <p><strong>MSG To People Thinking I Want Followers/Money SMFH</strong></p>
         <ul>
             <li><i>This was not done for followers or fame, its to help people, it sucks to be reported on reddit/fb an few other places :(</i></li>
-        </ul>
-        <p><strong>Last Updated :</strong><i>9/23/2025</i></p>
-        <ul>
-            <li><b>New :</b><i>You can now mark codes as redeemed and the site will remember your selection!</i></li>
         </ul>
         <p><strong>F.A.Q</strong></p>
         <ul>
@@ -877,6 +940,20 @@
         <p><strong>PSA</strong></p>
         <ul>
             <li><b>Gold Keys On Multi Systems :</b><i>if linked multi systems can redeem on each :) from what I hear</i></li>
+        </ul>
+    </div>
+</div>
+
+<div id="changelog-section" class="info-section">
+    <div class="info-content">
+        <p><strong>Change Log | Last Updated : 9/24/2025</strong></p>
+        <ul>
+            <li><b>9/24/2025:</b> Fixed refresh issue on Android/some browsers</li>
+            <li><b>9/23/2025:</b> Added "Mark as redeemed" feature with local storage</li>
+            <li><b>9/22/2025:</b> Added preview button for image rewards</li>
+            <li><b>9/21/2025:</b> Improved countdown timer functionality</li>
+            <li><b>9/20/2025:</b> Added permanent/unknown expiration codes section</li>
+            <li><b>9/19/2025:</b> Initial website launch with basic functionality</li>
         </ul>
     </div>
 </div>
@@ -1219,13 +1296,18 @@ function organizeCodes() {
 }
 
 function formatDate(date) {
-    return date.toLocaleString('en-US', {
+    // Convert EST date to user's local time
+    const estDate = new Date(date.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const localDate = new Date(estDate.toLocaleString('en-US', { timeZone: 'UTC' }));
+    
+    return localDate.toLocaleString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric',
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
+        timeZoneName: 'short'
     });
 }
 
@@ -1437,7 +1519,31 @@ function updateCountdowns() {
     });
 }
 
+// ==================== AUTO CACHE DETECTION ====================
+function getCodesHash() {
+    // Create a unique fingerprint of current active codes
+    const activeCodesData = ALL_CODES_CONFIG.map(code => code.code + code.expires.getTime()).join('|');
+    return btoa(activeCodesData).substring(0, 32); // Short hash
+}
+
+function checkCodesVersion() {
+    const currentHash = getCodesHash();
+    const savedHash = localStorage.getItem('shiftCodesHash');
+    
+    if (savedHash !== currentHash) {
+        // Codes have changed - update and refresh
+        localStorage.setItem('shiftCodesHash', currentHash);
+        console.log('Codes updated, refreshing page...');
+        location.reload();
+        return true; // Page will refresh
+    }
+    
+    return false; // No changes, continue normally
+}
+
 function initializePage() {
+    // Auto-detect code changes and refresh if needed
+    if (checkCodesVersion()) return;
     const permanentContainer = document.getElementById('permanent-codes-container');
     const activeContainer = document.getElementById('active-codes-container');
     const expiredContainer = document.getElementById('expired-codes-container');
