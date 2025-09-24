@@ -767,8 +767,78 @@
     border: 2px solid #ffc600;
 }
 
+.preview-btn {
+    background: linear-gradient(to bottom, #4a90e2, #2a70c2);
+    border: 1px solid #6ba8ff;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0;
+    transition: all 0.3s;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: 'Chakra Petch', sans-serif;
+    text-shadow: 1px 1px 0 #000;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.preview-btn:hover {
+    background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
+    transform: scale(1.05);
+    box-shadow: 0 0 4px #6ba8ff;
+}
+
+.image-preview-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-preview-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+}
+
+.image-preview-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    border: 3px solid #ffc600;
+    border-radius: 5px;
+}
+
+.close-preview {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
     </style>
 </head>
+<div id="image-preview-modal" class="image-preview-modal">
+    <div class="image-preview-content">
+        <button class="close-preview" onclick="closeImagePreview()">×</button>
+        <img id="preview-image" src="" alt="Preview">
+    </div>
+</div>
 <body>
     <div class="noise"></div>
     <div class="scanlines"></div>
@@ -793,21 +863,21 @@
 <div id="info-section" class="info-section">
     <div class="info-content">
         <p><strong>This is not for followers/fame</strong></p>
-        <ol>
+        <ul>
             <li><i>This was not done for followers or fame, its to help people, it sucks to be reported on reddit/fb an few other places :(</i></li>
-        </ol>
+        </ul>
         <p><strong>Last Updated :</strong><i>9/23/2025</i></p>
-        <ol>
-            <li><b>- New :</b><i>You can now mark codes as redeemed and the site will remember your selection!</i></li>
-        </ol>
+        <ul>
+            <li><b>New :</b><i>You can now mark codes as redeemed and the site will remember your selection!</i></li>
+        </ul>
         <p><strong>F.A.Q</strong></p>
-        <ol>
-            <li><b>- Why Was This Made :</b> <i>For peeps to know if codes are expired and be able to copy them more easy via the button</i></li>
-        </ol>
+        <ul>
+            <li><b>Why Was This Made :</b> <i>For peeps to know if codes are expired and be able to copy them more easy via the button</i></li>
+        </ul>
         <p><strong>PSA</strong></p>
-        <ol>
-            <li><b>- Gold Keys On Multi Systems :</b><i>if linked multi systems can redeem on each :) from what I hear</i></li>
-        </ol>
+        <ul>
+            <li><b>Gold Keys On Multi Systems :</b><i>if linked multi systems can redeem on each :) from what I hear</i></li>
+        </ul>
     </div>
 </div>
 
@@ -830,7 +900,7 @@
 </div>
 
         <div>
-            <a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
+<a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
                 🔗 Redeem Codes on SHiFT Website (click to open site)
             </a>
         </div>
@@ -956,21 +1026,27 @@
         const PERMANENT_CODES = [
 		            {
                 code: "Twitch Drops 1 : Watch, Drop, and Roll ECHO-4 Drone Skin cosmetic",
-                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>August 29, 2025 - September 29, 2025<br><br>• Watch any livestream in the Borderlands 4 category on the official <a href="http://twitch.tv/Borderlands" target="_blank">Borderlands 4 Twitch channel</a> or <a href="https://www.twitch.tv/gearboxofficial" target="_blank">Gearbox Twitch channel</a> for 20 minutes and claim the reward: <br><br><a href="https://github.com/xsmashx88x/Shift-Codes/blob/gh-pages/BL4_Echobot_Drop_Wide_textless.png?raw=true" target="_blank">Watch, Drop, and Roll ECHO-4 Drone Skin cosmetic | Preview Image</a>',
+                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>August 29, 2025 - September 29, 2025<br><br>• Watch any livestream in the Borderlands 4 category on the official <a href="http://twitch.tv/Borderlands" target="_blank">Borderlands 4 Twitch channel</a> or <a href="https://www.twitch.tv/gearboxofficial" target="_blank">Gearbox Twitch channel</a> for 20 minutes and claim the reward',
                 icon: "🎁",
-				showCopyButton: false		
+				showCopyButton: false,
+				showPreviewButton: true,
+                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_Echobot_Drop_Wide_textless.png"				
             },
 					            {
                 code: "Twitch Drops 2 : Forsaken Chaos Legendary shotgun",
-                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> for 2 hours and claim the reward: <br><br><a href="https://github.com/xsmashx88x/Shift-Codes/blob/gh-pages/BL4_ForsakenChaos.png?raw=true" target="_blank">Forsaken Chaos Legendary shotgun | Preview Image</a>',
+                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> for 2 hours and claim the reward',
                 icon: "🎁",
-				showCopyButton: false		
+				showCopyButton: false,
+				showPreviewButton: true,
+                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_ForsakenChaos.png"					
             },
 								            {
                 code: "Twitch Drops 3 : Midnight Defiance Legendary sniper rifle",
-                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> hosted by a <a href="https://borderlands.2k.com/borderlands-4/partnered-creators/" target="_blank">partnered creator</a> for 2 hours and claim the reward: <br><br><a href="https://github.com/xsmashx88x/Shift-Codes/blob/gh-pages/BL4_MidnightDefiance.png?raw=true" target="_blank">Midnight Defiance Legendary sniper rifle | Preview Image</a>',
+                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> hosted by a <a href="https://borderlands.2k.com/borderlands-4/partnered-creators/" target="_blank">partnered creator</a> for 2 hours and claim the reward',
                 icon: "🎁",
-				showCopyButton: false				
+				showCopyButton: false,
+				showPreviewButton: true,
+                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_MidnightDefiance.png"					
             },
             {
                 code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJSSR",
@@ -980,13 +1056,33 @@
             },
             {
                 code: "Butterfinger ECHO-4 Drone Skin",
-                title: '<a href="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/butter%20fingers%20skin.png" target="_blank">Click For Preview</a><br><br>This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a> <br><i>USE A VPN, then search and use a fake usa number/address gen, if live outside the usa, Its what I did and I  got emailed the key :)</i>',
+                title: 'This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a> <br><i>USE A VPN, then search and use a fake usa number/address gen, if live outside the usa, Its what I did and I  got emailed the key :)</i>',
                 icon: "🍫",
-				showCopyButton: false				
+				showCopyButton: false,
+				showPreviewButton: true,
+                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/butter%20fingers%20skin.png"					
             }
         ];
 
         // =======================================================
+
+function openImagePreview(imageUrl) {
+    document.getElementById('preview-image').src = imageUrl;
+    document.getElementById('image-preview-modal').style.display = 'flex';
+}
+
+function closeImagePreview() {
+    document.getElementById('image-preview-modal').style.display = 'none';
+}
+
+// Close when clicking outside image
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('image-preview-modal').addEventListener('click', function(e) {
+        if (e.target.id === 'image-preview-modal') {
+            closeImagePreview();
+        }
+    });
+});
 
         function toggleInfo(sectionId) {
             const section = document.getElementById(sectionId);
@@ -1117,6 +1213,7 @@
 
 function createPermanentCodeBox(codeData, index) {
     const hasCopyButton = codeData.showCopyButton !== false;
+    const hasPreviewButton = codeData.showPreviewButton;
     const isRedeemed = getRedemptionStatus(codeData.code);
     const redeemedClass = isRedeemed ? 'permanent-redeemed' : '';
     const iconHtml = createIconHtml(codeData.icon, true);
@@ -1128,6 +1225,15 @@ function createPermanentCodeBox(codeData, index) {
                 COPY
             </button>
             <span id="copied-permanent-${index}" class="permanent-copied-message">✓ Copied!</span>
+        `;
+    }
+    
+    let previewButtonHtml = '';
+    if (hasPreviewButton) {
+        previewButtonHtml = `
+            <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
+                📷 PREVIEW
+            </button>
         `;
     }
     
@@ -1145,6 +1251,7 @@ function createPermanentCodeBox(codeData, index) {
                     <label for="permanent-redeemed-${index}">Mark as redeemed</label>
                 </div>
                 ${copyButtonHtml}
+                ${previewButtonHtml}
             </div>
         </div>
     `;
