@@ -1279,7 +1279,7 @@ function createPermanentCodeBox(codeData, index) {
                 <div class="redeem-checkbox">
                     <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
                         onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))">
-                    <label for="permanent-redeemed-${index}">Mark redeemed</label>
+                    <label for="permanent-redeemed-${index}">?redeemed</label>
                 </div>
                 ${copyButtonHtml}
                 ${previewButtonHtml}
@@ -1323,7 +1323,7 @@ function createActiveCodeBox(codeData, index) {
                 <div class="redeem-checkbox">
                     <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
                         onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
-                    <label for="redeemed-${index}">Mark redeemed</label>
+                    <label for="redeemed-${index}">?redeemed</label>
                 </div>
                 ${copyButtonHtml}
             </div>
@@ -1358,7 +1358,7 @@ function createActiveCodeBox(codeData, index) {
                 <div class="redeem-checkbox">
                     <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
                         onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
-                    <label for="expired-redeemed-${index}">Mark redeemed</label>
+                    <label for="expired-redeemed-${index}">?redeemed</label>
                 </div>
                 <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
                     COPY
