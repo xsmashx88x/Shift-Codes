@@ -12,7 +12,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
         
-        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -1326,7 +1325,10 @@ function formatDate(date) {
         timeZoneName: 'short'
     });
     
-    return `Expires: ${userLocalTime}`;
+    // Get the user's timezone
+    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    
+    return `Expires: ${userLocalTime} (Your Timezone: ${userTimezone})`;
 }
 
 function createPermanentCodeBox(codeData, index) {
@@ -1374,7 +1376,7 @@ function createPermanentCodeBox(codeData, index) {
                 <div class="permanent-code-text">${codeData.code}</div>
             </div>
             <div class="permanent-title-container">${codeData.title}</div>
-            ${codeData.expires ? `<div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>` : ''}
+            ${codeData.expires ? `<div class="expire-date">${formatDate(codeData.expires)}</div>` : ''}
             ${countdownHtml}
             <div class="permanent-code-footer">
                 <div class="redeem-checkbox">
@@ -1417,7 +1419,7 @@ function createActiveCodeBox(codeData, index) {
                 <div class="title-container">${codeData.title}</div>
             </div>
             <div class="code-text">${codeData.code}</div>
-            <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
+            <div class="expire-date">${formatDate(codeData.expires)}</div>
             <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
             <div class="code-footer">
                 <div class="redeem-checkbox">
