@@ -1296,17 +1296,20 @@ function organizeCodes() {
 }
 
 function formatDate(date) {
-    // Extract the EST time components and create a new date in user's timezone
-    const estHours = date.getHours();
-    const estMinutes = date.getMinutes();
-    const estDate = date.getDate();
-    const estMonth = date.getMonth();
-    const estYear = date.getFullYear();
+    // Keep the original EST time (how you entered it)
+    const originalTime = date.toLocaleString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'America/New_York', // Force EST display
+        timeZoneName: 'short'
+    });
     
-    // Create a new date that should be interpreted in user's local timezone
-    const userDate = new Date(estYear, estMonth, estDate, estHours, estMinutes);
-    
-    const userLocalExpire = userDate.toLocaleString('en-US', {
+    // Convert to user's local time
+    const userLocalTime = date.toLocaleString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -1316,7 +1319,7 @@ function formatDate(date) {
         timeZoneName: 'short'
     });
     
-    return `Expires: ${userLocalExpire}`;
+    return `Expires: ${originalTime} → ${userLocalTime}`;
 }
 
 function createPermanentCodeBox(codeData, index) {
