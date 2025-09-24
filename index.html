@@ -105,24 +105,24 @@
             transform: translateY(-2px);
         }
         
-        .code-box {
-            background: linear-gradient(135deg, #3a2c3f 0%, #2a1c2f 100%);
-            color: white;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-            text-align: left;
-            transition: transform 0.2s;
-            border: 2px solid #ffc600;
-            box-shadow: 0 0 8px rgba(255, 198, 0, 0.3);
-            position: relative;
-        }
-        
-        .code-box:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 12px rgba(255, 198, 0, 0.5);
-        }
-        
+.code-box {
+    background: linear-gradient(135deg, #3A2A1A, #5C3C10); /* ← CHANGE THIS */
+    color: white;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    text-align: left;
+    transition: transform 0.2s;
+    border: 2px solid #D4A017; /* ← CHANGE THIS */
+    box-shadow: 0 0 8px rgba(212, 160, 23, 0.3); /* ← CHANGE THIS */
+    position: relative;
+}
+
+.code-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 12px rgba(255, 179, 71, 0.5); /* ← CHANGE THIS */
+}
+       
         .permanent-code-box {
             background: linear-gradient(135deg, #1b3b6a 0%, #0f2552 100%);
             color: white;
@@ -370,6 +370,41 @@
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
+		
+		/* ADD THIS RIGHT AFTER YOUR EXISTING .info-button STYLES */
+.container > .info-button {
+    display: block;
+    width: auto;
+    margin: 0 auto 10px auto; /* centers the button */
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* Optional: green-blue style for the second button */
+.info-button:nth-of-type(2) {
+    background: linear-gradient(to bottom, #00aa00, #0055aa);
+    border: 2px solid #00ccff;
+}
+
+.info-button:nth-of-type(2):hover {
+    background: linear-gradient(to bottom, #00cc00, #0077cc);
+    box-shadow: 0 0 8px #00ccff;
+}
+
+#redeem-section .info-content {
+    background: linear-gradient(to bottom, #00aa00, #0055aa);
+    border: 2px solid #00ccff;
+    color: white;
+}
+
+#redeem-section .info-content a {
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+#redeem-section .info-content a:hover {
+    color: #ffffff;
+}
         
         .collapse-btn {
             background: linear-gradient(to bottom, #555, #333);
@@ -419,6 +454,31 @@
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
         }		
         
+/* Only when permanent section is visible (has 'show' class) */
+#permanent-section.show .permanent-code-box {
+    background: linear-gradient(135deg, #451565, #652200);
+    border: 1px solid #F90;
+    box-shadow: 0 0 6px rgba(255, 153, 0, 0.6);
+}
+
+#permanent-section.show .permanent-code-box:hover {
+    background: linear-gradient(135deg, #552575, #753300);
+    border: 1px solid #FF6;
+    box-shadow: 0 0 8px rgba(255, 255, 102, 0.8);
+}
+
+#permanent-section.show .permanent-code-text {
+    color: #fff;
+    text-shadow: 2px 2px 0 #000, 0 0 10px rgba(255, 255, 255, 1);
+    font-weight: bold;
+}
+
+#permanent-section.show .permanent-title-container {
+    color: #FFC;
+    text-shadow: 2px 2px 0 #000, 0 0 5px #000;
+    font-weight: bold;
+}
+		
         .expired-section, .permanent-section, .info-section {
             display: none;
             margin-top: 8px;
@@ -706,6 +766,7 @@
     object-fit: cover;
     border: 2px solid #ffc600;
 }
+
     </style>
 </head>
 <body>
@@ -725,44 +786,48 @@
             <a href="https://www.reddit.com/user/smashcanuckgamer/" target="_blank">👾 Reddit</a>
         </div>
 
-        <button class="info-button" onclick="toggleInfo('info-section')">
-            📖 Info & FAQ
-        </button>
-        
-        <div id="info-section" class="info-section">
-            <div class="info-content">
-			                <p><strong>MSG TO THE TOOL, WHO REPORTED ME ON BL4 SUB REDDIT</strong><i></i></p>
-																			<ol>
-                <i>This was not done for followers or fame, you tool...ITS TO HELP GAMERS... remember what was redeemed, time they expire and see list of codes so far... smfh. Fuck You</i></ol>
-                <p><strong>Last Updated :</strong><i>9/23/2025</i></p>
-				<ol>
-				<b>- New :</b></strong><i>You can now mark codes as redeemed and the site will remember your selection!</i></p></ol>
-				<p><strong>F.A.Q</strong></p>
-				<ol>
-                <b>- Why Was This Made :</b> <i>For peeps to know if codes are expired and be able to copy them more easy via the button</i></ol>
-				<p><strong>PSA</strong></p>
-				<ol>
-                <b>- Gold Keys On Multi Systems :</b></strong><i>if linked multi systems can redeem on each :) from what I hear</i></p>
-            </div>
-        </div>
+<button class="info-button" onclick="toggleInfo('info-section')">
+    📖 Info & FAQ
+</button>
 
-        <button class="info-button" onclick="toggleInfo('redeem-section')">
-            📖 How To Redeem On Console
-        </button>
-        
-        <div id="redeem-section" class="info-section">
-            <div class="info-content">
-                <p><strong>In-Game</strong></p>
-                <ol>
-                    <li>Open the Pause Menu while in-game Or On Main Menu</li>
-                    <li>Click "SHiFT"</li>
-                    <li>Click "Rewards"</li>
-                    <li>Enter codes and redeem them</li>
-                </ol>
-                <p><strong>Online</strong></p>
-                <p>CLICK THAT BUTTON BELOW AND WILL OPEN THE SHIFT REDEEM SITE</p>
-            </div>
-        </div>
+<div id="info-section" class="info-section">
+    <div class="info-content">
+        <p><strong>This is not for followers/fame</strong></p>
+        <ol>
+            <li><i>This was not done for followers or fame, its to help people, it sucks to be reported on reddit/fb an few other places :(</i></li>
+        </ol>
+        <p><strong>Last Updated :</strong><i>9/23/2025</i></p>
+        <ol>
+            <li><b>- New :</b><i>You can now mark codes as redeemed and the site will remember your selection!</i></li>
+        </ol>
+        <p><strong>F.A.Q</strong></p>
+        <ol>
+            <li><b>- Why Was This Made :</b> <i>For peeps to know if codes are expired and be able to copy them more easy via the button</i></li>
+        </ol>
+        <p><strong>PSA</strong></p>
+        <ol>
+            <li><b>- Gold Keys On Multi Systems :</b><i>if linked multi systems can redeem on each :) from what I hear</i></li>
+        </ol>
+    </div>
+</div>
+
+<button class="info-button redeem-button" onclick="toggleInfo('redeem-section')">
+    📖 How To Redeem On Console
+</button>
+
+<div id="redeem-section" class="info-section">
+    <div class="info-content">
+        <p><strong>In-Game</strong></p>
+        <ol>
+            <li>Open the Pause Menu while in-game Or On Main Menu</li>
+            <li>Click "SHiFT"</li>
+            <li>Click "Rewards"</li>
+            <li>Enter codes and redeem them</li>
+        </ol>
+        <p><strong>Online</strong></p>
+        <p>CLICK THAT BUTTON BELOW AND WILL OPEN THE SHIFT REDEEM SITE</p>
+    </div>
+</div>
 
         <div>
             <a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
@@ -771,11 +836,11 @@
         </div>
 
         <button class="collapse-btn-Perm" onclick="togglePermanent()">
-            ❓ [Show/Hide] Permanent/Unknown Expire Time Codes + Drop + More
+            ❓ [Show/Hide] Permanent/Unknown Expire Time Codes + Drops + More
         </button>
         
         <div id="permanent-section" class="permanent-section">
-            <h2>❓ Permanent/Unknown Expire Time Codes + Drop + More</h2>
+            <h2>❓ Permanent/Unknown Expire Time Codes + Drops + More</h2>
             <div id="permanent-codes-container">
                 <!-- Permanent codes will be inserted here by JavaScript -->
             </div>
@@ -805,7 +870,8 @@
                 code: "J9XBB-KK9T3-CRTBW-BBT3T-KTBTW",
                 expires: new Date(2025, 8, 24, 12, 28, 0),
                 title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1970163226441547832" target="_blank">From Twitter</a>',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png",
+				showCopyButton: true
             },
             {
                 code: "JHFTJ-R5HBT-KF3TK-TBJT3-JJTHH",
@@ -891,27 +957,32 @@
 		            {
                 code: "Twitch Drops 1 : Watch, Drop, and Roll ECHO-4 Drone Skin cosmetic",
                 title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>August 29, 2025 - September 29, 2025<br><br>• Watch any livestream in the Borderlands 4 category on the official <a href="http://twitch.tv/Borderlands" target="_blank">Borderlands 4 Twitch channel</a> or <a href="https://www.twitch.tv/gearboxofficial" target="_blank">Gearbox Twitch channel</a> for 20 minutes and claim the reward: <br><br><a href="https://github.com/xsmashx88x/Shift-Codes/blob/gh-pages/BL4_Echobot_Drop_Wide_textless.png?raw=true" target="_blank">Watch, Drop, and Roll ECHO-4 Drone Skin cosmetic | Preview Image</a>',
-                icon: "🎁"
+                icon: "🎁",
+				showCopyButton: false		
             },
 					            {
                 code: "Twitch Drops 2 : Forsaken Chaos Legendary shotgun",
                 title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> for 2 hours and claim the reward: <br><br><a href="https://github.com/xsmashx88x/Shift-Codes/blob/gh-pages/BL4_ForsakenChaos.png?raw=true" target="_blank">Forsaken Chaos Legendary shotgun | Preview Image</a>',
-                icon: "🎁"
+                icon: "🎁",
+				showCopyButton: false		
             },
 								            {
                 code: "Twitch Drops 3 : Midnight Defiance Legendary sniper rifle",
                 title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> hosted by a <a href="https://borderlands.2k.com/borderlands-4/partnered-creators/" target="_blank">partnered creator</a> for 2 hours and claim the reward: <br><br><a href="https://github.com/xsmashx88x/Shift-Codes/blob/gh-pages/BL4_MidnightDefiance.png?raw=true" target="_blank">Midnight Defiance Legendary sniper rifle | Preview Image</a>',
-                icon: "🎁"
+                icon: "🎁",
+				showCopyButton: false				
             },
             {
                 code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJSSR",
                 title: '<a href="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/breakfree.png" target="_blank">Click For Preview</a><br> Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin<br><br>Code Expiration: January 1, 2031 at 2:49am',
-                icon: "🎁"
+                icon: "🎁",
+				showCopyButton: true		
             },
             {
                 code: "Butterfinger ECHO-4 Drone Skin",
                 title: '<a href="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/butter%20fingers%20skin.png" target="_blank">Click For Preview</a><br><br>This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a> <br><i>USE A VPN, then search and use a fake usa number/address gen, if live outside the usa, Its what I did and I  got emailed the key :)</i>',
-                icon: "🍫"
+                icon: "🍫",
+				showCopyButton: false				
             }
         ];
 
@@ -1044,34 +1115,43 @@
             });
         }
 
-        function createPermanentCodeBox(codeData, index) {
-            const isRedeemed = getRedemptionStatus(codeData.code);
-            const redeemedClass = isRedeemed ? 'permanent-redeemed' : '';
-            const iconHtml = createIconHtml(codeData.icon, true);
-            
-            return `
-                <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
-                    <div class="permanent-code-header">
-                        ${iconHtml}
-                        <div class="permanent-code-text">${codeData.code}</div>
-                    </div>
-                    <div class="permanent-title-container">${codeData.title}</div>
-                    <div class="permanent-code-footer">
-                        <div class="redeem-checkbox">
-                            <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                                onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))">
-                            <label for="permanent-redeemed-${index}">Mark as redeemed</label>
-                        </div>
-                        <button class="permanent-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'permanent')">
-                            COPY
-                        </button>
-                        <span id="copied-permanent-${index}" class="permanent-copied-message">✓ Copied!</span>
-                    </div>
+function createPermanentCodeBox(codeData, index) {
+    const hasCopyButton = codeData.showCopyButton !== false;
+    const isRedeemed = getRedemptionStatus(codeData.code);
+    const redeemedClass = isRedeemed ? 'permanent-redeemed' : '';
+    const iconHtml = createIconHtml(codeData.icon, true);
+    
+    let copyButtonHtml = '';
+    if (hasCopyButton) {
+        copyButtonHtml = `
+            <button class="permanent-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'permanent')">
+                COPY
+            </button>
+            <span id="copied-permanent-${index}" class="permanent-copied-message">✓ Copied!</span>
+        `;
+    }
+    
+    return `
+        <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
+            <div class="permanent-code-header">
+                ${iconHtml}
+                <div class="permanent-code-text">${codeData.code}</div>
+            </div>
+            <div class="permanent-title-container">${codeData.title}</div>
+            <div class="permanent-code-footer">
+                <div class="redeem-checkbox">
+                    <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                        onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))">
+                    <label for="permanent-redeemed-${index}">Mark as redeemed</label>
                 </div>
-            `;
-        }
+                ${copyButtonHtml}
+            </div>
+        </div>
+    `;
+}
 
         function createActiveCodeBox(codeData, index) {
+		    const hasCopyButton = codeData.showCopyButton !== false; // ← ADD THIS LINE
             const timeLeft = codeData.expires - new Date();
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -1080,29 +1160,36 @@
             const redeemedClass = isRedeemed ? 'redeemed' : '';
             const iconHtml = createIconHtml(codeData.icon, false);
             
-            return `
-                <div class="code-box ${redeemedClass}" id="active-${index}">
-                    <div class="code-header">
-                        ${iconHtml}
-                        <div class="title-container">${codeData.title}</div>
-                    </div>
-                    <div class="code-text">${codeData.code}</div>
-                    <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
-                    <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
-                    <div class="code-footer">
-                        <div class="redeem-checkbox">
-                            <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                                onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
-                            <label for="redeemed-${index}">Mark as redeemed</label>
-                        </div>
-                        <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
-                            COPY
-                        </button>
-                        <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
-                    </div>
+ let copyButtonHtml = '';
+    if (hasCopyButton) {
+        copyButtonHtml = `
+            <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
+                COPY
+            </button>
+            <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
+        `;
+    }
+    
+    return `
+        <div class="code-box ${redeemedClass}" id="active-${index}">
+            <div class="code-header">
+                ${iconHtml}
+                <div class="title-container">${codeData.title}</div>
+            </div>
+            <div class="code-text">${codeData.code}</div>
+            <div class="expire-date">Expires: ${formatDate(codeData.expires)}</div>
+            <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
+            <div class="code-footer">
+                <div class="redeem-checkbox">
+                    <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                        onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
+                    <label for="redeemed-${index}">Mark as redeemed</label>
                 </div>
-            `;
-        }
+                ${copyButtonHtml}
+            </div>
+        </div>
+    `;
+}
 
         function createExpiredCodeBox(codeData, index) {
             const isRedeemed = getRedemptionStatus(codeData.code);
