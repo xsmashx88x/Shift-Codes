@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>SHiFT Codes - Tracker</title>
+    <link rel="shortcut icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
+    <link rel="icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
+    <div class="scrolling-banner">
+        <div class="scrolling-text">• FAV AND CHECK BACK DAILY<br> (Refresh Page Every Once In Awhile)<br>• Any Issues Contact Me Via Links Below •</div>
+    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHiFT Codes - Tracker</title>
     
     <!-- Open Graph tags -->
     <meta property="og:title" content="SHiFT Codes - Tracker">
@@ -11,13 +18,6 @@
     <!-- Twitter Card tags -->
     <meta name="twitter:title" content="SHiFT Codes - Tracker">
     <meta name="twitter:description" content="Track and manage Borderlands SHiFT codes">
-    <link rel="shortcut icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
-    <link rel="icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
-    <div class="scrolling-banner">
-        <div class="scrolling-text">• FAV AND CHECK BACK DAILY<br> (Refresh Page Every Once In Awhile)<br>• Any Issues Contact Me Via Links Below •</div>
-    </div>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
         
@@ -1192,6 +1192,19 @@
         ];
 
         // =======================================================
+
+// Ask permission once
+Notification.requestPermission();
+
+// Send notification
+function notifyUser() {
+    if (Notification.permission === "granted") {
+        new Notification("New SHiFT Code!", {
+            body: "Gold Key code available!",
+            icon: "/icon.png"
+        });
+    }
+}     
 
 function openImagePreview(imageUrl) {
     document.getElementById('preview-image').src = imageUrl;
