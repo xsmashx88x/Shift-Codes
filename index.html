@@ -1259,6 +1259,21 @@ margin: 10px auto;
             margin-bottom: 20px; /* Space below the top row */
         }
 
+        /* Style for the Black Market credit text */
+        .black-market-credit {
+            font-size: 11px;
+            color: #bbb; /* Lighter text for credit */
+            margin-top: 10px; /* Space above the footer/buttons */
+            text-align: left;
+            padding: 0 5px; /* Little padding to match content */
+            font-weight: bold; /* <--- ADD THIS LINE */
+        }
+
+        .black-market-credit a {
+            color: #428bca; /* Gold color for links */
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <div id="image-preview-modal" class="image-preview-modal">
@@ -1600,8 +1615,10 @@ const BLACK_MARKET_VENDOR = {
     showCopyButton: false,
     showPreviewButton: true,
     mapGenieLocation: "https://mapgenie.io/borderlands-4/maps/kairos?embed=light&catIds=13472", // Renamed for clarity
-    staticImageLocation: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4-Black-Market-Location-003-Grindstone-of-the-Worthysep25-oct2.jpg", // <--- !!! REPLACE THIS WITH THE ACTUAL STATIC IMAGE URL !!!
+    staticImageLocation: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4-Black-Market-Location-003-Grindstone-of-the-Worthysep25-oct2.jpg",
+    staticImageCredit: 'Static Image From : <a href="https://mentalmars.com/borderlands-4/loot/black-market/" target="_blank">MentalMars (Check Them Out)</a>',
     type: 'weekly-vendor'
+
 };
 const ROADMAP_CONFIG = {
     imageUrl: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/roadmap.png", // <--- CHANGE THIS TO YOUR ACTUAL ROADMAP IMAGE URL
@@ -1664,6 +1681,7 @@ const BLACK_MARKET_EXTRA_CONFIG = {
                     <div class="code-text">Black Market Vendor</div>
                     <div class="expire-date">Next refresh: ${formatDate(nextRefresh, 'Refreshes:')}</div>
                     <div class="countdown">Refreshes in: ${days}d ${hours}h ${minutes}m ${seconds}s</div>
+                ${BLACK_MARKET_VENDOR.staticImageCredit ? `<div class="black-market-credit">${BLACK_MARKET_VENDOR.staticImageCredit}</div>` : ''}
 <div class="code-footer">
                         <div class="black-market-buttons-group"> <!-- Now this is first -->
                             <button class="bm-small-btn bm-static-image-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.staticImageLocation}')">
