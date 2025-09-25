@@ -378,13 +378,14 @@
         }
         
         .rewards-link {
-            display: inline-block;
+            display: block;
+            width: fit-content;            
             background: linear-gradient(to bottom, #ff7c00, #e56a00);
             color: white;
             padding: 12px 24px;
             text-decoration: none;
             border-radius: 4px;
-            margin: 8px 0 15px 0;
+            margin: 10px auto 15px auto;
             font-weight: bold;
             transition: all 0.3s;
             font-size: 16px;
@@ -423,22 +424,13 @@
             min-width: 0;
         }
 
-        /* Container for the button row */
-        .button-row {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-
         .info-button:hover {
             background: linear-gradient(to bottom, #5a5a5a, #3a3a3a);
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
 
-        /* First button (INFO & FAQ) - Gray */
+        /* First button Hde Buttons - Gray */
         .info-button:nth-of-type(1) {
             background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
             border: 2px solid #888;
@@ -449,7 +441,7 @@
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
 
-        /* Second button (CHANGE LOG) - Gray */
+        /* First button (INFO & FAQ) - Gray */
         .info-button:nth-of-type(2) {
             background: linear-gradient(to bottom, #6c757d, #495057);
             border: 2px solid #adb5bd;
@@ -460,14 +452,26 @@
             box-shadow: 0 0 8px #adb5bd;
         }
 
-        /* Third button (HOW TO REDEEM) - Green-blue */
+        /* Second button (CHANGE LOG) - Gray */
         .info-button:nth-of-type(3) {
-            margin-top: 10px; /* Adjust this value as needed to lower it more or less */
+            margin-top: 1px; /* Adjust this value as needed to lower it more or less */
+            background: linear-gradient(to bottom, #6c757d, #495057);
+              border: 2px solid #adb5bd;
+        }
+
+        .info-button:nth-of-type(3):hover {
+            background: linear-gradient(to bottom, #5a6268, #495057);
+            box-shadow: 0 0 8px #00ccff;
+        }
+
+        /* Third button (HOW TO REDEEM) - Green-blue */
+        .info-button:nth-of-type(4) {
+            margin-top: 5px; /* Adjust this value as needed to lower it more or less */
             background: linear-gradient(to bottom, #00aa00, #0055aa);
             border: 2px solid #00ccff;
         }
 
-        .info-button:nth-of-type(3):hover {
+        .info-button:nth-of-type(4):hover {
             background: linear-gradient(to bottom, #00cc00, #0077cc);
             box-shadow: 0 0 8px #00ccff;
         }
@@ -480,10 +484,16 @@
             }
             
             .info-button {
-                width: 100%;
-                max-width: 300px;
-                margin-bottom: 10px;
+            display: block; /* Default to block for stacking */
+            width: fit-content; /* Make width fit content */
+            margin: 10px auto; /* Default for stacking: center horizontally, provide vertical space */
+            flex-shrink: 0; /* Prevent shrinking when inside flex container */
             }
+                    /* Specific adjustments for buttons inside .top-header-buttons */
+        .top-header-buttons .info-button {
+            margin: 0; /* Remove auto margins when inside flex, let gap handle spacing */
+            margin-bottom: 10px; /* Add vertical margin for wrapping on mobile */
+        }
         }
         
         .collapse-btn {
@@ -511,6 +521,8 @@
         }
         
         .collapse-btn-Perm {
+                        display: block;
+            width: fit-content;
             background: linear-gradient(to bottom, #f70, #A0F);
             color: white;
             border: none;
@@ -518,7 +530,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
-            margin: 8px 0;
+margin: 10px auto;
             transition: all 0.3s;
             font-size: 14px;
             text-transform: uppercase;
@@ -535,6 +547,8 @@
         }       
         
 .collapse-btn-BlackMarket { /* New Black Market button style */
+                display: block;
+                            width: fit-content;
             background: linear-gradient(to bottom, #CC0000, #800000); /* Red */
             color: white;
             border: none;
@@ -542,7 +556,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
-            margin: 8px 0;
+            margin: 10px auto;
             transition: all 0.3s;
             font-size: 14px;
             text-transform: uppercase;
@@ -1005,8 +1019,9 @@
             text-shadow: 1px 1px 0 #000;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             font-family: 'Chakra Petch', sans-serif;
-            display: block; /* Make it a block element to center with margin: auto */
-            width: fit-content; /* Adjust width to content */
+            display: block;
+            width: fit-content;
+            margin: 10px auto; /* Center horizontally, provide vertical spacing */
         }
         
         .roadmap-button:hover {
@@ -1188,6 +1203,62 @@
             }
         }
 
+
+        /* Utility class to hide elements */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Styling for the settings items (checkbox and label) */
+        .setting-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .setting-item input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ffc600;
+            border-radius: 3px;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+            cursor: pointer;
+            margin-right: 8px;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        .setting-item input[type="checkbox"]:checked::before {
+            content: "✓";
+            position: absolute;
+            color: #ffc600;
+            font-size: 14px;
+            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 0 0 3px #000;
+        }
+
+        .setting-item label {
+            color: #ffc600;
+            font-size: 14px;
+            cursor: pointer;
+            text-shadow: 1px 1px 0 #000;
+            line-height: 1.2;
+        }
+
+        /* New wrapper for the top-most horizontal buttons */
+        .top-header-buttons {
+            display: flex;
+            justify-content: center; /* Center the buttons within the row */
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line on small screens */
+            gap: 10px; /* Space between the buttons */
+            margin-bottom: 20px; /* Space below the top row */
+        }
+
     </style>
 </head>
 <div id="image-preview-modal" class="image-preview-modal">
@@ -1215,9 +1286,35 @@
             <a href="https://www.reddit.com/user/smashcanuckgamer/" target="_blank">👾 Reddit</a>
         </div>
 
-        <button class="info-button" onclick="toggleInfo('info-section')">
-            ❗Info & F.A.Q❓
-        </button>
+
+
+<!-- NEW SETTINGS BUTTON AND SECTION (Place it here or where you prefer it visually) -->
+<button class="info-button" onclick="toggleInfo('settings-section')" id="settings-toggle-btn">🙈 Hide Buttons</button>
+
+        <div id="settings-section" class="info-section">
+            <div class="info-content">
+                <h3>Visibility Settings</h3>
+                <p>Choose which elements to hide:</p>
+                <div class="setting-item">
+                    <input type="checkbox" id="hide-redeem-toggle-btn" onchange="handleSettingChange('redeem-toggle-btn', this.checked)">
+                    <label for="hide-redeem-toggle-btn">Hide "How To Redeem" button</label>
+                </div>
+                <div class="setting-item">
+                    <input type="checkbox" id="hide-roadmap-btn" onchange="handleSettingChange('roadmap-btn', this.checked)">
+                    <label for="hide-roadmap-btn">Hide "View BL4 Roadmap" button</label>
+                </div>
+                <div class="setting-item">
+                    <input type="checkbox" id="hide-maurices-toggle-btn" onchange="handleSettingChange('maurices-toggle-btn', this.checked)">
+                    <label for="hide-maurices-toggle-btn">Hide "Mauric's Black Market" button</label>
+                </div>
+                 <div class="setting-item">
+                    <input type="checkbox" id="hide-permanent-toggle-btn" onchange="handleSettingChange('permanent-toggle-btn', this.checked)">
+                    <label for="hide-permanent-toggle-btn">Hide "[View] Drops + Limited Time Codes + More" button</label>
+                </div>
+            </div>
+        </div>
+
+<button class="info-button" onclick="toggleInfo('info-section')">❗ INFO & F.A.Q. ❓</button>
 
         <div id="info-section" class="info-section">
             <div class="info-content">
@@ -1238,14 +1335,13 @@
             </div>
         </div>
 
-        <button class="info-button" onclick="toggleInfo('changelog-section')">
-            📋 Change Log ⚒️
-        </button>
+<button class="info-button" onclick="toggleInfo('changelog-section')">📋 CHANGE LOG 🛠️</button>
 
         <div id="changelog-section" class="info-section">
             <div class="info-content">
                 <p><strong>Change Log | Last Updated : 9/25/2025</strong></p>
                 <ul>
+                    <li><b>9/25/2025:</b> Added : Hide Buttons Option (should stick on refresh)</li>  
                     <li><b>9/25/2025:</b> Fixed : Mobile Button Issues For Black Market</li>                     
                     <li><b>9/25/2025:</b> Added : Maurices Black Market, Static View</li>  
                     <li><b>9/25/2025:</b> Added : Maurices Black Market, With Map View</li>                     
@@ -1260,8 +1356,8 @@
             </div>
         </div>
 
-        <button class="info-button redeem-button" onclick="toggleInfo('redeem-section')">
-            📖 How To Redeem On Console 🎮
+        <button class="info-button redeem-button" onclick="toggleInfo('redeem-section')" id="redeem-toggle-btn">
+            🖥️ HOW TO REDEEM ON CONSOLE 🎮
         </button>
 
         <div id="redeem-section" class="info-section">
@@ -1284,15 +1380,10 @@
             </a>
         </div>
 
-<!-- NEW ROADMAP BUTTON (now above the heading) -->
-        <button class="roadmap-button" onclick="openRoadmapImage()">
-            🗺️ View Bl4 Roadmap 🛣️
-        </button>
+        <button class="roadmap-button" onclick="openRoadmapImage()" id="roadmap-btn">🗺️ VIEW BL4 ROADMAP 🛣️</button>
         <!-- END NEW ROADMAP BUTTON -->
 
-        <button class="collapse-btn-BlackMarket" onclick="toggleInfo('black-market-section')">
-            💵 Maurices Black Market 🫰
-        </button>
+      <button class="collapse-btn-BlackMarket" onclick="toggleInfo('black-market-section')" id="maurices-toggle-btn">💵 Maurices Black Market 🫰</button>
         
         <div id="black-market-section" class="info-section">
             <h2>💵 Maurices Black Market 🫰</h2>
@@ -1301,7 +1392,7 @@
             </div>
         </div>
 
-        <button class="collapse-btn-Perm" onclick="togglePermanent()">
+        <button class="collapse-btn-Perm" onclick="togglePermanent()" id="permanent-toggle-btn">
             🎁 [View] Drops + Limited Time Codes + More ⌛
         </button>
         
@@ -2293,6 +2384,8 @@ function initializePage() {
     // THIS LINE MUST BE PRESENT for active countdowns
     setInterval(updateCountdowns, 1000); 
     setInterval(updateVendorTimer, 1000); // Keep this for the Black Market Vendor
+
+        applyDisplayPreferences();
 }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -2305,6 +2398,53 @@ function initializePage() {
             // updateCountdowns is called by initializePage.
             // updateVendorTimer has its own setInterval.
         });
+
+        // --- NEW: Functions for User Display Preferences ---
+        function saveDisplayPreference(elementId, isHidden) {
+            try {
+                const preferences = JSON.parse(localStorage.getItem('userDisplayPreferences')) || {};
+                preferences[elementId] = isHidden; // Store true if hidden, false if visible
+                localStorage.setItem('userDisplayPreferences', JSON.stringify(preferences));
+            } catch (e) {
+                console.error("Error saving display preference to localStorage:", e);
+            }
+        }
+
+        function getDisplayPreference(elementId) {
+            try {
+                const preferences = JSON.parse(localStorage.getItem('userDisplayPreferences')) || {};
+                // Default to false (not hidden) if no preference is saved
+                return preferences[elementId] || false; 
+            } catch (e) {
+                console.error("Error reading display preference from localStorage:", e);
+                return false;
+            }
+        }
+
+        function applyDisplayPreferences() {
+            const controlledElements = ['settings-toggle-btn', 'redeem-toggle-btn', 'roadmap-btn', 'maurices-toggle-btn', 'permanent-toggle-btn'];
+
+            controlledElements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const isHidden = getDisplayPreference(id);
+                    element.classList.toggle('hidden', isHidden); // Add/remove 'hidden' class
+                    
+                    // Also update the state of the checkbox in the settings panel
+                    const checkbox = document.getElementById(`hide-${id}`);
+                    if (checkbox) {
+                        checkbox.checked = isHidden;
+                    }
+                }
+            });
+        }
+
+        function handleSettingChange(elementId, isHidden) {
+            saveDisplayPreference(elementId, isHidden);
+            applyDisplayPreferences(); // Re-apply all preferences immediately
+        }
+        // --- END NEW FUNCTIONS ---
+
     </script>
 </body>
 </html>
