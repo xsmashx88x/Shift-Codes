@@ -1355,7 +1355,7 @@ const BLACK_MARKET_VENDOR = {
                         <div class="title-container">${BLACK_MARKET_VENDOR.title}</div>
                     </div>
                     <div class="code-text">Black Market Vendor</div>
-                    <div class="expire-date">Next refresh: ${formatDate(nextRefresh)}</div> <!-- Use formatDate -->
+                    <div class="expire-date">Next refresh: ${formatDate(nextRefresh, 'Refreshes:')}</div>
                     <div class="countdown">Refreshes in: ${days}d ${hours}h ${minutes}m ${seconds}s</div>
                     <div class="code-footer">
                         <div class="redeem-checkbox">
@@ -1401,7 +1401,7 @@ const BLACK_MARKET_VENDOR = {
             }
             if (expireDateElement) {
                 // Use formatDate for consistent display
-                expireDateElement.textContent = `Next refresh: ${formatDate(nextRefresh)}`; 
+                expireDateElement.textContent = `Next refresh: ${formatDate(nextRefresh, 'Refreshes:')}`; 
             }
         }
 
@@ -1682,7 +1682,7 @@ const BLACK_MARKET_VENDOR = {
             // Get the user's timezone
             const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             
-            return `Expires: ${userLocalTime} (Your Timezone: ${userTimezone})`;
+            return `${userLocalTime} (Your Timezone: ${userTimezone})`; 
         }
 
         function createPermanentCodeBox(codeData, index) {
@@ -1744,7 +1744,7 @@ const BLACK_MARKET_VENDOR = {
                         <div class="permanent-code-text">${codeData.code}</div>
                     </div>
                     <div class="permanent-title-container">${codeData.title}</div>
-                    ${expiresDate ? `<div class="expire-date">${formatDate(expiresDate)}</div>` : ''}
+                    ${expiresDate ? `<div class="expire-date">Expires: ${formatDate(expiresDate)}</div>` : ''}
                     ${countdownHtml}
                     <div class="permanent-code-footer">
                         <div class="redeem-checkbox">
@@ -1808,7 +1808,7 @@ const BLACK_MARKET_VENDOR = {
                         <div class="title-container">${codeData.title}</div>
                     </div>
                     <div class="code-text">${codeData.code}</div>
-                    <div class="expire-date">${formatDate(expiresDate)}</div>
+                    <div class="expire-date">Expires: ${formatDate(expiresDate)}</div>
                     <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
                     <div class="code-footer">
                         <div class="redeem-checkbox">
