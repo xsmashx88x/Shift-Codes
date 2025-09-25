@@ -8,16 +8,16 @@
     </div>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHiFT Codes - Tracker</title>
+    <title>SHiFT Codes - Tracker + More</title>
     
     <!-- Open Graph tags -->
-    <meta property="og:title" content="SHiFT Codes - Tracker">
-    <meta property="og:description" content="Track and manage Borderlands SHiFT codes">
+    <meta property="og:title" content="SHiFT Codes - Tracker + More">
+    <meta property="og:description" content="Track and manage Borderlands SHiFT codes + More">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card tags -->
-    <meta name="twitter:title" content="SHiFT Codes - Tracker">
-    <meta name="twitter:description" content="Track and manage Borderlands SHiFT codes">
+    <meta name="twitter:title" content="SHiFT Codes - Tracker + More">
+    <meta name="twitter:description" content="Track and manage Borderlands SHiFT codes + More">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
         
@@ -1046,7 +1046,6 @@
             flex-wrap: wrap; /* Allow buttons to wrap if screen is too small */
             gap: 8px; /* Space between the two buttons */
             align-items: center;
-            order: 1; /* Keep them on the left side of the footer */
         }
 
         /* Base style for small Black Market buttons */
@@ -1094,8 +1093,99 @@
 
         /* Ensure .redeem-checkbox is properly ordered in the footer */
         .code-footer .redeem-checkbox {
-            order: 2; /* Pushes the checkbox to the right */
-            margin-left: auto; /* Ensures it's pushed to the right if there's extra space */
+            order: unset; /* Clears any explicit order */
+            margin-left: auto; /* <--- ADD THIS to push the checkbox to the far right */
+            margin-right: 0; /* Ensure no conflicting right margin */
+        }
+
+        /* === Responsive Adjustments for Black Market Vendor Buttons === */
+        @media (max-width: 600px) { /* Adjust max-width as needed for your definition of "mobile" */
+            .black-market-buttons-group {
+                flex-direction: column; /* Stack buttons vertically */
+                width: 100%; /* Ensure the group takes full width */
+                gap: 5px; /* Reduce gap when stacked */
+                margin-right: 0; /* Remove any lingering right margin */
+            }
+
+            .bm-small-btn {
+                width: 100%; /* Make each button take full width */
+                max-width: 100%; /* Ensure it doesn't exceed its container */
+                margin: 0; /* Remove any external margins that might interfere */
+            }
+
+            /* Adjust the code-footer itself for mobile if buttons wrap */
+            .code-footer {
+                flex-direction: column; /* Stack footer elements vertically */
+                align-items: flex-start; /* Align elements to the left */
+                gap: 10px; /* Space between the button group and the checkbox */
+            }
+
+            .code-footer .redeem-checkbox {
+                margin-left: 0; /* Remove auto-margin that pushes it right */
+            }
+        }
+
+
+                /* New group for active code's action buttons (COPY and optional PREVIEW) */
+        .active-code-buttons-group {
+            display: flex;
+            gap: 10px; /* Space between preview and copy buttons */
+            align-items: center;
+            margin-left: auto; /* Pushes this group to the far right within the footer */
+        }
+        
+        /* Ensure default display for the overall code-footer */
+        .code-footer {
+            display: flex;
+            justify-content: space-between; /* Pushes children to opposite ends */
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 198, 0, 0.3);
+        }
+
+        /* Make sure the redeem checkbox explicitly stays left */
+        /* This overrides any previous 'order' or 'margin-left: auto' */
+        .code-footer .redeem-checkbox {
+            order: unset; /* Remove any explicit order that might be set */
+            margin-right: auto; /* Pushes itself to the left, allowing the button group to go right */
+            margin-left: 0; /* Ensure no auto left margin interferes */
+        }
+
+        /* Ensure .small-copy-btn and .preview-btn revert to natural order/margins within their new group */
+        .small-copy-btn, .preview-btn {
+            order: unset; /* Remove any explicit order */
+            margin: 0; /* Remove any external margins */
+        }
+        
+        /* === Mobile Responsiveness for Active Code Footer === */
+        @media (max-width: 600px) {
+            /* Make the entire footer stack vertically on small screens */
+            .code-footer {
+                flex-direction: column;
+                align-items: flex-start; /* Align contents to the left */
+                gap: 10px; /* Space between stacked elements */
+            }
+            
+            /* Make the button group stack vertically and take full width */
+            .active-code-buttons-group {
+                flex-direction: column;
+                width: 100%;
+                margin-left: 0; /* Remove auto margin when stacked */
+                gap: 5px; /* Smaller gap when stacked */
+            }
+            
+            /* Make individual buttons in the group take full width */
+            .active-code-buttons-group .small-copy-btn,
+            .active-code-buttons-group .preview-btn {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            /* Adjust redeem checkbox margin for mobile stacking */
+            .code-footer .redeem-checkbox {
+                margin-right: 0; /* Remove auto-margin when stacked */
+            }
         }
 
     </style>
@@ -1115,7 +1205,7 @@
     <div class="container">
         <div class="title-bar">
             <img src="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png" alt="Left Icon" class="icon">
-            <div class="title-text">SHiFT Codes</div>
+            <div class="title-text">SHiFT Code Tracker  + More</div>
             <img src="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png" alt="Right Icon" class="icon">
         </div>
         
@@ -1156,6 +1246,8 @@
             <div class="info-content">
                 <p><strong>Change Log | Last Updated : 9/25/2025</strong></p>
                 <ul>
+                    <li><b>9/25/2025:</b> Fixed : Mobile Button Issues For Black Market</li>                     
+                    <li><b>9/25/2025:</b> Added : Maurices Black Market, Static View</li>  
                     <li><b>9/25/2025:</b> Added : Maurices Black Market, With Map View</li>                     
                     <li><b>9/24/2025:</b> Fixed time issues</li>            
                     <li><b>9/24/2025:</b> Fixed refresh issue on Android/some browsers</li>
@@ -1481,7 +1573,7 @@ const BLACK_MARKET_EXTRA_CONFIG = {
                     <div class="expire-date">Next refresh: ${formatDate(nextRefresh, 'Refreshes:')}</div>
                     <div class="countdown">Refreshes in: ${days}d ${hours}h ${minutes}m ${seconds}s</div>
 <div class="code-footer">
-                        <div class="black-market-buttons-group"> <!-- New wrapper for buttons -->
+                        <div class="black-market-buttons-group"> <!-- Now this is first -->
                             <button class="bm-small-btn bm-static-image-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.staticImageLocation}')">
                                 📍 View Location (STATIC IMAGE) | IS CURRENT
                             </button>
@@ -1489,7 +1581,7 @@ const BLACK_MARKET_EXTRA_CONFIG = {
                                 📍 View Location (MAPGENIE) | MIGHT BE SLOW/WRONG
                             </button>
                         </div>
-                        <div class="redeem-checkbox">
+                        <div class="redeem-checkbox"> <!-- Now this is second -->
                             <input type="checkbox" id="bm-redeemed" ${isRedeemed ? 'checked' : ''} 
                                 onchange="handleBlackMarketRedemptionChange(this, document.getElementById('black-market-vendor'))">
                             <label for="bm-redeemed">?redeemed</label>
@@ -1942,16 +2034,18 @@ function openRoadmapImage() {
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expires: ${formatDate(expiresDate)}</div>
                     <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
-                    <div class="code-footer">
-                        <div class="redeem-checkbox">
-                            <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                                onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
-                            <label for="redeemed-${index}">?redeemed</label>
-                        </div>
-                        ${copyButtonHtml}
-                        ${previewButtonHtml}
-                    </div>
+<div class="code-footer">
+                <div class="redeem-checkbox">
+                    <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                        onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
+                    <label for="redeemed-${index}">?redeemed</label>
                 </div>
+                <!-- NEW: Wrapper for copy and preview buttons. Preview button comes first if both exist. -->
+                <div class="active-code-buttons-group">
+                    ${previewButtonHtml} 
+                    ${copyButtonHtml}
+                </div>
+            </div>
             `;
         }
 
@@ -1990,18 +2084,21 @@ function openRoadmapImage() {
                     </div>
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expired: ${formatDate(expiresDate)}</div>
-                    <div class="code-footer">
-                        <div class="redeem-checkbox">
-                            <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                                onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
-                            <label for="expired-redeemed-${index}">?redeemed</label>
-                        </div>
-                        <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
-                            COPY
-                        </button>
-                        ${previewButtonHtml}
-                        <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
-                    </div>
+<div class="code-footer">
+                <div class="redeem-checkbox">
+                    <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                        onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
+                    <label for="expired-redeemed-${index}">?redeemed</label>
+                </div>
+                <!-- NEW: Wrapper for copy and preview buttons (reusing active-code-buttons-group for consistent styling) -->
+                <div class="active-code-buttons-group">
+                    ${previewButtonHtml} 
+                    <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
+                        COPY
+                    </button>
+                    <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
+                </div>
+            </div>
                     <div class="expired-text">❌ EXPIRED</div>
                 </div>
             `;
