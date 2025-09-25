@@ -114,23 +114,23 @@
             transform: translateY(-2px);
         }
         
-.code-box {
-    background: linear-gradient(135deg, #3A2A1A, #5C3C10); /* ← CHANGE THIS */
-    color: white;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 4px;
-    text-align: left;
-    transition: transform 0.2s;
-    border: 2px solid #D4A017; /* ← CHANGE THIS */
-    box-shadow: 0 0 8px rgba(212, 160, 23, 0.3); /* ← CHANGE THIS */
-    position: relative;
-}
+        .code-box {
+            background: linear-gradient(135deg, #3A2A1A, #5C3C10); /* Gold-themed */
+            color: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            text-align: left;
+            transition: transform 0.2s;
+            border: 2px solid #D4A017; 
+            box-shadow: 0 0 8px rgba(212, 160, 23, 0.3); 
+            position: relative;
+        }
 
-.code-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 12px rgba(255, 179, 71, 0.5); /* ← CHANGE THIS */
-}
+        .code-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 12px rgba(255, 179, 71, 0.5); 
+        }
        
         .permanent-code-box {
             background: linear-gradient(135deg, #1b3b6a 0%, #0f2552 100%);
@@ -148,6 +148,51 @@
         .permanent-code-box:hover {
             transform: translateY(-1px);
             box-shadow: 0 0 6px rgba(74, 144, 226, 0.6);
+        }
+
+        .black-market-code-box { /* New style for Black Market Vendor */
+            background: linear-gradient(135deg, #4d0000, #2d0000); /* Dark red/black */
+            border: 2px solid #ff4444; /* Red border */
+            box-shadow: 0 0 8px rgba(255, 68, 68, 0.3);
+            color: #ffcccc; /* Default text color */
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            text-align: left;
+            transition: transform 0.2s;
+            position: relative;
+        }
+        .black-market-code-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 12px rgba(255, 68, 68, 0.5);
+        }
+        .black-market-code-box .code-text { color: #ffaa99; }
+        .black-market-code-box .title-container { color: #ff9999; }
+        .black-market-code-box .expire-date { color: #ffcccc; }
+        .black-market-code-box .countdown {
+            color: #ffaaaa;
+            border: 1px solid #ffaaaa;
+        }
+        /* Redeemed style for black market vendor */
+        .black-market-code-box.redeemed {
+            opacity: 0.7;
+            position: relative;
+        }
+        .black-market-code-box.redeemed::after {
+            content: "REDEEMED";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 24px;
+            font-weight: bold;
+            color: #7cff7c; /* Green checkmark color */
+            text-shadow: 2px 2px 0 #000, 0 0 10px rgba(124, 255, 124, 0.7);
+            z-index: 10;
+            pointer-events: none;
+        }
+        .black-market-code-box.redeemed .code-text {
+            color: #7cff7c !important;
         }
         
         .expired-code-box {
@@ -488,6 +533,46 @@
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
         }       
         
+.collapse-btn-BlackMarket { /* New Black Market button style */
+            background: linear-gradient(to bottom, #CC0000, #800000); /* Red */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 8px 0;
+            transition: all 0.3s;
+            font-size: 14px;
+            text-transform: uppercase;
+            border: 1px solid #FF4444; /* Brighter red border */
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Chakra Petch', sans-serif;
+        }
+        
+        .collapse-btn-BlackMarket:hover {
+            background: linear-gradient(to bottom, #FF0000, #600000); /* Brighter red on hover */
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(255, 68, 68, 0.4); /* Red glow */
+        }
+
+            /* Style for the container inside the Black Market dropdown */
+        #black-market-codes-container {
+            background: linear-gradient(135deg, #4d0000, #2d0000); /* Dark red/black, matching the button's concept */
+            border: 2px solid #ff4444; /* Red border */
+            padding: 15px; /* Add padding for content */
+            border-radius: 4px; /* Match container border-radius */
+            margin-top: 8px; /* Spacing from heading */
+            box-shadow: 0 0 8px rgba(255, 68, 68, 0.3);
+            text-align: left; /* Ensure text aligns left within this box */
+        }
+        /* Ensure the H2 inside the black market section has appropriate styling */
+        #black-market-section h2 {
+            color: #ff9999; /* Lighter red for heading */
+            border-bottom-color: #ff6666;
+        }    
+        
 /* Only when permanent section is visible (has 'show' class) */
 #permanent-section.show .permanent-code-box {
     background: linear-gradient(135deg, #451565, #652200);
@@ -620,7 +705,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200'​【𝟲𝟭 𝗺】 xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65'​【𝟮𝟬 𝗰𝗺】 numOctaves='3'​【𝟵𝟭 𝗰𝗺】 stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25'​【𝟳,𝟲 𝗺】 height='100%25'​【𝟳,𝟲 𝗺】 filter='url(%23noiseFilter)' opacity='0.05'/​【𝟮 𝗰𝗺】%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
             z-index: 998;
             opacity: 0.1;
         }
@@ -776,138 +861,139 @@
             }
         }
         .title-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 25px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    margin-bottom: 15px;
-    border: 2px solid #ffc600;
-}
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #ffc600;
+        }
 
-.title-text {
-    color: #ffc600;
-    font-size: 24px;
-    font-weight: bold;
-    text-shadow: 2px 2px 0 #000, 0 0 10px rgba(255, 198, 0, 0.7);
-}
+        .title-text {
+            color: #ffc600;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 0 #000, 0 0 10px rgba(255, 198, 0, 0.7);
+        }
 
-.icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ffc600;
-}
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffc600;
+        }
 
-.preview-btn {
-    background: linear-gradient(to bottom, #4a90e2, #2a70c2);
-    border: 1px solid #6ba8ff;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 0;
-    transition: all 0.3s;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-family: 'Chakra Petch', sans-serif;
-    text-shadow: 1px 1px 0 #000;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
+        .preview-btn {
+            background: linear-gradient(to bottom, #4a90e2, #2a70c2);
+            border: 1px solid #6ba8ff;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0;
+            transition: all 0.3s;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-family: 'Chakra Petch', sans-serif;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
 
-.preview-btn:hover {
-    background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
-    transform: scale(1.05);
-    box-shadow: 0 0 4px #6ba8ff;
-}
+        .preview-btn:hover {
+            background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
+            transform: scale(1.05);
+            box-shadow: 0 0 4px #6ba8ff;
+        }
 
-.image-preview-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
+        .image-preview-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
 
-.image-preview-content {
-    max-width: 90%;
-    max-height: 90%;
-    position: relative;
-}
+        .image-preview-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
 
-.image-preview-content img {
-    max-width: 100%;
-    max-height: 90vh;
-    border: 3px solid #ffc600;
-    border-radius: 5px;
-}
+        .image-preview-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border: 3px solid #ffc600;
+            border-radius: 5px;
+        }
 
-.close-preview {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    background: #ff4444;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: bold;
-}
+        .close-preview {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-/* Info content sections */
-#info-section .info-content {
-    background: linear-gradient(to bottom, #555, #333);
-    border: 2px solid #888;
-    color: white;
-}
+        /* Info content sections */
+        #info-section .info-content {
+            background: linear-gradient(to bottom, #555, #333);
+            border: 2px solid #888;
+            color: white;
+        }
 
-#changelog-section .info-content {
-    background: linear-gradient(to bottom, #6c757d, #495057);
-    border: 2px solid #adb5bd;
-    color: white;
-}
+        #changelog-section .info-content {
+            background: linear-gradient(to bottom, #6c757d, #495057);
+            border: 2px solid #adb5bd;
+            color: white;
+        }
 
-#changelog-section .info-content a {
-    color: #e9ecef;
-    text-shadow: 0 0 5px #e9ecef;
-}
+        #changelog-section .info-content a {
+            color: #e9ecef;
+            text-shadow: 0 0 5px #e9ecef;
+        }
 
-#changelog-section .info-content a:hover {
-    color: #ffffff;
-}
+        #changelog-section .info-content a:hover {
+            color: #ffffff;
+        }
 
-#redeem-section .info-content {
-    background: linear-gradient(to bottom, #00aa00, #0055aa);
-    border: 2px solid #00ccff;
-    color: white;
-}
+        #redeem-section .info-content {
+            background: linear-gradient(to bottom, #00aa00, #0055aa);
+            border: 2px solid #00ccff;
+            color: white;
+        }
 
-#redeem-section .info-content a {
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
-}
+        #redeem-section .info-content a {
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+        }
 
-#redeem-section .info-content a:hover {
-    color: #ffffff;
-}
-
+        #redeem-section .info-content a:hover {
+            color: #ffffff;
+        }
     </style>
 </head>
 <div id="image-preview-modal" class="image-preview-modal">
     <div class="image-preview-content">
         <button class="close-preview" onclick="closeImagePreview()">×</button>
-        <img id="preview-image" src="" alt="Preview">
+        <div id="preview-container" style="display: none;">
+    </div>
+        <img id="preview-image" src="" alt="Preview" style="display: none;">
     </div>
 </div>
 <body>
@@ -915,11 +1001,11 @@
     <div class="scanlines"></div>
     
     <div class="container">
-<div class="title-bar">
-    <img src="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png" alt="Left Icon" class="icon">
-    <div class="title-text">SHiFT Codes</div>
-    <img src="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png" alt="Right Icon" class="icon">
-</div>
+        <div class="title-bar">
+            <img src="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png" alt="Left Icon" class="icon">
+            <div class="title-text">SHiFT Codes</div>
+            <img src="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png" alt="Right Icon" class="icon">
+        </div>
         
         <div class="social-links">
             <a href="https://x.com/xsmashx88x" target="_blank">🐦 Twitter</a>
@@ -927,68 +1013,68 @@
             <a href="https://www.reddit.com/user/smashcanuckgamer/" target="_blank">👾 Reddit</a>
         </div>
 
-<button class="info-button" onclick="toggleInfo('info-section')">
-    📖 Info & F.A.Q
-</button>
+        <button class="info-button" onclick="toggleInfo('info-section')">
+            📖 Info & F.A.Q
+        </button>
 
-<div id="info-section" class="info-section">
-    <div class="info-content">
-        <p><strong>MSG To People Thinking I Want Followers/Money (I Don't) SMFH</strong></p>
-        <ul>
-            <li><i>This was not done for followers or fame, its to help people, it sucks to be reported on reddit/fb an few other places :(</i></li>
-            <li><i>Some have wanted to donate/tip, sadly I can't don't wanna deal with chargebacks if I am a few mins last on posting codes :(</i></li>            
-        </ul>
-        <p><strong>F.A.Q</strong></p>
-        <ul>
-            <li><b>Why Was This Made :</b> <i>For peeps to know if codes are expired and be able to copy them more easy via the button</i></li>
-            <li><b>How are codes put here? :</b> <i>All me, I watch randy's twitter or see them around the net and add them, No auto grab system here</i></li>            
-        </ul>
-        <p><strong>PSA</strong></p>
-        <ul>
-            <li><b>Gold Keys On Multi Systems :</b><i>if linked multi systems can redeem on each :) from what I hear</i></li>
-        </ul>
-    </div>
-</div>
+        <div id="info-section" class="info-section">
+            <div class="info-content">
+                <p><strong>MSG To People Thinking I Want Followers/Money (I Don't) SMFH</strong></p>
+                <ul>
+                    <li><i>This was not done for followers or fame, its to help people, it sucks to be reported on reddit/fb an few other places :(</i></li>
+                    <li><i>Some have wanted to donate/tip, sadly I can't don't wanna deal with chargebacks if I am a few mins last on posting codes :(</i></li>            
+                </ul>
+                <p><strong>F.A.Q</strong></p>
+                <ul>
+                    <li><b>Why Was This Made :</b> <i>For peeps to know if codes are expired and be able to copy them more easy via the button</i></li>
+                    <li><b>How are codes put here? :</b> <i>All me, I watch randy's twitter or see them around the net and add them, No auto grab system here</i></li>            
+                </ul>
+                <p><strong>PSA</strong></p>
+                <ul>
+                    <li><b>Gold Keys On Multi Systems :</b><i>if linked multi systems can redeem on each :) from what I hear</i></li>
+                </ul>
+            </div>
+        </div>
 
-<button class="info-button" onclick="toggleInfo('changelog-section')">
-    📋 Change Log
-</button>
+        <button class="info-button" onclick="toggleInfo('changelog-section')">
+            📋 Change Log
+        </button>
 
-<div id="changelog-section" class="info-section">
-    <div class="info-content">
-        <p><strong>Change Log | Last Updated : 9/24/2025</strong></p>
-        <ul>
-            <li><b>9/24/2025:</b> Fixed time issues</li>            
-            <li><b>9/24/2025:</b> Fixed refresh issue on Android/some browsers</li>
-            <li><b>9/23/2025:</b> Added "Mark as redeemed" feature with local storage</li>
-            <li><b>9/22/2025:</b> Added preview button for image rewards</li>
-            <li><b>9/21/2025:</b> Improved countdown timer functionality</li>
-            <li><b>9/20/2025:</b> Added permanent/unknown expiration codes section</li>
-            <li><b>9/19/2025:</b> Initial website launch with basic functionality</li>
-        </ul>
-    </div>
-</div>
+        <div id="changelog-section" class="info-section">
+            <div class="info-content">
+                <p><strong>Change Log | Last Updated : 9/24/2025</strong></p>
+                <ul>
+                    <li><b>9/24/2025:</b> Fixed time issues</li>            
+                    <li><b>9/24/2025:</b> Fixed refresh issue on Android/some browsers</li>
+                    <li><b>9/23/2025:</b> Added "Mark as redeemed" feature with local storage</li>
+                    <li><b>9/22/2025:</b> Added preview button for image rewards</li>
+                    <li><b>9/21/2025:</b> Improved countdown timer functionality</li>
+                    <li><b>9/20/2025:</b> Added permanent/unknown expiration codes section</li>
+                    <li><b>9/19/2025:</b> Initial website launch with basic functionality</li>
+                </ul>
+            </div>
+        </div>
 
-<button class="info-button redeem-button" onclick="toggleInfo('redeem-section')">
-    📖 How To Redeem On Console
-</button>
+        <button class="info-button redeem-button" onclick="toggleInfo('redeem-section')">
+            📖 How To Redeem On Console
+        </button>
 
-<div id="redeem-section" class="info-section">
-    <div class="info-content">
-        <p><strong>In-Game</strong></p>
-        <ol>
-            <li>Open the Pause Menu while in-game Or On Main Menu</li>
-            <li>Click "SHiFT"</li>
-            <li>Click "Rewards"</li>
-            <li>Enter codes and redeem them</li>
-        </ol>
-        <p><strong>Online</strong></p>
-        <p>CLICK THAT BUTTON BELOW AND WILL OPEN THE SHIFT REDEEM SITE</p>
-    </div>
-</div>
+        <div id="redeem-section" class="info-section">
+            <div class="info-content">
+                <p><strong>In-Game</strong></p>
+                <ol>
+                    <li>Open the Pause Menu while in-game Or On Main Menu</li>
+                    <li>Click "SHiFT"</li>
+                    <li>Click "Rewards"</li>
+                    <li>Enter codes and redeem them</li>
+                </ol>
+                <p><strong>Online</strong></p>
+                <p>CLICK THAT BUTTON BELOW AND WILL OPEN THE SHIFT REDEEM SITE</p>
+            </div>
+        </div>
 
         <div>
-<a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
+            <a href="https://shift.gearboxsoftware.com/rewards" target="_blank" class="rewards-link">
                 🔗 Redeem Codes | SHiFT.Gearbox | Click Me
             </a>
         </div>
@@ -1001,6 +1087,17 @@
             <h2>🎁 Drops + Limited Time Codes + More</h2>
             <div id="permanent-codes-container">
                 <!-- Permanent codes will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <button class="collapse-btn-BlackMarket" onclick="toggleInfo('black-market-section')">
+            💵 Maurices Black Market
+        </button>
+        
+        <div id="black-market-section" class="info-section">
+            <h2>💵 Maurices Black Market</h2>
+            <div id="black-market-codes-container">
+                <!-- Black Market Vendor will be inserted here by JavaScript -->
             </div>
         </div>
 
@@ -1022,194 +1119,344 @@
     </div>
 
     <script>
-        // ==================== 12-HOUR FORMAT HELPER ====================
-        function createDate(year, month, day, hour, minute, second, isPM) {
-            // Convert 12-hour format to 24-hour format
-            let hour24 = hour;
-            if (isPM && hour < 12) {
-                hour24 = hour + 12;
-            } else if (!isPM && hour === 12) {
-                hour24 = 0; // 12 AM = 0 hours
-            }
-            // Month is 0-indexed in JavaScript (0=January, 11=December)
-            return new Date(year, month - 1, day, hour24, minute, second);
-        }
+// ==================== 12-HOUR FORMAT HELPER ====================
+// This function correctly handles 12-hour AM/PM and 1-indexed months (1=Jan, 12=Dec).
+function createDate(year, month, day, hour, minute, second, isPM) {
+    // Convert 12-hour format to 24-hour format
+    let hour24 = hour;
+    if (isPM && hour < 12) {
+        hour24 = hour + 12;
+    } else if (!isPM && hour === 12) {
+        hour24 = 0; // 12 AM = 0 hours
+    }
+    // Month is 0-indexed in JavaScript (0=January, 11=December)
+    return new Date(year, month - 1, day, hour24, minute, second);
+}
 
-        // ==================== CONFIGURATION ====================
-        const ALL_CODES_CONFIG = [
-            {
-                code: "BHRBJ-ZWHT3-W6JBK-BT3BB-CW3ZK",
-                expires: createDate(2025, 9, 26, 4, 19, 0, 1), // 4:19 PM
-                title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">From Twitter</a> | Added 9/24/2025 ',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png",
-                showCopyButton: true
-            },
-            {
-                code: "JSX3J-B6SBJ-CXTBC-B3T3B-BZZZT",
-                expires: createDate(2025, 9, 26, 4, 19, 0, 1), // 4:19 PM
-                title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">From Twitter</a> | Added 9/24/2025 ',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-                        {
-                code: "BHFJ3-WXHBB-W63JK-B33B3-5HX95",
-                expires: createDate(2025, 9, 26, 4, 19, 0, 1), // 4:19 PM
-                title: '1 : Gold Key- <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">From Twitter </a> | Added 9/24/2025 ',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "J9XBB-KK9T3-CRTBW-BBT3T-KTBTW",
-                expires: createDate(2025, 9, 24, 12, 28, 0, 1), // 12:28 PM
-                title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1970163226441547832" target="_blank">From Twitter</a>',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png",
-                showCopyButton: true
-            },
-            {
-                code: "JHFTJ-R5HBT-KF3TK-TBJT3-JJTHH",
-                expires: createDate(2025, 9, 24, 12, 28, 0, 1), // 12:28 PM
-                title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1970163226441547832" target="_blank">From Twitter</a>',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "T9RJB-BFKRR-3RBTW-B33TB-KCZB9",
-                expires: new Date(2025, 9, 1),
-                title: '1 : Gold Key',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "THRBT-WW6CB-56TB5-3B3BJ-XBW3X",
-                expires: new Date(2025, 8, 30),
-                title: '1 : Gold Key',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "3H63J-Z3S3J-KR3BK-BTJ33-ZWKTK",
-                expires: createDate(2025, 9, 22, 12, 36, 0, 1), // 12:36 PM
-                title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "TSR3B-J5S3T-KRBJW-BTTBJ-JRCXX",
-                expires: createDate(2025, 9, 22, 12, 36, 0, 1), // 12:36 PM
-                title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "3ZXJB-53STT-56T3W-B3TT3-HTS95",
-                expires: createDate(2025, 9, 21, 11, 58, 1, 1), // 11:58 AM
-                title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1969068501215170641" target="_blank">From Twitter</a>',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "BSRT3-FTZBJ-K6BTW-JB3T3-WXT99",
-                expires: createDate(2025, 9, 21, 11, 58, 1, 1), // 11:58 AM
-                title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1969068501215170641" target="_blank">From Twitter</a>',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "B9XT3-HX6TT-W6BBW-TTJT3-JTFKX",
-                expires: new Date(2025, 8, 10, 12, 0, 0),
-                title: "1 : Gold Key",
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },              
-            {
-                code: "39RTT-3ZR3T-5FJBK-3J3J3-C5CRT",
-                expires: new Date(2025, 8, 10, 12, 0, 0),
-                title: "1 : Gold Key",
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },          
-            {
-                code: "WHWJB-XH3SX-39CZW-H3BBB-BTF55",
-                expires: new Date(2025, 8, 10, 12, 0, 0),
-                title: "1 : Gold Key",
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },          
-            {
-                code: "3SR3J-CS63T-CFB3K-J3JTT-RZ5JR",
-                expires: new Date(2025, 8, 10, 12, 0, 0),
-                title: "1 : Gold Key",
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "3SRBB-X9RBJ-CRTBW-3BBB3-KJFW6",
-                expires: new Date(2025, 8, 10, 12, 0, 0),
-                title: "1 : Gold Key",
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            },
-            {
-                code: "WEWJB-XH3SX-39CZW-H3BBB-BPF55",
-                expires: new Date(2025, 8, 20, 12, 0, 0),
-                title: '1 : Gold Key - Requires linked My2K Games account - <a href="https://shift.gearboxsoftware.com/associations" target="_blank">Associate Account</a>',
-                icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
-            }       
-        ];
+// ==================== CONFIGURATION ====================
+const ALL_CODES_CONFIG = [
+    {
+        code: "BHRBJ-ZWHT3-W6JBK-BT3BB-CW3ZK",
+        expires: createDate(2025, 9, 26, 4, 19, 0, 1), // 4:19 PM
+        title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">From Twitter</a> | Added 9/24/2025 ',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png",
+        showCopyButton: true
+    },
+    {
+        code: "JSX3J-B6SBJ-CXTBC-B3T3B-BZZZT",
+        expires: createDate(2025, 9, 26, 4, 19, 0, 1), // 4:19 PM
+        title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">From Twitter</a> | Added 9/24/2025 ',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "BHFJ3-WXHBB-W63JK-B33B3-5HX95",
+        expires: createDate(2025, 9, 26, 4, 19, 0, 1), // 4:19 PM
+        title: '1 : Gold Key- <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">From Twitter </a> | Added 9/24/2025 ',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "J9XBB-KK9T3-CRTBW-BBT3T-KTBTW",
+        expires: createDate(2025, 9, 24, 12, 28, 0, 1), // 12:28 PM
+        title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1970163226441547832" target="_blank">From Twitter</a>',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png",
+        showCopyButton: true
+    },
+    {
+        code: "JHFTJ-R5HBT-KF3TK-TBJT3-JJTHH",
+        expires: createDate(2025, 9, 24, 12, 28, 0, 1), // 12:28 PM
+        title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1970163226441547832" target="_blank">From Twitter</a>',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "T9RJB-BFKRR-3RBTW-B33TB-KCZB9",
+        expires: createDate(2025, 10, 1, 0, 0, 0, 1), // Fixed: September 1, 2025 (month is 0-indexed)
+        title: '1 : Gold Key',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "THRBT-WW6CB-56TB5-3B3BJ-XBW3X",
+        expires: createDate(2025, 9, 30, 0, 0, 0, 1), // Fixed: September 30, 2025 (month is 0-indexed)
+        title: '1 : Gold Key',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "3H63J-Z3S3J-KR3BK-BTJ33-ZWKTK",
+        expires: createDate(2025, 9, 22, 12, 36, 0, 1), // 12:36 PM
+        title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "TSR3B-J5S3T-KRBJW-BTTBJ-JRCXX",
+        expires: createDate(2025, 9, 22, 12, 36, 0, 1), // 12:36 PM
+        title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1969440522528792653" target="_blank">From Twitter</a>',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "3ZXJB-53STT-56T3W-B3TT3-HTS95",
+        expires: createDate(2025, 9, 21, 11, 58, 1, 1), // 11:58 AM
+        title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1969068501215170641" target="_blank">From Twitter</a>',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "BSRT3-FTZBJ-K6BTW-JB3T3-WXT99",
+        expires: createDate(2025, 9, 21, 11, 58, 1, 1), // 11:58 AM
+        title: '1 : Gold Key - <a href="https://x.com/DuvalMagic/status/1969068501215170641" target="_blank">From Twitter</a>',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "B9XT3-HX6TT-W6BBW-TTJT3-JTFKX",
+        expires: createDate(2025, 9, 10, 12, 0, 0, 0), // September 10, 2025, 12:00 PM (no isPM specified, defaults to AM)
+        title: "1 : Gold Key",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },              
+    {
+        code: "39RTT-3ZR3T-5FJBK-3J3J3-C5CRT",
+        expires: createDate(2025, 9, 10, 12, 0, 0, 0), // September 10, 2025, 12:00 PM
+        title: "1 : Gold Key",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },          
+    {
+        code: "WHWJB-XH3SX-39CZW-H3BBB-BTF55",
+        expires: createDate(2025, 9, 10, 12, 0, 0, 0), // September 10, 2025, 12:00 PM
+        title: "1 : Gold Key",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },          
+    {
+        code: "3SR3J-CS63T-CFB3K-J3JTT-RZ5JR",
+        expires: createDate(2025, 9, 10, 12, 0, 0, 0), // September 10, 2025, 12:00 PM
+        title: "1 : Gold Key",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "3SRBB-X9RBJ-CRTBW-3BBB3-KJFW6",
+        expires: createDate(2025, 9, 10, 12, 0, 0, 0), // September 10, 2025, 12:00 PM
+        title: "1 : Gold Key",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    },
+    {
+        code: "WEWJB-XH3SX-39CZW-H3BBB-BPF55",
+        expires: createDate(2025, 9, 20, 12, 0, 0, 0), // September 20, 2025, 12:00 PM
+        title: '1 : Gold Key - Requires linked My2K Games account - <a href="https://shift.gearboxsoftware.com/associations" target="_blank">Associate Account</a>',
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
+    }       
+];
 
-        const PERMANENT_CODES = [
-                    {
-                code: "Twitch Drops 1 : Watch, Drop, and Roll ECHO-4 Drone Skin cosmetic",
-                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>August 29, 2025 - September 29, 2025<br><br>• Watch any livestream in the Borderlands 4 category on the official <a href="http://twitch.tv/Borderlands" target="_blank">Borderlands 4 Twitch channel</a> or <a href="https://www.twitch.tv/gearboxofficial" target="_blank">Gearbox Twitch channel</a> for 20 minutes and claim the reward',
-                icon: "🎁",
-                showCopyButton: false,
-                showPreviewButton: true,
-                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_Echobot_Drop_Wide_textless.png",
-                expires: new Date(2025, 8, 29) // ← Add expiration date (Sept 29, 2025)             
-            },
-                                {
-                code: "Twitch Drops 2 : Forsaken Chaos Legendary shotgun",
-                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> for 2 hours and claim the reward',
-                icon: "🎁",
-                showCopyButton: false,
-                showPreviewButton: true,
-                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_ForsakenChaos.png",
-                expires: new Date(2025, 8, 30) // ← Add expiration date (Sept 29, 2025)             
-            },
-                                            {
-                code: "Twitch Drops 3 : Midnight Defiance Legendary sniper rifle",
-                title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> hosted by a <a href="https://borderlands.2k.com/borderlands-4/partnered-creators/" target="_blank">partnered creator</a> for 2 hours and claim the reward',
-                icon: "🎁",
-                showCopyButton: false,
-                showPreviewButton: true,
-                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_MidnightDefiance.png",
-                expires: new Date(2025, 8, 30) // ← Add expiration date (Sept 29, 2025)             
-            },
-            {
-                code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJS5R",
-                title: 'Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin',
-                icon: "🎁",
-                showCopyButton: true,
-                showPreviewButton: true,
-                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/breakfree.png",
-                expires: new Date(2030, 11, 31)
-            },
-            {
-                code: "Butterfinger ECHO-4 Drone Skin",
-                title: 'This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a> <br><i>USE A VPN, then search and use a fake usa number/address gen, if live outside the usa, Its what I did and I  got emailed the key :)</i>',
-                icon: "🍫",
-                showCopyButton: false,
-                showPreviewButton: true,
-                imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/butter%20fingers%20skin.png",
-                expires: new Date(2025, 8, 22)              
-            }
-        ];
+const PERMANENT_CODES = [
+    {
+        code: "Twitch Drops 1 : Watch, Drop, and Roll ECHO-4 Drone Skin cosmetic",
+        title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>August 29, 2025 - September 29, 2025<br><br>• Watch any livestream in the Borderlands 4 category on the official <a href="http://twitch.tv/Borderlands" target="_blank">Borderlands 4 Twitch channel</a> or <a href="https://www.twitch.tv/gearboxofficial" target="_blank">Gearbox Twitch channel</a> for 20 minutes and claim the reward',
+        icon: "🎁",
+        showCopyButton: false,
+        showPreviewButton: true,
+        imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_Echobot_Drop_Wide_textless.png",
+        expires: createDate(2025, 9, 29, 0, 0, 0, 0) // September 29, 2025, midnight AM (explicitly set to avoid default issues)
+    },
+    {
+        code: "Twitch Drops 2 : Forsaken Chaos Legendary shotgun",
+        title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> for 2 hours and claim the reward',
+        icon: "🎁",
+        showCopyButton: false,
+        showPreviewButton: true,
+        imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_ForsakenChaos.png",
+        expires: createDate(2025, 9, 30, 0, 0, 0, 0) // September 30, 2025, midnight AM
+    },
+    {
+        code: "Twitch Drops 3 : Midnight Defiance Legendary sniper rifle",
+        title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> hosted by a <a href="https://borderlands.2k.com/borderlands-4/partnered-creators/" target="_blank">partnered creator</a> for 2 hours and claim the reward',
+        icon: "🎁",
+        showCopyButton: false,
+        showPreviewButton: true,
+        imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_MidnightDefiance.png",
+        expires: createDate(2025, 9, 30, 0, 0, 0, 0) // September 30, 2025, midnight AM
+    },
+    {
+        code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJS5R",
+        title: 'Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin',
+        icon: "🎁",
+        showCopyButton: true,
+        showPreviewButton: true,
+        imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/breakfree.png",
+        expires: createDate(2030, 12, 31, 0, 0, 0, 0) // Fixed: December 31, 2030, midnight AM
+    },
+    {
+        code: "Butterfinger ECHO-4 Drone Skin",
+        title: 'This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a> <br><i>USE A VPN, then search and use a fake usa number/address gen, if live outside the usa, Its what I did and I  got emailed the key :)</i>',
+        icon: "🍫",
+        showCopyButton: false,
+        showPreviewButton: true,
+        imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/butter%20fingers%20skin.png",
+        expires: createDate(2025, 9, 22, 0, 0, 0, 0) // September 22, 2025, midnight AM
+    }
+];
+
+// ==================== BLACK MARKET VENDOR SYSTEM ====================
+const BLACK_MARKET_VENDOR = {
+    code: "Black Market Vendor",
+    title: 'Maurices Black Market - Refreshes every Thursday at 12:00 PM EDT',
+    icon: "🎁",
+    showCopyButton: false,
+    showPreviewButton: true,
+    imagePreview: "https://mapgenie.io/borderlands-4/maps/kairos?embed=light&catIds=13472",
+    type: 'weekly-vendor'
+};
 
         // =======================================================  
 
-function openImagePreview(imageUrl) {
-    document.getElementById('preview-image').src = imageUrl;
-    document.getElementById('image-preview-modal').style.display = 'flex';
-}
-
-function closeImagePreview() {
-    document.getElementById('image-preview-modal').style.display = 'none';
-}
-
-// Close when clicking outside image
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('image-preview-modal').addEventListener('click', function(e) {
-        if (e.target.id === 'image-preview-modal') {
-            closeImagePreview();
+// Helper for Black Market Vendor's weekly refresh
+        function getNextVendorRefresh() {
+            const now = new Date();
+            const nextRefresh = new Date(now);
+            
+            // Set target day (Thursday = 4) and time (12:00 PM)
+            const targetDay = 4; // Thursday (Sunday is 0, Monday is 1, ..., Saturday is 6)
+            const targetHour = 12; // 12 PM
+            const targetMinute = 0;
+            
+            // Calculate days until next Thursday
+            let daysUntilTarget = (targetDay + 7 - now.getDay()) % 7;
+            
+            // If it's the same day, check if time has passed
+            if (daysUntilTarget === 0) {
+                if (now.getHours() > targetHour || 
+                    (now.getHours() === targetHour && now.getMinutes() >= targetMinute)) {
+                    daysUntilTarget = 7; // Move to next week if time has passed
+                }
+            }
+            
+            // Set the next refresh date
+            nextRefresh.setDate(now.getDate() + daysUntilTarget);
+            nextRefresh.setHours(targetHour, targetMinute, 0, 0);
+            
+            return nextRefresh;
         }
-    });
-});
+
+        function createBlackMarketVendorBox() {
+            const nextRefresh = getNextVendorRefresh();
+            const now = new Date();
+            const timeLeft = nextRefresh.getTime() - now.getTime(); // Use getTime for accurate comparison
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            const iconHtml = createIconHtml(BLACK_MARKET_VENDOR.icon, false);
+            
+            // Get redemption status for the black market vendor
+            const isRedeemed = getBlackMarketRedemptionStatus();
+            const redeemedClass = isRedeemed ? 'redeemed' : '';
+
+            return `
+                <div class="black-market-code-box ${redeemedClass}" id="black-market-vendor">
+                    <div class="code-header">
+                        ${iconHtml}
+                        <div class="title-container">${BLACK_MARKET_VENDOR.title}</div>
+                    </div>
+                    <div class="code-text">Black Market Vendor</div>
+                    <div class="expire-date">Next refresh: ${formatDate(nextRefresh)}</div> <!-- Use formatDate -->
+                    <div class="countdown">Refreshes in: ${days}d ${hours}h ${minutes}m ${seconds}s</div>
+                    <div class="code-footer">
+                        <div class="redeem-checkbox">
+                            <input type="checkbox" id="bm-redeemed" ${isRedeemed ? 'checked' : ''} 
+                                onchange="handleBlackMarketRedemptionChange(this, document.getElementById('black-market-vendor'))">
+                            <label for="bm-redeemed">?redeemed</label>
+                        </div>
+                        <button class="preview-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.imagePreview}')">
+                            📍 View Location
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateVendorTimer() {
+            const vendorBox = document.getElementById('black-market-vendor');
+            if (!vendorBox) return; // Exit if the vendor box isn't currently displayed
+
+            const nextRefresh = getNextVendorRefresh();
+            const now = new Date();
+            const timeLeft = nextRefresh.getTime() - now.getTime();
+            
+            // Handle case where refresh just occurred
+            if (timeLeft <= 0) {
+                // Clear redemption status for the new week
+                localStorage.removeItem('blackMarketRedeemed'); 
+                console.log("Black Market Vendor refreshed and redemption status cleared. Reloading page...");
+                location.reload();
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            const countdownElement = vendorBox.querySelector('.countdown');
+            const expireDateElement = vendorBox.querySelector('.expire-date');
+            
+            if (countdownElement) {
+                countdownElement.textContent = `Refreshes in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+            if (expireDateElement) {
+                // Use formatDate for consistent display
+                expireDateElement.textContent = `Next refresh: ${formatDate(nextRefresh)}`; 
+            }
+        }
+
+        // Make sure to call updateVendorTimer regularly (e.g., every second)
+        setInterval(updateVendorTimer, 1000);
+
+        function openImagePreview(url) {
+            const modal = document.getElementById('image-preview-modal');
+            const imageElement = document.getElementById('preview-image');
+            const container = document.getElementById('preview-container');
+            
+            // Hide both first
+            imageElement.style.display = 'none';
+            container.style.display = 'none';
+            
+            if (url.match(/\.(jpeg|jpg|gif|png|svg|webp|bmp)$/i)) {
+                // It's an image - use the existing image element
+                imageElement.src = url;
+                imageElement.style.display = 'block';
+                imageElement.alt = "Preview";
+            } else {
+                // It's a website - use the container
+                container.innerHTML = `
+                    <iframe src="${url}" style="width: 800px; height: 600px; max-width: 90vw; max-height: 80vh; border: 2px solid #ffc600; border-radius: 5px;" 
+                            onerror="showPreviewFallback('${url}')">
+                    </iframe>
+                `;
+                container.style.display = 'block';
+            }
+            
+            modal.style.display = 'flex';
+        }
+
+        function showPreviewFallback(url) {
+            const container = document.getElementById('preview-container');
+            container.innerHTML = `
+                <div style="color: white; text-align: center; padding: 40px;">
+                    <h3>🌐 Cannot Embed Website</h3>
+                    <p>Click below to open in new tab:</p>
+                    <button onclick="window.open('${url}', '_blank'); closeImagePreview();" 
+                            style="background: #ffc600; color: black; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                        Open MapGenie
+                    </button>
+                </div>
+            `;
+        }
+
+        function closeImagePreview() {
+            document.getElementById('image-preview-modal').style.display = 'none';
+        }
+
+        // Close when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'image-preview-modal') {
+                closeImagePreview();
+            }
+        });
 
         function toggleInfo(sectionId) {
             const section = document.getElementById(sectionId);
@@ -1295,8 +1542,38 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // New functions for Black Market Vendor redemption status
+        function saveBlackMarketRedemptionStatus(isRedeemed) {
+            try {
+                localStorage.setItem('blackMarketRedeemed', JSON.stringify(isRedeemed));
+            } catch (e) {
+                console.error("Error saving Black Market redemption status to localStorage:", e);
+            }
+        }
+
+        function getBlackMarketRedemptionStatus() {
+            try {
+                const status = localStorage.getItem('blackMarketRedeemed');
+                return status ? JSON.parse(status) : false;
+            } catch (e) {
+                console.error("Error reading Black Market redemption status from localStorage:", e);
+                return false;
+            }
+        }
+
+        function handleBlackMarketRedemptionChange(checkbox, container) {
+            const isRedeemed = checkbox.checked;
+            saveBlackMarketRedemptionStatus(isRedeemed);
+            
+            if (isRedeemed) {
+                container.classList.add('redeemed');
+            } else {
+                container.classList.remove('redeemed');
+            }
+        }
+
         function isImageUrl(str) {
-            return str.match(/\.(jpeg|jpg|gif|png|svg|webp)$/) !== null;
+            return str.match(/\.(jpeg|jpg|gif|png|svg|webp)$/i) !== null;
         }
 
         function createIconHtml(icon, isPermanent = false) {
@@ -1311,311 +1588,465 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-function organizeCodes() {
-    const now = new Date();
-    const activeCodes = [];
-    const expiredCodes = [];
-    
-    // Check regular codes
-    ALL_CODES_CONFIG.forEach(codeData => {
-        if (codeData.expires.getTime() > now.getTime()) {
-            activeCodes.push(codeData);
-        } else {
-            expiredCodes.push(codeData);
+        // --- MODIFIED organizeCodes function for robust date comparison and error handling ---
+        function organizeCodes() {
+            const now = new Date();
+            const nowTimestamp = now.getTime(); // Get timestamp once for consistent comparison
+            const regularActiveCodes = [];
+            const permanentActiveCodes = [];
+            const expiredCodes = [];
+
+            // Process ALL_CODES_CONFIG (regular codes)
+            ALL_CODES_CONFIG.forEach(codeData => {
+                let expiresDate;
+                try {
+                    expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
+                } catch (e) {
+                    console.error(`Error parsing expires date for regular code "${codeData.code}":`, codeData.expires, e);
+                    // If parsing fails, treat as expired for safety to ensure it doesn't stay active.
+                    expiredCodes.push(codeData);
+                    return;
+                }
+
+                // Check for "Invalid Date" resulting from parsing
+                if (isNaN(expiresDate.getTime())) {
+                    console.error("Invalid expires date for regular code (isNaN check):", codeData.code, codeData.expires);
+                    // If invalid, assume it's malformed data and treat as expired for safety.
+                    expiredCodes.push(codeData);
+                    return;
+                }
+
+                // Compare timestamps for precise expiration check
+                if (expiresDate.getTime() > nowTimestamp) {
+                    regularActiveCodes.push(codeData);
+                } else {
+                    expiredCodes.push(codeData);
+                }
+            });
+
+            // Process PERMANENT_CODES
+            PERMANENT_CODES.forEach(codeData => {
+                let expiresDate = null;
+                if (codeData.expires) {
+                    try {
+                        expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
+                    } catch (e) {
+                        console.error(`Error parsing expires date for permanent code "${codeData.code}":`, codeData.expires, e);
+                        // If parsing fails for a permanent code with an expiry, treat as active
+                        // to prevent it from being incorrectly expired due to bad data.
+                        permanentActiveCodes.push(codeData);
+                        return;
+                    }
+
+                    // Check for "Invalid Date" resulting from parsing
+                    if (isNaN(expiresDate.getTime())) {
+                        console.error("Invalid expires date for permanent code (isNaN check):", codeData.code, codeData.expires);
+                        // If invalid, treat as active to prevent incorrect expiration due to bad data.
+                        permanentActiveCodes.push(codeData);
+                        return;
+                    }
+                }
+                
+                // No expiration, or expires in the future (compare timestamps)
+                if (!expiresDate || expiresDate.getTime() > nowTimestamp) {
+                    permanentActiveCodes.push(codeData);
+                } else { // Has expiration and it's <= now (compare timestamps)
+                    expiredCodes.push({
+                        ...codeData,
+                        wasPermanent: true // Flag to indicate it was originally permanent
+                    });
+                }
+            });
+            
+            return { regularActiveCodes, permanentActiveCodes, expiredCodes };
         }
-    });
-    
-    // Check permanent codes for expiration and move expired ones
-    PERMANENT_CODES.forEach(codeData => {
-        if (codeData.expires && codeData.expires.getTime() <= now.getTime()) {
-            expiredCodes.push({
-                ...codeData,
-                wasPermanent: true
+
+        function formatDate(date) {
+            // Ensure the date object is valid before formatting
+            if (!date || isNaN(date.getTime())) {
+                return "Invalid Date";
+            }
+            // Convert to user's local time with clear timezone info
+            const userLocalTime = date.toLocaleString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZoneName: 'short'
+            });
+            
+            // Get the user's timezone
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            
+            return `Expires: ${userLocalTime} (Your Timezone: ${userTimezone})`;
+        }
+
+        function createPermanentCodeBox(codeData, index) {
+            const hasCopyButton = codeData.showCopyButton !== false;
+            const hasPreviewButton = codeData.showPreviewButton;
+            const isRedeemed = getRedemptionStatus(codeData.code);
+            const redeemedClass = isRedeemed ? 'permanent-redeemed' : '';
+            const iconHtml = createIconHtml(codeData.icon, true);
+            
+            let countdownHtml = '';
+            let expiresDate = null;
+
+            if (codeData.expires) {
+                try {
+                    expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
+                    if (isNaN(expiresDate.getTime())) {
+                         console.error("Invalid expires date in createPermanentCodeBox for:", codeData.code, codeData.expires);
+                         expiresDate = null; // Treat as no expiration if invalid
+                    }
+                } catch (e) {
+                    console.error("Error parsing expires date in createPermanentCodeBox for:", codeData.code, codeData.expires, e);
+                    expiresDate = null;
+                }
+            }
+
+            if (expiresDate) {
+                const timeLeft = expiresDate.getTime() - new Date().getTime();
+                if (timeLeft > 0) {
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    countdownHtml = `<div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>`;
+                }
+            }
+            
+            let copyButtonHtml = '';
+            if (hasCopyButton) {
+                copyButtonHtml = `
+                    <button class="permanent-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'permanent')">
+                        COPY
+                    </button>
+                    <span id="copied-permanent-${index}" class="permanent-copied-message">✓ Copied!</span>
+                `;
+            }
+            
+            let previewButtonHtml = '';
+            if (hasPreviewButton && codeData.imagePreview) { 
+                previewButtonHtml = `
+                    <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
+                        📷 PREVIEW
+                    </button>
+                `;
+            }
+            
+            return `
+                <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
+                    <div class="permanent-code-header">
+                        ${iconHtml}
+                        <div class="permanent-code-text">${codeData.code}</div>
+                    </div>
+                    <div class="permanent-title-container">${codeData.title}</div>
+                    ${expiresDate ? `<div class="expire-date">${formatDate(expiresDate)}</div>` : ''}
+                    ${countdownHtml}
+                    <div class="permanent-code-footer">
+                        <div class="redeem-checkbox">
+                            <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                                onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))">
+                            <label for="permanent-redeemed-${index}">?redeemed</label>
+                        </div>
+                        ${copyButtonHtml}
+                        ${previewButtonHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createActiveCodeBox(codeData, index) {
+            const hasCopyButton = codeData.showCopyButton !== false;
+            const hasPreviewButton = codeData.showPreviewButton;
+            let expiresDate;
+            try {
+                expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
+                if (isNaN(expiresDate.getTime())) {
+                    console.error("Invalid expires date in createActiveCodeBox for:", codeData.code, codeData.expires);
+                    expiresDate = new Date(0); // Set to an arbitrary past date if invalid
+                }
+            } catch (e) {
+                console.error("Error parsing expires date in createActiveCodeBox for:", codeData.code, codeData.expires, e);
+                expiresDate = new Date(0); // Set to an arbitrary past date if error
+            }
+
+            const timeLeft = expiresDate.getTime() - new Date().getTime();
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const isRedeemed = getRedemptionStatus(codeData.code);
+            const redeemedClass = isRedeemed ? 'redeemed' : '';
+            const iconHtml = createIconHtml(codeData.icon, false);
+            
+            let copyButtonHtml = '';
+            if (hasCopyButton) {
+                copyButtonHtml = `
+                    <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
+                        COPY
+                    </button>
+                    <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
+                `;
+            }
+            
+            let previewButtonHtml = '';
+            if (hasPreviewButton && codeData.imagePreview) { 
+                previewButtonHtml = `
+                    <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
+                        📷 PREVIEW
+                    </button>
+                `;
+            }
+            
+            return `
+                <div class="code-box ${redeemedClass}" id="active-${index}">
+                    <div class="code-header">
+                        ${iconHtml}
+                        <div class="title-container">${codeData.title}</div>
+                    </div>
+                    <div class="code-text">${codeData.code}</div>
+                    <div class="expire-date">${formatDate(expiresDate)}</div>
+                    <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
+                    <div class="code-footer">
+                        <div class="redeem-checkbox">
+                            <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                                onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
+                            <label for="redeemed-${index}">?redeemed</label>
+                        </div>
+                        ${copyButtonHtml}
+                        ${previewButtonHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createExpiredCodeBox(codeData, index) {
+            const hasPreviewButton = codeData.showPreviewButton;
+            const isRedeemed = getRedemptionStatus(codeData.code);
+            const redeemedClass = isRedeemed ? 'redeemed' : '';
+            const iconHtml = createIconHtml(codeData.icon, false);
+            
+            let previewButtonHtml = '';
+            if (hasPreviewButton && codeData.imagePreview) { 
+                previewButtonHtml = `
+                    <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
+                        📷 PREVIEW
+                    </button>
+                `;
+            }
+            
+            let expiresDate;
+            try {
+                expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
+                if (isNaN(expiresDate.getTime())) {
+                    console.error("Invalid expires date in createExpiredCodeBox for:", codeData.code, codeData.expires);
+                    expiresDate = new Date(); // Use current date as fallback if invalid
+                }
+            } catch (e) {
+                console.error("Error parsing expires date in createExpiredCodeBox for:", codeData.code, codeData.expires, e);
+                expiresDate = new Date(); // Use current date as fallback if error
+            }
+
+            return `
+                <div class="expired-code-box ${redeemedClass}" id="expired-${index}">
+                    <div class="code-header">
+                        ${iconHtml}
+                        <div class="title-container">${codeData.title}</div>
+                    </div>
+                    <div class="code-text">${codeData.code}</div>
+                    <div class="expire-date">Expired: ${formatDate(expiresDate)}</div>
+                    <div class="code-footer">
+                        <div class="redeem-checkbox">
+                            <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                                onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
+                            <label for="expired-redeemed-${index}">?redeemed</label>
+                        </div>
+                        <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
+                            COPY
+                        </button>
+                        ${previewButtonHtml}
+                        <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
+                    </div>
+                    <div class="expired-text">❌ EXPIRED</div>
+                </div>
+            `;
+        }
+
+        function updateCountdowns() {
+            const now = new Date();
+            const nowTimestamp = now.getTime();
+            
+            // Update active codes
+            const activeContainers = document.querySelectorAll('#active-codes-container .code-box');
+            activeContainers.forEach((container) => {
+                const countdownElement = container.querySelector('.countdown');
+                const codeTextElement = container.querySelector('.code-text');
+                
+                if (!countdownElement || !codeTextElement) return;
+                
+                const codeText = codeTextElement.textContent;
+                // Find the correct code data from ALL_CODES_CONFIG (excluding the vendor for this loop)
+                const codeData = ALL_CODES_CONFIG.find(code => code.code === codeText);
+                
+                // Skip if no codeData or expires found
+                if (!codeData || !codeData.expires) {
+                    return;
+                }
+                
+                let expireDate;
+                try {
+                    expireDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
+                    if (isNaN(expireDate.getTime())) {
+                        console.error("Invalid expires date in updateCountdowns (active) for:", codeData.code, codeData.expires);
+                        countdownElement.textContent = 'Invalid Date';
+                        countdownElement.style.color = '#ff4444';
+                        return;
+                    }
+                } catch (e) {
+                    console.error("Error parsing expires date in updateCountdowns (active) for:", codeData.code, codeData.expires, e);
+                    countdownElement.textContent = 'Error Date';
+                    countdownElement.style.color = '#ff4444';
+                    return;
+                }
+
+                const timeLeft = expireDate.getTime() - nowTimestamp;
+                
+                if (timeLeft <= 0) {
+                    countdownElement.textContent = 'EXPIRED';
+                    countdownElement.style.color = '#ff4444';
+                    // Note: This only updates the text. To *move* the box, you'd need more complex DOM manipulation
+                    // or re-initialize the page which happens on a full refresh.
+                } else {
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    
+                    countdownElement.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+                    countdownElement.style.color = '#ff7c00';
+                }
+            });
+            
+            // Update permanent codes countdowns
+            const permanentContainers = document.querySelectorAll('#permanent-codes-container .permanent-code-box');
+            permanentContainers.forEach((container) => {
+                const countdownElement = container.querySelector('.countdown');
+                const codeTextElement = container.querySelector('.permanent-code-text');
+                
+                if (!countdownElement || !codeTextElement) return;
+                
+                const codeText = codeTextElement.textContent;
+                const codeData = PERMANENT_CODES.find(code => code.code === codeText);
+                
+                if (!codeData || !codeData.expires) {
+                    // If permanent code has no expiration or it's not found, clear countdown if present
+                    if (countdownElement) countdownElement.textContent = ''; 
+                    return;
+                }
+                
+                let expireDate;
+                try {
+                    expireDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
+                    if (isNaN(expireDate.getTime())) {
+                        console.error("Invalid expires date in updateCountdowns (permanent) for:", codeData.code, codeData.expires);
+                        countdownElement.textContent = 'Invalid Date';
+                        countdownElement.style.color = '#ff4444';
+                        return;
+                    }
+                } catch (e) {
+                    console.error("Error parsing expires date in updateCountdowns (permanent) for:", codeData.code, codeData.expires, e);
+                    countdownElement.textContent = 'Error Date';
+                    countdownElement.style.color = '#ff4444';
+                    return;
+                }
+
+                const timeLeft = expireDate.getTime() - nowTimestamp;
+                
+                if (timeLeft <= 0) {
+                    countdownElement.textContent = 'EXPIRED';
+                    countdownElement.style.color = '#ff4444';
+                } else {
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    
+                    countdownElement.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+                    countdownElement.style.color = '#ff7c00';
+                }
             });
         }
-    });
-    
-    return { activeCodes, expiredCodes };
-}
 
-function formatDate(date) {
-    // Convert to user's local time with clear timezone info
-    const userLocalTime = date.toLocaleString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        timeZoneName: 'short'
-    });
-    
-    // Get the user's timezone
-    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    
-    return `Expires: ${userLocalTime} (Your Timezone: ${userTimezone})`;
-}
-
-function createPermanentCodeBox(codeData, index) {
-    const hasCopyButton = codeData.showCopyButton !== false;
-    const hasPreviewButton = codeData.showPreviewButton;
-    const isRedeemed = getRedemptionStatus(codeData.code);
-    const redeemedClass = isRedeemed ? 'permanent-redeemed' : '';
-    const iconHtml = createIconHtml(codeData.icon, true);
-    
-    // Calculate time left if expires exists
-    let countdownHtml = '';
-    if (codeData.expires) {
-        const timeLeft = codeData.expires - new Date();
-        if (timeLeft > 0) {
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            countdownHtml = `<div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>`;
-        }
-    }
-    
-    let copyButtonHtml = '';
-    if (hasCopyButton) {
-        copyButtonHtml = `
-            <button class="permanent-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'permanent')">
-                COPY
-            </button>
-            <span id="copied-permanent-${index}" class="permanent-copied-message">✓ Copied!</span>
-        `;
-    }
-    
-    let previewButtonHtml = '';
-    if (hasPreviewButton) {
-        previewButtonHtml = `
-            <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
-                📷 PREVIEW
-            </button>
-        `;
-    }
-    
-    return `
-        <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
-            <div class="permanent-code-header">
-                ${iconHtml}
-                <div class="permanent-code-text">${codeData.code}</div>
-            </div>
-            <div class="permanent-title-container">${codeData.title}</div>
-            ${codeData.expires ? `<div class="expire-date">${formatDate(codeData.expires)}</div>` : ''}
-            ${countdownHtml}
-            <div class="permanent-code-footer">
-                <div class="redeem-checkbox">
-                    <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                        onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))">
-                    <label for="permanent-redeemed-${index}">?redeemed</label>
-                </div>
-                ${copyButtonHtml}
-                ${previewButtonHtml}
-            </div>
-        </div>
-    `;
-}
-
-function createActiveCodeBox(codeData, index) {
-    const hasCopyButton = codeData.showCopyButton !== false;
-    const hasPreviewButton = codeData.showPreviewButton;
-    const timeLeft = codeData.expires.getTime() - new Date().getTime();
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    const isRedeemed = getRedemptionStatus(codeData.code);
-    const redeemedClass = isRedeemed ? 'redeemed' : '';
-    const iconHtml = createIconHtml(codeData.icon, false);
-    
-    let copyButtonHtml = '';
-    if (hasCopyButton) {
-        copyButtonHtml = `
-            <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
-                COPY
-            </button>
-            <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
-        `;
-    }
-    
-    return `
-        <div class="code-box ${redeemedClass}" id="active-${index}">
-            <div class="code-header">
-                ${iconHtml}
-                <div class="title-container">${codeData.title}</div>
-            </div>
-            <div class="code-text">${codeData.code}</div>
-            <div class="expire-date">${formatDate(codeData.expires)}</div>
-            <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
-            <div class="code-footer">
-                <div class="redeem-checkbox">
-                    <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                        onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
-                    <label for="redeemed-${index}">?redeemed</label>
-                </div>
-                ${copyButtonHtml}
-            </div>
-        </div>
-    `;
-}
-
-function createExpiredCodeBox(codeData, index) {
-    const hasPreviewButton = codeData.showPreviewButton;
-    const isRedeemed = getRedemptionStatus(codeData.code);
-    const redeemedClass = isRedeemed ? 'redeemed' : '';
-    const iconHtml = createIconHtml(codeData.icon, false);
-    
-    let previewButtonHtml = '';
-    if (hasPreviewButton) {
-        previewButtonHtml = `
-            <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
-                📷 PREVIEW
-            </button>
-        `;
-    }
-    
-    return `
-        <div class="expired-code-box ${redeemedClass}" id="expired-${index}">
-            <div class="code-header">
-                ${iconHtml}
-                <div class="title-container">${codeData.title}</div>
-            </div>
-            <div class="code-text">${codeData.code}</div>
-            <div class="expire-date">Expired: ${formatDate(codeData.expires)}</div>
-            <div class="code-footer">
-                <div class="redeem-checkbox">
-                    <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                        onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
-                    <label for="expired-redeemed-${index}">?redeemed</label>
-                </div>
-                <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
-                    COPY
-                </button>
-                ${previewButtonHtml}
-                <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
-            </div>
-            <div class="expired-text">❌ EXPIRED</div>
-        </div>
-    `;
-}
-
-function updateCountdowns() {
-    const now = new Date();
-    
-    // Update active codes
-    const activeContainers = document.querySelectorAll('#active-codes-container .code-box');
-    activeContainers.forEach((container, index) => {
-        const countdownElement = container.querySelector('.countdown');
-        const codeTextElement = container.querySelector('.code-text');
-        
-        if (!countdownElement || !codeTextElement) return;
-        
-        // Find the correct code data by matching the actual code text
-        const codeText = codeTextElement.textContent;
-        const codeData = ALL_CODES_CONFIG.find(code => code.code === codeText);
-        
-        if (!codeData) return;
-        
-        const expireDate = codeData.expires;
-        const timeLeft = expireDate.getTime() - now.getTime();
-        
-        if (timeLeft <= 0) {
-            countdownElement.textContent = 'EXPIRED';
-            countdownElement.style.color = '#ff4444';
-        } else {
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            countdownElement.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-            countdownElement.style.color = '#ff7c00';
-        }
-    });
-    
-    // Update permanent codes countdowns
-    const permanentContainers = document.querySelectorAll('#permanent-codes-container .permanent-code-box');
-    permanentContainers.forEach((container, index) => {
-        const countdownElement = container.querySelector('.countdown');
-        const codeTextElement = container.querySelector('.permanent-code-text');
-        
-        if (!countdownElement || !codeTextElement) return;
-        
-        // Find the correct code data by matching the actual code text
-        const codeText = codeTextElement.textContent;
-        const codeData = PERMANENT_CODES.find(code => code.code === codeText);
-        
-        if (!codeData || !codeData.expires) return;
-        
-        const expireDate = codeData.expires;
-        const timeLeft = expireDate.getTime() - now.getTime();
-        
-        if (timeLeft <= 0) {
-            countdownElement.textContent = 'EXPIRED';
-            countdownElement.style.color = '#ff4444';
-        } else {
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            countdownElement.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-            countdownElement.style.color = '#ff7c00';
-        }
-    });
-}
-
-// ==================== AUTO CACHE DETECTION ====================
+        // ==================== AUTO CACHE DETECTION ====================
 function getCodesHash() {
-    // Create a unique fingerprint of current active codes
-    const activeCodesData = ALL_CODES_CONFIG.map(code => code.code + code.expires.getTime()).join('|');
-    return btoa(activeCodesData).substring(0, 32); // Short hash
+    // Include all code configs and the Black Market vendor's next refresh time
+    const allCodesData = [...ALL_CODES_CONFIG, ...PERMANENT_CODES]; 
+    const hashString = allCodesData.map(code => 
+        code.code + (code.expires ? (new Date(code.expires).getTime() || '') : '')
+    ).join('|');
+
+    // Add the next vendor refresh time to the hash to ensure refresh on vendor change
+    const nextVendorRefreshTimestamp = getNextVendorRefresh().getTime();
+    return btoa(hashString + `|VendorRefresh:${nextVendorRefreshTimestamp}`).substring(0, 32); 
 }
 
-function checkCodesVersion() {
-    const currentHash = getCodesHash();
-    const savedHash = localStorage.getItem('shiftCodesHash');
-    
-    if (savedHash !== currentHash) {
-        // Codes have changed - update and refresh
-        localStorage.setItem('shiftCodesHash', currentHash);
-        console.log('Codes updated, refreshing page...');
-        location.reload();
-        return true; // Page will refresh
-    }
-    
-    return false; // No changes, continue normally
-}
+        function checkCodesVersion() {
+            const currentHash = getCodesHash();
+            const savedHash = localStorage.getItem('shiftCodesHash');
+            
+            if (savedHash !== currentHash) {
+                // Codes have changed - update and refresh
+                localStorage.setItem('shiftCodesHash', currentHash);
+                console.log('Codes updated, refreshing page...');
+                location.reload();
+                return true; // Page will refresh
+            }
+            
+            return false; // No changes, continue normally
+        }
 
 function initializePage() {
-    // Auto-detect code changes and refresh if needed
-    if (checkCodesVersion()) return;
     const permanentContainer = document.getElementById('permanent-codes-container');
     const activeContainer = document.getElementById('active-codes-container');
     const expiredContainer = document.getElementById('expired-codes-container');
+    // NEW: Get reference to the black market container
+    const blackMarketContainer = document.getElementById('black-market-codes-container'); 
     
-    const { activeCodes, expiredCodes } = organizeCodes();
-    const now = new Date();
+    // Clear containers before adding new content to prevent duplicates on re-initialization
+    console.log('Clearing containers...');
+    permanentContainer.innerHTML = '';
+    activeContainer.innerHTML = '';
+    expiredContainer.innerHTML = '';
+    blackMarketContainer.innerHTML = ''; // Clear the new black market container
+    console.log('Containers cleared.');
+
+    const { regularActiveCodes, permanentActiveCodes, expiredCodes } = organizeCodes();
     
-    // Only show permanent codes that aren't expired
-    const validPermanentCodes = PERMANENT_CODES.filter(codeData => 
-        !codeData.expires || codeData.expires > now
-    );
+    console.log('Organized Codes - Regular Active:', regularActiveCodes.length);
+    console.log('Organized Codes - Permanent Active:', permanentActiveCodes.length);
+    console.log('Organized Codes - Expired:', expiredCodes.length);
     
-    if (validPermanentCodes.length > 0) {
-        validPermanentCodes.forEach((codeData, index) => {
-            permanentContainer.innerHTML += createPermanentCodeBox(codeData, index);
-        });
-    } else {
-        permanentContainer.innerHTML = '<div class="no-codes">No permanent codes available at this time.</div>';
-    }
+    // NEW: Add Black Market Vendor to its dedicated container
+    blackMarketContainer.innerHTML += createBlackMarketVendorBox(); 
     
-    // Show active codes
-    if (activeCodes.length > 0) {
-        activeCodes.forEach((codeData, index) => {
+    // Then add regular active codes (no vendor here anymore)
+    if (regularActiveCodes.length > 0) {
+        regularActiveCodes.forEach((codeData, index) => {
             activeContainer.innerHTML += createActiveCodeBox(codeData, index);
         });
     } else {
-        activeContainer.innerHTML = '<div class="no-codes">No active codes at the moment. Check back later, Vault Hunter!</div>';
+        // Updated message for active codes, assuming no vendor here now
+        activeContainer.innerHTML += '<div class="no-codes">No active regular codes at the moment. Check back later, Vault Hunter!</div>';
+    }
+    
+    // Render active permanent codes
+    if (permanentActiveCodes.length > 0) {
+        permanentActiveCodes.forEach((codeData, index) => {
+            permanentContainer.innerHTML += createPermanentCodeBox(codeData, index);
+        });
+    } else {
+        permanentContainer.innerHTML += '<div class="no-codes">No permanent codes available at this time.</div>';
     }
     
     // Show expired codes (including expired permanent ones)
@@ -1624,14 +2055,25 @@ function initializePage() {
             expiredContainer.innerHTML += createExpiredCodeBox(codeData, index);
         });
     } else {
-        expiredContainer.innerHTML = '<div class="no-codes">No expired codes to display.</div>';
+        expiredContainer.innerHTML += '<div class="no-codes">No expired codes to display.</div>';
     }
     
-    updateCountdowns();
-    setInterval(updateCountdowns, 1000);
+    updateCountdowns(); // Initial call to display correct times immediately
+    // THIS LINE MUST BE PRESENT for active countdowns
+    setInterval(updateCountdowns, 1000); 
+    setInterval(updateVendorTimer, 1000); // Keep this for the Black Market Vendor
 }
 
-document.addEventListener('DOMContentLoaded', initializePage);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Run version check, if codes changed, page will reload.
+            // If not, initializePage will be called.
+            if (!checkCodesVersion()) {
+                initializePage();
+            }
+            // Start countdowns and vendor timer once, they manage their own intervals.
+            // updateCountdowns is called by initializePage.
+            // updateVendorTimer has its own setInterval.
+        });
     </script>
 </body>
 </html>
