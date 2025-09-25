@@ -1013,7 +1013,91 @@
             background: linear-gradient(to bottom, #444, #222); /* Slightly lighter on hover */
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.1); /* Subtle white glow */
-        }    
+        }
+
+/* Style for the new extra button inside the Black Market Vendor box */
+        .black-market-extra-btn {
+            background: linear-gradient(to bottom, #777, #555); /* Gray gradient */
+            border: 1px solid #999;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px; /* Adds space from the "View Location" button */
+            transition: all 0.3s;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-family: 'Chakra Petch', sans-serif;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .black-market-extra-btn:hover {
+            background: linear-gradient(to bottom, #888, #666);
+            transform: scale(1.05);
+            box-shadow: 0 0 4px #aaa;
+        }
+
+
+                /* Container for the two small Black Market buttons */
+        .black-market-buttons-group {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap if screen is too small */
+            gap: 8px; /* Space between the two buttons */
+            align-items: center;
+            order: 1; /* Keep them on the left side of the footer */
+        }
+
+        /* Base style for small Black Market buttons */
+        .bm-small-btn {
+            padding: 4px 8px; /* Reduced padding */
+            font-size: 10px; /* Reduced font size */
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            font-family: 'Chakra Petch', sans-serif;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0; /* Prevent them from shrinking too much */
+            line-height: 1.2; /* Adjust line height for smaller text */
+        }
+        
+        .bm-small-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Specific style for the Static Image button */
+        .bm-static-image-btn {
+            background: linear-gradient(to bottom, #777, #555); /* Gray gradient */
+            border: 1px solid #999;
+            color: #fff;
+        }
+
+        .bm-static-image-btn:hover {
+            background: linear-gradient(to bottom, #888, #666);
+        }
+
+        /* Specific style for the MapGenie button */
+        .bm-mapgenie-btn {
+            background: linear-gradient(to bottom, #4a90e2, #2a70c2); /* Blue gradient */
+            border: 1px solid #6ba8ff;
+            color: #fff;
+        }
+
+        .bm-mapgenie-btn:hover {
+            background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
+        }
+
+        /* Ensure .redeem-checkbox is properly ordered in the footer */
+        .code-footer .redeem-checkbox {
+            order: 2; /* Pushes the checkbox to the right */
+            margin-left: auto; /* Ensures it's pushed to the right if there's extra space */
+        }
+
     </style>
 </head>
 <div id="image-preview-modal" class="image-preview-modal">
@@ -1331,11 +1415,15 @@ const BLACK_MARKET_VENDOR = {
     icon: "🎁",
     showCopyButton: false,
     showPreviewButton: true,
-    imagePreview: "https://mapgenie.io/borderlands-4/maps/kairos?embed=light&catIds=13472",
+    mapGenieLocation: "https://mapgenie.io/borderlands-4/maps/kairos?embed=light&catIds=13472", // Renamed for clarity
+    staticImageLocation: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4-Black-Market-Location-003-Grindstone-of-the-Worthysep25-oct2.jpg", // <--- !!! REPLACE THIS WITH THE ACTUAL STATIC IMAGE URL !!!
     type: 'weekly-vendor'
 };
 const ROADMAP_CONFIG = {
     imageUrl: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/roadmap.png", // <--- CHANGE THIS TO YOUR ACTUAL ROADMAP IMAGE URL
+};
+const BLACK_MARKET_EXTRA_CONFIG = {
+    imageUrl: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4-Black-Market-Location-003-Grindstone-of-the-Worthysep25-oct2.jpg", // <--- !!! REPLACE THIS WITH THE ACTUAL IMAGE URL !!!
 };
         // =======================================================  
 
@@ -1392,17 +1480,21 @@ const ROADMAP_CONFIG = {
                     <div class="code-text">Black Market Vendor</div>
                     <div class="expire-date">Next refresh: ${formatDate(nextRefresh, 'Refreshes:')}</div>
                     <div class="countdown">Refreshes in: ${days}d ${hours}h ${minutes}m ${seconds}s</div>
-                    <div class="code-footer">
+<div class="code-footer">
+                        <div class="black-market-buttons-group"> <!-- New wrapper for buttons -->
+                            <button class="bm-small-btn bm-static-image-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.staticImageLocation}')">
+                                📍 View Location (STATIC IMAGE) | IS CURRENT
+                            </button>
+                            <button class="bm-small-btn bm-mapgenie-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.mapGenieLocation}')">
+                                📍 View Location (MAPGENIE) | MIGHT BE SLOW/WRONG
+                            </button>
+                        </div>
                         <div class="redeem-checkbox">
                             <input type="checkbox" id="bm-redeemed" ${isRedeemed ? 'checked' : ''} 
                                 onchange="handleBlackMarketRedemptionChange(this, document.getElementById('black-market-vendor'))">
                             <label for="bm-redeemed">?redeemed</label>
                         </div>
-                        <button class="preview-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.imagePreview}')">
-                            📍 View Location
-                        </button>
                     </div>
-                </div>
             `;
         }
 
