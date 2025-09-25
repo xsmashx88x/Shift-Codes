@@ -1327,7 +1327,7 @@ const PERMANENT_CODES = [
 // ==================== BLACK MARKET VENDOR SYSTEM ====================
 const BLACK_MARKET_VENDOR = {
     code: "Black Market Vendor",
-    title: 'Maurices Black Market - Refreshes every Friday at 12:00 PM EDT',
+    title: 'Maurices Black Market - Refreshes every Friday at 12:00 AM EDT',
     icon: "🎁",
     showCopyButton: false,
     showPreviewButton: true,
@@ -1344,9 +1344,9 @@ const ROADMAP_CONFIG = {
             const now = new Date();
             const nextRefresh = new Date(now);
             
-            // Set target day (Thursday = 4) and time (12:00 PM)
+            // Set target day (Thursday = 4) and time (12:00 AM)
             const targetDay = 5; // Thursday (Sunday is 0, Monday is 1, ..., Saturday is 6)
-            const targetHour = 12; // 12 PM
+            const targetHour = 0; // 12 AM
             const targetMinute = 0;
             
             // Calculate days until next Thursday
