@@ -987,6 +987,33 @@
         #redeem-section .info-content a:hover {
             color: #ffffff;
         }
+
+    /* Style for the new "View Roadmap" button */
+        .roadmap-button {
+            background: linear-gradient(to bottom, #333, #111); /* Dark grey to black gradient */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 1px auto 5px auto; /* Top margin, auto left/right, bottom margin */
+            transition: all 0.3s;
+            font-size: 14px;
+            text-transform: uppercase;
+            border: 1px solid #555; /* Dark grey border */
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Chakra Petch', sans-serif;
+            display: block; /* Make it a block element to center with margin: auto */
+            width: fit-content; /* Adjust width to content */
+        }
+        
+        .roadmap-button:hover {
+            background: linear-gradient(to bottom, #444, #222); /* Slightly lighter on hover */
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.1); /* Subtle white glow */
+        }    
     </style>
 </head>
 <div id="image-preview-modal" class="image-preview-modal">
@@ -1081,6 +1108,12 @@
             </a>
         </div>
 
+<!-- NEW ROADMAP BUTTON (now above the heading) -->
+        <button class="roadmap-button" onclick="openRoadmapImage()">
+            🗺️ View Bl4 Roadmap 🛣️
+        </button>
+        <!-- END NEW ROADMAP BUTTON -->
+
         <button class="collapse-btn-Perm" onclick="togglePermanent()">
             🎁 [View] Drops + Limited Time Codes + More ⌛
         </button>
@@ -1102,6 +1135,7 @@
                 <!-- Black Market Vendor will be inserted here by JavaScript -->
             </div>
         </div>
+
 
         <h2>✅ Active BL4 Codes (New At Top)</h2>
         <div id="active-codes-container">
@@ -1301,7 +1335,9 @@ const BLACK_MARKET_VENDOR = {
     imagePreview: "https://mapgenie.io/borderlands-4/maps/kairos?embed=light&catIds=13472",
     type: 'weekly-vendor'
 };
-
+const ROADMAP_CONFIG = {
+    imageUrl: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/roadmap.png", // <--- CHANGE THIS TO YOUR ACTUAL ROADMAP IMAGE URL
+};
         // =======================================================  
 
 // Helper for Black Market Vendor's weekly refresh
@@ -1434,6 +1470,11 @@ const BLACK_MARKET_VENDOR = {
             
             modal.style.display = 'flex';
         }
+
+        // --- NEW: Function to open the Roadmap image ---
+function openRoadmapImage() {
+    openImagePreview(ROADMAP_CONFIG.imageUrl);
+}
 
         function showPreviewFallback(url) {
             const container = document.getElementById('preview-container');
