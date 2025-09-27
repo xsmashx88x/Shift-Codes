@@ -1318,7 +1318,7 @@ margin: 10px auto;
         }
 
         .preview-btn:hover {
-            background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
+            background: linear-gradient(to bottom, #2a70c2, #4a90e2);
             transform: scale(1.05);
             box-shadow: 0 0 4px #6ba8ff;
         }
@@ -1350,7 +1350,7 @@ margin: 10px auto;
         /* active preview button ||||||||||||||||*/
         .activepreview-btn {
             background: linear-gradient(to bottom, #ff7c00, #e56a00);
-            border: 1px solid #6ba8ff;
+            border: 1px solid #FFDE00;
             color: #FFFFFF;
             padding: 6px 12px;
             border-radius: 3px;
@@ -1366,9 +1366,9 @@ margin: 10px auto;
         }
 
         .activepreview-btn:hover {
-            background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
+            background: linear-gradient(to bottom, #e56a00, #ff7c00);
             transform: scale(1.05);
-            box-shadow: 0 0 4px #6ba8ff;
+            box-shadow: 0 0 4px #FFDE00;
         }
 
         /* expire preview button ||||||||||||||||*/
@@ -1857,6 +1857,35 @@ margin: 10px auto;
     }
 }
 
+/* =================================================== */
+/*           NEW: CODE DESCRIPTION STYLING             */
+/* =================================================== */
+.code-description {
+    font-size: 14px;
+    color: #ffcc88; /* A lighter, less prominent gold */
+    line-height: 1.4;
+    margin-bottom: 12px;
+    padding-left: 5px;
+    border-left: 2px solid rgba(255, 198, 0, 0.4); /* Subtle left border */
+}
+
+/* Specific color for descriptions in permanent boxes */
+.permanent-description {
+    color: #cce5ff; /* A light blue to match the theme */
+    border-left-color: rgba(74, 144, 226, 0.4);
+}
+
+/* Specific color for descriptions in expired boxes */
+.expired-description {
+    color: #ffbaba; /* A light red */
+    border-left-color: rgba(255, 68, 68, 0.4);
+}
+
+/* Styling for any links inside a description */
+.code-description a {
+    color: #F6E261; /* Re-using the bright link color */
+    font-weight: bold;
+}
 
     </style>
 </head>
@@ -2013,7 +2042,7 @@ margin: 10px auto;
 <button class="collapse-btn-Perm" onclick="togglePermanent()" id="permanent-toggle-btn">
     🎁 [View] Drops + Limited Time Codes + More ⌛
     <br>
-    <small style="font-size: 0.9em; opacity: 0.9; color: #14F8FF;" class="drops-pulse">!Updated 9/26/2025!</small>
+    <small style="font-size: 0.9em; opacity: 0.9; color: #14F8FF;" class="drops-pulse">!Updated 9/27/2025!</small>
 </button>
         
         <div id="permanent-section" class="permanent-section">
@@ -2169,6 +2198,16 @@ const ALL_CODES_CONFIG = [
 ];
 
 const PERMANENT_CODES = [
+            {
+        code: "TZXT3-XJXCB-CXBJW-BTTJT-9SK6B",
+        title: 'Rafas Savings Savior | Vault Hunter Skin',
+        description: 'NOTE: This code has been disabled, Will Update In Few Days]<br><br>Community Challenge : Get 20 million Second Winds from Sep. 26-28 as Rafa<br><a href="https://x.com/Borderlands/status/1971651935104098527" target="_blank">Link To Tweet</a> ',
+        dateAdded: "9/27/2025",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/gift.png",
+        showCopyButton: true,
+        showPreviewButton: true,
+        imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/G1y2OQYXEAAqQVZ.jpeg",
+    },
         {
         code: "Discord  |  Borderlands Bundles + Single Items",
         title: 'Click On Shop, Look for the Borderlands 4 Image or Scroll down and will find it. <br>Items Range from $10.99CAD to $5.99CAD Being The Lowest<br><br>NO ETA ON WHEN IT GOES AWAY, COULD BE A WEEK OR MONTH OR MONTHS FROM NOW<br><br> [Click the preview button to see video of the effects]',
@@ -2215,8 +2254,9 @@ const PERMANENT_CODES = [
         expires: createDate(2030, 12, 31, 0, 0, 0, 0) // Fixed: December 31, 2030, midnight AM
     },
     {
-        code: "Butterfinger ECHO-4 Drone Skin",
-        title: 'This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a> <br><i>USE A VPN, then search and use a fake usa number/address gen, if live outside the usa, Its what I did and I  got emailed the key :)</i>',
+        code: "NO CODE - SIGNED UP AN IS SENT",
+        title: 'Butterfinger ECHO-4 Drone Skin',
+        description:'This shift code is can be acquired in two ways<br>Enter the  <a href="https://www.gamewithbutterfinger.com/home?path=Echo4" target="_blank">Butterfinger x Borderlands 4 online sweepstakes. </a> Note that theres no guarantee this will be available after September 2025. (US Only) <br> By purchasing the <a href="https://www.gamestop.com/collectibles/collectors-boxes/products/borderlands-4-echo-4-bundle-gamestop-exclusive/426330.html" target="_blank">GameStop Madrinas Coffee Collectors Box (US Only).</a> <br><i>USE A VPN, then search and use a fake usa number/address gen, if live outside the usa, Its what I did and I  got emailed the key :)</i>" ',
         icon: "🍫",
         showCopyButton: false,
         showPreviewButton: true,
@@ -2247,14 +2287,55 @@ const BLACK_MARKET_EXTRA_CONFIG = {
         // =======================================================  
 
         // Helper function to format the date added
-function formatDateAdded(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'short', 
-        day: 'numeric' 
-    });
-}
+         // =======================================================
+        //      FINAL: SMART & MANUAL DATE ADDED FUNCTION
+        // =======================================================
+        /**
+         * A smart function that gets and formats the "Added On" date based on specific rules:
+         * - If `dateAdded` is a valid date string, it's used.
+         * - If `dateAdded` is an empty string (""), it auto-generates today's date.
+         * - If the `dateAdded` property is completely missing, it does nothing.
+         * @param {object} codeData - The entire code object from your config.
+         * @returns {string} - The formatted date string (e.g., "Sep 27, 2025") or an empty string.
+         */
+        function getFormattedDateAdded(codeData) {
+            // Case 1: The `dateAdded` property is COMPLETELY MISSING.
+            // This is the "opt-out" condition. We show nothing.
+            // `hasOwnProperty` is the most precise way to check for this.
+            if (!codeData.hasOwnProperty('dateAdded')) {
+                return ''; // Return an empty string, so no HTML is created.
+            }
+
+            let rawDateString = codeData.dateAdded;
+
+            // Case 2: The property EXISTS, but is an EMPTY string ("" or " ").
+            // This is the trigger to auto-generate today's date.
+            if (rawDateString.trim() === '') {
+                rawDateString = new Date().toISOString().split('T')[0];
+            }
+
+            // Case 3 (Implicit): The property exists and already has a date string.
+            // In this case, `rawDateString` is already correct and we just need to format it.
+
+            // --- Final Formatting Step ---
+            // Now, format whatever rawDateString we ended up with.
+            try {
+                const date = new Date(rawDateString);
+                // Check for invalid dates (e.g., from a typo in a manual date)
+                if (isNaN(date.getTime())) {
+                    console.error("Invalid date string provided:", rawDateString);
+                    return ''; 
+                }
+                return date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            } catch (e) {
+                console.error("Failed to format date:", e);
+                return '';
+            }
+        }
 
 
 // Helper for Black Market Vendor's weekly refresh
@@ -2573,6 +2654,7 @@ function openRoadmapImage() {
         }
 
         // --- MODIFIED organizeCodes function for robust date comparison and error handling ---
+        // --- MODIFIED organizeCodes function for robust date comparison and error handling ---
         function organizeCodes() {
             const now = new Date();
             const nowTimestamp = now.getTime(); // Get timestamp once for consistent comparison
@@ -2582,25 +2664,32 @@ function openRoadmapImage() {
 
             // Process ALL_CODES_CONFIG (regular codes)
             ALL_CODES_CONFIG.forEach(codeData => {
+                
+                // --- FIX STARTS HERE ---
+                // First, check if the 'expires' property even exists.
+                // If it doesn't, we know it's a permanent active code.
+                if (!codeData.expires) {
+                    regularActiveCodes.push(codeData);
+                    return; // Move to the next code in the loop
+                }
+                // --- FIX ENDS HERE ---
+
+                // The rest of this logic will now only run for codes that DO have an 'expires' property.
                 let expiresDate;
                 try {
                     expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
                 } catch (e) {
                     console.error(`Error parsing expires date for regular code "${codeData.code}":`, codeData.expires, e);
-                    // If parsing fails, treat as expired for safety to ensure it doesn't stay active.
                     expiredCodes.push(codeData);
                     return;
                 }
 
-                // Check for "Invalid Date" resulting from parsing
                 if (isNaN(expiresDate.getTime())) {
                     console.error("Invalid expires date for regular code (isNaN check):", codeData.code, codeData.expires);
-                    // If invalid, assume it's malformed data and treat as expired for safety.
                     expiredCodes.push(codeData);
                     return;
                 }
 
-                // Compare timestamps for precise expiration check
                 if (expiresDate.getTime() > nowTimestamp) {
                     regularActiveCodes.push(codeData);
                 } else {
@@ -2608,7 +2697,7 @@ function openRoadmapImage() {
                 }
             });
 
-            // Process PERMANENT_CODES
+            // Process PERMANENT_CODES (This part remains the same)
             PERMANENT_CODES.forEach(codeData => {
                 let expiresDate = null;
                 if (codeData.expires) {
@@ -2616,28 +2705,23 @@ function openRoadmapImage() {
                         expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
                     } catch (e) {
                         console.error(`Error parsing expires date for permanent code "${codeData.code}":`, codeData.expires, e);
-                        // If parsing fails for a permanent code with an expiry, treat as active
-                        // to prevent it from being incorrectly expired due to bad data.
                         permanentActiveCodes.push(codeData);
                         return;
                     }
 
-                    // Check for "Invalid Date" resulting from parsing
                     if (isNaN(expiresDate.getTime())) {
                         console.error("Invalid expires date for permanent code (isNaN check):", codeData.code, codeData.expires);
-                        // If invalid, treat as active to prevent incorrect expiration due to bad data.
                         permanentActiveCodes.push(codeData);
                         return;
                     }
                 }
                 
-                // No expiration, or expires in the future (compare timestamps)
                 if (!expiresDate || expiresDate.getTime() > nowTimestamp) {
                     permanentActiveCodes.push(codeData);
-                } else { // Has expiration and it's <= now (compare timestamps)
+                } else { 
                     expiredCodes.push({
                         ...codeData,
-                        wasPermanent: true // Flag to indicate it was originally permanent
+                        wasPermanent: true
                     });
                 }
             });
@@ -2674,148 +2758,76 @@ function openRoadmapImage() {
             const redeemedClass = isRedeemed ? 'permanent-redeemed' : '';
             const iconHtml = createIconHtml(codeData.icon, true);
             
+            const descriptionHtml = codeData.description ? `<div class="code-description permanent-description">${codeData.description}</div>` : '';
+
+            // --- SIMPLIFIED DATE LOGIC ---
+            const formattedDate = getFormattedDateAdded(codeData);
+            const dateAddedHtml = formattedDate ? `<div class="date-added">Added Here On : ${formattedDate}</div>` : '';
+            // --- END OF SIMPLIFIED LOGIC ---
+
             let countdownHtml = '';
             let expiresDate = null;
-
             if (codeData.expires) {
-                try {
-                    expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
-                    if (isNaN(expiresDate.getTime())) {
-                         console.error("Invalid expires date in createPermanentCodeBox for:", codeData.code, codeData.expires);
-                         expiresDate = null; // Treat as no expiration if invalid
-                    }
-                } catch (e) {
-                    console.error("Error parsing expires date in createPermanentCodeBox for:", codeData.code, codeData.expires, e);
-                    expiresDate = null;
-                }
-            }
-
-            if (expiresDate) {
-                const timeLeft = expiresDate.getTime() - new Date().getTime();
-                if (timeLeft > 0) {
-                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                    countdownHtml = `<div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>`;
-                }
+                // ... (rest of expiration logic is unchanged)
+                try { expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires); if (!isNaN(expiresDate.getTime())) { const timeLeft = expiresDate.getTime() - new Date().getTime(); if (timeLeft > 0) { const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24)); const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); countdownHtml = `<div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>`; } } } catch (e) { console.error("Error parsing expires date:", e); }
             }
             
-            let copyButtonHtml = '';
-            if (hasCopyButton) {
-                copyButtonHtml = `
-                    <button class="permanent-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'permanent')">
-                        COPY
-                    </button>
-                    <span id="copied-permanent-${index}" class="permanent-copied-message">✓ Copied!</span>
-                `;
-            }
+            let copyButtonHtml = ''; if (hasCopyButton) { copyButtonHtml = `<button class="permanent-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'permanent')">COPY</button><span id="copied-permanent-${index}" class="permanent-copied-message">✓ Copied!</span>`; }
+            let previewButtonHtml = ''; if (hasPreviewButton && codeData.imagePreview) { previewButtonHtml = `<button class="prempreview-btn" onclick="openImagePreview('${codeData.imagePreview}')">📷 PREVIEW</button>`; }
             
-            let previewButtonHtml = '';
-            if (hasPreviewButton && codeData.imagePreview) { 
-                previewButtonHtml = `
-                    <button class="prempreview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
-                        📷 PREVIEW
-                    </button>
-                `;
-            }
-            
-    return `
-        <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
-            <div class="permanent-code-header">
-                ${iconHtml}
-                <div class="permanent-code-text">${codeData.code}</div>
-            </div>
-                    <!-- DATE UNDER TITLE BUT ABOVE OTHER CONTENT -->
-            ${codeData.dateAdded ? `
-                <div class="date-added">Added Here On : ${formatDateAdded(codeData.dateAdded)}</div>
-            ` : ''}
-            <div class="permanent-title-container">${codeData.title}</div>
-            ${expiresDate ? `<div class="expire-date">Expires: ${formatDate(expiresDate)}</div>` : ''}
-            ${countdownHtml}
-            <div class="permanent-code-footer">
-                <div class="permredeem-checkbox">
-                    <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                        onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))">
-                    <label for="permanent-redeemed-${index}">🎁</label>
-                </div>
-                ${copyButtonHtml}
-                ${previewButtonHtml}
-            </div>
-        </div>
-    `;
-}
+            return `
+                <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
+                    <div class="permanent-code-header">${iconHtml}<div class="permanent-code-text">${codeData.code}</div></div>
+                    ${dateAddedHtml}
+                    <div class="permanent-title-container">${codeData.title}</div>
+                    ${descriptionHtml}
+                    ${expiresDate ? `<div class="expire-date">Expires: ${formatDate(expiresDate)}</div>` : ''}
+                    ${countdownHtml}
+                    <div class="permanent-code-footer">
+                        <div class="permredeem-checkbox"><input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))"><label for="permanent-redeemed-${index}">🎁</label></div>
+                        ${copyButtonHtml}${previewButtonHtml}
+                    </div>
+                </div>`;
+        }
 
         function createActiveCodeBox(codeData, index) {
             const hasCopyButton = codeData.showCopyButton !== false;
             const hasPreviewButton = codeData.showPreviewButton;
-            let expiresDate;
-            try {
-                expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
-                if (isNaN(expiresDate.getTime())) {
-                    console.error("Invalid expires date in createActiveCodeBox for:", codeData.code, codeData.expires);
-                    expiresDate = new Date(0); // Set to an arbitrary past date if invalid
-                }
-            } catch (e) {
-                console.error("Error parsing expires date in createActiveCodeBox for:", codeData.code, codeData.expires, e);
-                expiresDate = new Date(0); // Set to an arbitrary past date if error
-            }
-
-            const timeLeft = expiresDate.getTime() - new Date().getTime();
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const isRedeemed = getRedemptionStatus(codeData.code);
             const redeemedClass = isRedeemed ? 'redeemed' : '';
             const iconHtml = createIconHtml(codeData.icon, false);
             
-            let copyButtonHtml = '';
-            if (hasCopyButton) {
-                copyButtonHtml = `
-                    <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">
-                        COPY
-                    </button>
-                    <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
-                `;
-            }
+            const descriptionHtml = codeData.description ? `<div class="code-description">${codeData.description}</div>` : '';
 
-                // Auto-generate date added if not provided
-    const dateAdded = codeData.dateAdded || new Date().toISOString().split('T')[0];
-            
-            let previewButtonHtml = '';
-            if (hasPreviewButton && codeData.imagePreview) { 
-                previewButtonHtml = `
-                    <button class="activepreview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
-                        📷 PREVIEW
-                    </button>
-                `;
+            // --- SIMPLIFIED DATE LOGIC ---
+            // Call our new merged function to get the final, formatted date.
+            const formattedDate = getFormattedDateAdded(codeData);
+            const dateAddedHtml = formattedDate ? `<div class="date-added">Added Here On : ${formattedDate}</div>` : '';
+            // --- END OF SIMPLIFIED LOGIC ---
+
+            let expirationDetailsHtml = '';
+            if (codeData.expires) {
+                // ... (rest of expiration logic is unchanged)
+                let expiresDate; try { expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires); if (!isNaN(expiresDate.getTime())) { const timeLeft = expiresDate.getTime() - new Date().getTime(); if (timeLeft > 0) { const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24)); const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); expirationDetailsHtml = `<div class="expire-date">Expires: ${formatDate(expiresDate)}</div><div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>`; } } } catch (e) { console.error("Error parsing expires date:", e); }
+            } else {
+                expirationDetailsHtml = `<div class="expire-date">Expires: Never (Permanent Code)</div>`;
             }
+            
+            let copyButtonHtml = ''; if (hasCopyButton) { copyButtonHtml = `<button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'active')">COPY</button><span id="copied-active-${index}" class="copied-message">✓ Copied!</span>`; }
+            let previewButtonHtml = ''; if (hasPreviewButton && codeData.imagePreview) { previewButtonHtml = `<button class="activepreview-btn" onclick="openImagePreview('${codeData.imagePreview}')">📷 PREVIEW</button>`; }
             
             return `
                 <div class="code-box ${redeemedClass}" id="active-${index}">
-                    <div class="code-header">
-                        ${iconHtml}
-                        <div class="title-container">${codeData.title}</div>
-                    </div>
-            <!-- DATE UNDER TITLE BUT ABOVE OTHER CONTENT -->
-            ${codeData.dateAdded ? `
-                <div class="date-added">Added Here On : ${formatDateAdded(codeData.dateAdded)}</div>
-            ` : ''}
+                    <div class="code-header">${iconHtml}<div class="title-container">${codeData.title}</div></div>
+                    ${dateAddedHtml}
+                    ${descriptionHtml}
                     <div class="code-text">${codeData.code}</div>
-                    <div class="expire-date">Expires: ${formatDate(expiresDate)}</div>
-                    <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
-<div class="code-footer">
-                <div class="actredeem-checkbox">
-                    <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                        onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
-                    <label for="redeemed-${index}">👍</label>
-                </div>
-                <!-- NEW: Wrapper for copy and preview buttons. Preview button comes first if both exist. -->
-                <div class="active-code-buttons-group">
-                    ${previewButtonHtml} 
-                    ${copyButtonHtml}
-                </div>
-            </div>
-            `;
+                    ${expirationDetailsHtml}
+                    <div class="code-footer">
+                        <div class="actredeem-checkbox"><input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))"><label for="redeemed-${index}">👍</label></div>
+                        <div class="active-code-buttons-group">${previewButtonHtml}${copyButtonHtml}</div>
+                    </div>
+                </div>`;
         }
 
 
@@ -2825,25 +2837,39 @@ function openRoadmapImage() {
             const redeemedClass = isRedeemed ? 'redeemed' : '';
             const iconHtml = createIconHtml(codeData.icon, false);
             
+            const descriptionHtml = codeData.description ? 
+                `<div class="code-description expired-description">${codeData.description}</div>` : '';
+            
+            const formattedDate = getFormattedDateAdded(codeData);
+            const dateAddedHtml = formattedDate ? `<div class="date-added">Added Here On : ${formattedDate}</div>` : '';
+            
+            // --- NEW LOGIC STARTS HERE ---
+            // Check for the showCopyButton property, defaulting to true if it's missing.
+            const hasCopyButton = codeData.showCopyButton !== false;
+            let copyButtonHtml = ''; // Create an empty placeholder
+
+            // Only create the button HTML if hasCopyButton is true.
+            if (hasCopyButton) {
+                copyButtonHtml = `
+                    <button class="expired-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
+                        COPY
+                    </button>
+                    <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
+                `;
+            }
+            // --- NEW LOGIC ENDS HERE ---
+            
             let previewButtonHtml = '';
             if (hasPreviewButton && codeData.imagePreview) { 
-                previewButtonHtml = `
-                    <button class="exppreview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
-                        📷 PREVIEW
-                    </button>
-                `;
+                previewButtonHtml = `<button class="exppreview-btn" onclick="openImagePreview('${codeData.imagePreview}')">📷 PREVIEW</button>`;
             }
             
             let expiresDate;
             try {
                 expiresDate = (codeData.expires instanceof Date) ? codeData.expires : new Date(codeData.expires);
-                if (isNaN(expiresDate.getTime())) {
-                    console.error("Invalid expires date in createExpiredCodeBox for:", codeData.code, codeData.expires);
-                    expiresDate = new Date(); // Use current date as fallback if invalid
-                }
+                if (isNaN(expiresDate.getTime())) { expiresDate = new Date(); }
             } catch (e) {
-                console.error("Error parsing expires date in createExpiredCodeBox for:", codeData.code, codeData.expires, e);
-                expiresDate = new Date(); // Use current date as fallback if error
+                expiresDate = new Date();
             }
 
             return `
@@ -2852,27 +2878,26 @@ function openRoadmapImage() {
                         ${iconHtml}
                         <div class="title-container">${codeData.title}</div>
                     </div>
-                            <!-- SAME SIMPLE VERSION FOR EXPIRED CODES -->
-            ${codeData.dateAdded ? `
-                <div class="date-added">Added Here On : ${formatDateAdded(codeData.dateAdded)}</div>
-            ` : ''}
+                    
+                    ${dateAddedHtml}
+                    ${descriptionHtml}
+                    
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expired: ${formatDate(expiresDate)}</div>
-<div class="code-footer">
-                <div class="redeem-checkbox">
-                    <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                        onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
-                    <label for="expired-redeemed-${index}">👎</label>
-                </div>
-                <!-- NEW: Wrapper for copy and preview buttons (reusing active-code-buttons-group for consistent styling) -->
-                <div class="active-code-buttons-group">
-                    ${previewButtonHtml} 
-                    <button class="expired-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
-                        COPY
-                    </button>
-                    <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
-                </div>
-            </div>
+                    <div class="code-footer">
+                        <div class="redeem-checkbox">
+                            <input type="checkbox" id="expired-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                                onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('expired-${index}'))">
+                            <label for="expired-redeemed-${index}">👎</label>
+                        </div>
+                        <div class="active-code-buttons-group">
+                            ${previewButtonHtml} 
+                            
+                            <!-- Use the new variable which is either the button or an empty string -->
+                            ${copyButtonHtml}
+                            
+                        </div>
+                    </div>
                     <div class="expired-text">❌ EXPIRED</div>
                 </div>
             `;
