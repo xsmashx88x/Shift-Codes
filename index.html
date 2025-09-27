@@ -4,7 +4,7 @@
     <link rel="shortcut icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
     <link rel="icon" type="image/png" href="https://xsmashx88x.github.io/Shift-Codes/smashfavicon.png">
     <div class="scrolling-banner">
-        <div class="scrolling-text">• FAV AND CHECK BACK DAILY<br> (Refresh Page Every Once In Awhile)<br>• Any Issues Contact Me Via Links Below •</div>
+        <div class="scrolling-text">• FAV AND CHECK BACK DAILY<br>• Refresh Page Every Once In Awhile •</div>
     </div>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,19 +61,31 @@
             background: linear-gradient(90deg, #ffc600, #ff7c00, #ffc600);
             box-shadow: 0 0 10px #ffc600;
         }
-        
+ /* Title section text ish        ||||||||||||||||||||| ||||||||||||||||||||| ||||||||||||||||||||| |||||||||||||||||||||*/
+      /* activekeys title color |||||||||||||||||||||||||*/    
         h1 {
             color: #ffc600;
             margin-bottom: 15px;
-            font-size: 36px;
+            font-size: 22px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 0 #000, 0 0 10px rgba(255, 198, 0, 0.7);
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 0 #000, 0 0 2px rgba(255, 198, 0, 0.7);
             font-weight: 700;
         }
-        
+    /* perm drops title color |||||||||||||||||||||||||*/
         h2 {
-            color: #ffc600;
+            color: #FF00F7;
+            margin: 25px 0 12px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ff7c00;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 0 #000;
+        }
+            /* expired |||||||||||||||||||||||||*/
+        h3 {
+            color: #F91515;
             margin: 25px 0 12px 0;
             padding-bottom: 8px;
             border-bottom: 2px solid #ff7c00;
@@ -83,37 +95,107 @@
             text-shadow: 1px 1px 0 #000;
         }
         
-        /* Social links styling |||||||||||||||||||||||||*/
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 15px 0 25px 0;
-            flex-wrap: wrap;
-        }
-        
-        .social-links a {
-            color: #ffc600;
-            text-decoration: none;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.3s;
-            text-shadow: 1px 1px 0 #000;
-            padding: 8px 12px;
-            border-radius: 4px;
-            background: rgba(20, 15, 25, 0.7);
-            border: 1px solid #ff7c00;
-        }
-        
-        .social-links a:hover {
-            color: #ff7c00;
-            text-shadow: 0 0 5px #ff7c00;
-            background: rgba(255, 124, 0, 0.2);
-            transform: translateY(-2px);
-        }
-        
+        /* Social links styling ||||||||||||||| ||||||||||||||||||||| |||||||||||||||||||||||||||||||*/
+/* =================================================== */
+/*           HIGH-TECH CONTACT ME SECTION              */
+/* =================================================== */
+
+/* =================================================== */
+/*    INTERACTIVE HIGH-TECH CONTACT ME SECTION (v2)    */
+/* =================================================== */
+
+/* --- The Main Wrapper --- */
+.contact-me-section {
+    border: 2px solid #00ffff;
+    padding: 20px 15px;
+    margin: 30px 0;
+    background: rgba(17, 26, 34, 0.6);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%);
+    border-radius: 0;
+    
+    /* NEW: Add a transition to the container itself for smooth size changes */
+    transition: padding-bottom 0.4s ease-in-out;
+}
+
+/* --- The "Contact Me" Title --- */
+.contact-me-title {
+    color: #00ffff;
+    font-family: 'Chakra Petch', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 2px rgba(0, 255, 255, 0.8);
+    margin: 0;
+    
+    /* NEW: Make the title look clickable */
+    cursor: pointer;
+}
+
+/* =================================================== */
+/*           THE SLIDE-DOWN EFFECT LOGIC               */
+/* =================================================== */
+
+/* --- 1. The Button Container (Default HIDDEN State) --- */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    
+    /* --- CHANGES FOR HIDING --- */
+    /* Set max-height to 0 to collapse the container */
+    max-height: 0;
+    /* Hide the content that overflows the 0-height container */
+    overflow: hidden;
+    /* Remove any margin when hidden */
+    margin: 0;
+    /* Add a smooth transition for the slide effect */
+    transition: max-height 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+}
+
+/* --- 2. The Button Container (Expanded :hover State) --- */
+.contact-me-section:hover .social-links {
+    /* Set a max-height large enough to fit the content */
+    max-height: 200px; /* Adjust if your buttons wrap to more lines */
+    /* Add back the margin to create space between title and buttons */
+    margin-top: 20px;
+}
+
+/* --- The Individual Buttons (No changes needed here) --- */
+.social-links a {
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 90% 100%, 0 100%);
+    border-radius: 0;
+    background: #111a22;
+    border: 2px solid #00ffff;
+    text-shadow: 0 0 2px rgba(0, 255, 255, 0.7);
+    box-shadow: inset 0 0 5px rgba(0, 255, 255, 0.3);
+    transition: all 0.2s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+    color: #111a22;
+    background: #00ffff;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 15px rgba(0, 255, 255, 0.5);
+    outline: none;
+}
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+ /* active and perm code boxs |||||||||||||||||||||||||*/       
         .code-box {
             background: linear-gradient(135deg, #3A2A1A, #5C3C10); /* Gold-themed */
             color: white;
@@ -131,7 +213,7 @@
             transform: translateY(-3px);
             box-shadow: 0 0 12px rgba(255, 179, 71, 0.5); 
         }
-       
+  /* old perm box? keep as it does the style |||||||||||||||||||||||||*/       
         .permanent-code-box {
             background: linear-gradient(135deg, #1b3b6a 0%, #0f2552 100%);
             color: white;
@@ -149,7 +231,7 @@
             transform: translateY(-1px);
             box-shadow: 0 0 6px rgba(74, 144, 226, 0.6);
         }
-/* New style for Black Market Vendor |||||||||||||||||||||||||*/
+/* New style for Black Market Vendor ||||||||||||||||||| ||||||||||||||||||||| |||||||||||||||||||||||||||*/
         .black-market-code-box { /* New style for Black Market Vendor |||||||||||||||||||||||||*/
             background: linear-gradient(135deg, #4d0000, #2d0000); /* Dark red/black */
             border: 2px solid #ff4444; /* Red border */
@@ -177,6 +259,7 @@
         .black-market-code-box.redeemed {
             opacity: 0.7;
             position: relative;
+                        border: 2px solid #44ff44;
         }
         .black-market-code-box.redeemed::after {
             content: "REDEEMED";
@@ -194,7 +277,53 @@
         .black-market-code-box.redeemed .code-text {
             color: #7cff7c !important;
         }
+
+/* style change for the  code box section |||||||||||||||||||||||||*/        
+        .code-box {
+            background: linear-gradient(135deg, #3A2A1A 0%, #5C3C10 100%);
+            color: #D4A017;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 4px;
+            text-align: left;
+            border: 2px solid #D4A017;
+            box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
+            position: relative;
+        }
         
+        .code-box .code-text {
+            color: #FFBC01;
+            text-shadow: 1px 1px 0 #400000;
+        }
+        
+        .code-box .title-container {
+            color: #FFBC01;
+        }
+        
+        .code-box .expire-date {
+            color: #FFBC01;
+        }
+        
+        .code-box.redeemed {
+        /*    background: linear-gradient(135deg, #2c5a2c 100%, #1c3a1c 100%); */
+            border: 2px solid #44ff44;
+            box-shadow: 0 0 5px rgba(68, 255, 68, 0.3);
+        }
+        
+        .code-boxredeemed .code-text {
+            color: #7cff7c !important;
+            text-shadow: 1px 1px 0 #004000;
+        }
+        
+       /*    .expired-code-box.redeemed .title-container {
+            color: #9eff9e;
+        }  */
+        
+         /*  .expired-code-box.redeemed .expire-date {
+            color: #aaffaa; 
+        } */
+
+/* style change for the expired code box section |||||||||||||||||||||| ||||||||||||||||||||| ||||||||||||||||||||||||*/        
         .expired-code-box {
             background: linear-gradient(135deg, #5a2c2c 0%, #3a1c1c 100%);
             color: #ff9999;
@@ -221,7 +350,7 @@
         }
         
         .expired-code-box.redeemed {
-            background: linear-gradient(135deg, #2c5a2c 0%, #1c3a1c 100%);
+        /*    background: linear-gradient(135deg, #2c5a2c 100%, #1c3a1c 100%); */
             border: 2px solid #44ff44;
             box-shadow: 0 0 5px rgba(68, 255, 68, 0.3);
         }
@@ -231,14 +360,14 @@
             text-shadow: 1px 1px 0 #004000;
         }
         
-        .expired-code-box.redeemed .title-container {
+       /*    .expired-code-box.redeemed .title-container {
             color: #9eff9e;
-        }
+        }  */
         
-        .expired-code-box.redeemed .expire-date {
-            color: #aaffaa;
-        }
-        
+         /*  .expired-code-box.redeemed .expire-date {
+            color: #aaffaa; 
+        } */
+/* active code text color gold  |||||||||||||||||||||||||*/            
         .code-text {
             font-family: 'Courier New', monospace;
             font-size: 18px;
@@ -249,7 +378,7 @@
             color: #ffc600;
             text-shadow: 1px 1px 0 #000;
         }
-        
+ /* active code text color gold ffc600 : not sure if works  |||||||||||||||||||||||||*/          
         .permanent-code-text {
             font-family: 'Courier New', monospace;
             font-size: 14px;
@@ -279,7 +408,8 @@
             padding-top: 5px;
             border-top: 1px solid rgba(107, 168, 255, 0.3);
         }
-        
+
+ /* active copy button |||||||||||||||||||||*/       
         .small-copy-btn {
             background: linear-gradient(to bottom, #ff7c00, #e56a00);
             border: 1px solid #ffc600;
@@ -303,11 +433,11 @@
             transform: scale(1.05);
             box-shadow: 0 0 6px #ffc600;
         }
-        
+   /* permanent copy button |||||||||||||||||||||*/         
         .permanent-copy-btn {
-            background: linear-gradient(to bottom, #4a90e2, #2a70c2);
-            border: 1px solid #6ba8ff;
-            color: #fff;
+            background: linear-gradient(to bottom, #B634D7, #AA2EC9);
+            border: 1px solid #DE57FF;
+            color: #FFFFFF;
             padding: 6px 12px;
             border-radius: 3px;
             cursor: pointer;
@@ -323,11 +453,34 @@
         }
         
         .permanent-copy-btn:hover {
-            background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
+            background: linear-gradient(to bottom, #AA2EC9, #B634D7);
             transform: scale(1.05);
-            box-shadow: 0 0 4px #6ba8ff;
+            box-shadow: 0 0 4px #DE57FF;
+        }
+       /* expired copy button |||||||||||||||||||||*/         
+        .expired-copy-btn {
+            background: linear-gradient(to bottom, #EE2222, #DF2525);
+            border: 1px solid #FF5757;
+            color: #FFFFFF;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0;
+            transition: all 0.3s;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-family: 'Chakra Petch', sans-serif;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            order: 2;
         }
         
+        .expired-copy-btn:hover {
+            background: linear-gradient(to bottom, #DF2525, #EE2222);
+            transform: scale(1.05);
+            box-shadow: 0 0 4px #FF5757;
+        }    
         .countdown {
             font-size: 14px;
             font-weight: bold;
@@ -347,10 +500,10 @@
             font-style: italic;
             text-shadow: 1px 1px 0 #000;
         }
-        
+ /* active code text color gold 6ba8ff : not sure if works  |||||||||||||||||||||||||*/         
         .permanent-text {
             font-size: 10px;
-            color: #6ba8ff;
+            color: #E600FF;
             margin: 0;
             font-weight: bold;
             text-shadow: 1px 1px 0 #000, 0 0 3px rgba(107, 168, 255, 0.5);
@@ -430,7 +583,7 @@
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
 
-/* Hde Buttons color  |||||||||||||||||||||||||*/
+/* Hde Buttons color  ||||||||||||||||||||| ||||||||||||||||||||| |||||||||||||||||||||||||*/
 #hideem-toggle-btn {
             background: linear-gradient(to bottom, #B9B9B9, #363337);
             border: 2px solid #888;
@@ -476,7 +629,7 @@
     box-shadow: 0 0 8px #00ccff;
 }
 
-        /* Responsive design for mobile |||||||||||||||||||||||||*/
+        /* Responsive design for mobile ||||||||||||||||||||| ||||||||||||||||||||| |||||||||||||||||||||||||*/
         @media (max-width: 768px) {
             .button-row {
                 flex-direction: column;
@@ -521,9 +674,9 @@
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
         }
-
+        /* expired button color and style |||||||||||||||||||||||||*/
         .collapse-btn-exp {
-            background: linear-gradient(to bottom, #1A2935, #333);
+            background: linear-gradient(to bottom, #46171D, #E82740);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -534,18 +687,18 @@
             transition: all 0.3s;
             font-size: 14px;
             text-transform: uppercase;
-            border: 1px solid #666;
-            text-shadow: 1px 1px 0 #000;
+            border: 1px solid #FF0022;
+            text-shadow: 1px 1px 0 #FF0022;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             font-family: 'Chakra Petch', sans-serif;
         }
         
         .collapse-btn-exp:hover {
-            background: linear-gradient(to bottom, #666, #444);
+            background: linear-gradient(to bottom, #E82740, #46171D);
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
         }
- /* drops an limited time codes an more button ish  |||||||||||||||||||||||||*/          
+ /* drops an limited time codes an more button ish  |||||||||||||| ||||||||||||||||||||||||||||||||*/          
         .collapse-btn-Perm {
                         display: block;
             width: fit-content;
@@ -572,7 +725,7 @@ margin: 10px auto;
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
         }       
  
- /* New Black Market button style  |||||||||||||||||||||||||*/       
+ /* New Black Market button style  ||||||||||||||||||| ||||||||||||||||||||| |||||||||||||||||||||||||||*/       
 .collapse-btn-BlackMarket { 
                 display: block;
                             width: fit-content;
@@ -615,28 +768,28 @@ margin: 10px auto;
             border-bottom-color: #ff6666;
         }    
         
-/* Only when permanent section is visible (has 'show' class) */
+/* Only when permanent section is visible (has 'show' class) change title text color an more */
 #permanent-section.show .permanent-code-box {
-    background: linear-gradient(135deg, #451565, #652200);
-    border: 1px solid #F90;
-    box-shadow: 0 0 6px rgba(255, 153, 0, 0.6);
+    background: linear-gradient(180deg, #451565, #6D1489);
+    border: 1px solid #920F74;
+    box-shadow: 0 0 6px rgba(54, 54, 0, 0.6);
 }
 
 #permanent-section.show .permanent-code-box:hover {
-    background: linear-gradient(135deg, #552575, #753300);
-    border: 1px solid #FF6;
-    box-shadow: 0 0 8px rgba(255, 255, 102, 0.8);
+    background: linear-gradient(180deg, #6D1489, #451565);
+    border: 1px solid #920F74;
+    box-shadow: 0 0 8px rgba(245, 76, 217, 0.8);
 }
-
+/* Text color for where tittle is like discord or twitch drop */
 #permanent-section.show .permanent-code-text {
-    color: #fff;
-    text-shadow: 2px 2px 0 #000, 0 0 10px rgba(255, 255, 255, 1);
+    color: #d50eeb;
+    text-shadow: 1px 1px 0 #000, 0 0 10px rgba(54, 54, 54, 1);
     font-weight: bold;
 }
-
+/* info or body text color for perm box */
 #permanent-section.show .permanent-title-container {
-    color: #FFC;
-    text-shadow: 2px 2px 0 #000, 0 0 5px #000;
+    color: #FF99FF;
+    text-shadow: 1px 1px 0 #000, 0 0 2px #000;
     font-weight: bold;
 }
         
@@ -648,36 +801,104 @@ margin: 10px auto;
         .expired-section.show, .permanent-section.show, .info-section.show {
             display: block;
         }
-        
-        .title-container {
-            font-size: 14px;
-            color: #ff9e40;
-            margin-bottom: 8px;
-            min-height: 18px;
-            text-shadow: 1px 1px 0 #000;
-        }
-        
-        .permanent-title-container {
-            font-size: 11px;
-            color: #ffc600;
-            margin: 0 0 2px 0;
-            min-height: 12px;
-            text-shadow: 1px 1px 0 #000;
-            line-height: 1.2;
-            text-align: left;
-        }
-        
-        .title-container a, .permanent-title-container a {
-            color: #ffc600;
-            text-decoration: underline;
-            text-shadow: 1px 1px 0 #000;
-            font-weight: bold;
-        }
-        
-        .title-container a:hover, .permanent-title-container a:hover {
-            color: #ff7c00;
-        }
-        
+        .permanent-code-box .expire-date { color: #E830B7; }
+        .permanent-code-box .countdown { color: #E144FF !important; border: 1px solid #F5BFFF;         }
+/* ========================================================== */
+/*     STYLES FOR EXPIRATION & COUNTDOWN (PURPLE SECTIONS)    */
+/* ========================================================== */
+
+/* --- Styling for the "Expires:" text --- */
+#permanent-codes-section .expire-date,
+#twitch-drops-section .expire-date {
+    color: #DD8BFF; /* Golden/Orange text color */
+    font-size: 11px;
+    text-shadow: 1px 1px 0 #000;
+    margin-bottom: 6px; /* Adds a little space below it */
+    text-align: left;
+}
+
+
+/* --- Styling for the "Time left:" countdown box --- */
+#permanent-codes-section .countdown,
+#twitch-drops-section .countdown {
+    border: 1px solid #ff9e40; /* Orange border */
+    border-radius: 4px; /* Slightly rounded corners */
+    color: #FF76DB; /* Orange text color */
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    padding: 6px 10px; /* Space inside the box */
+    margin-top: 5px; /* Space above the box */
+    margin-bottom: 10px; /* Space below the box */
+    text-align: left;
+}
+
+
+    /* =================================================== */
+/*           STYLES FOR THE GOLD SECTION               */
+/*         ( 👍 ACTIVE BL4 SHIFT CODES )                */
+/* =================================================== */
+
+.title-container {
+    font-size: 14px;
+    color: #ff9e40;
+    margin-bottom: 8px;
+    min-height: 18px;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* This targets links like "Via Twit" */
+.title-container a {
+    color: #F6E261; /* Teal color */
+    text-decoration: underline;
+    text-shadow: 1px 1px 0 #000;
+    font-weight: bold;
+}
+
+.title-container a:hover {
+    color: #DBBE00; /* Lighter teal for hover */
+}
+
+
+/* =================================================== */
+/*          STYLES FOR THE PURPLE SECTION              */
+/* (Twitch Drops & Permanent Codes like the cosmetics) */
+/* =================================================== */
+
+/* --- STYLES FOR THE PURPLE SECTION (TWITCH DROPS, ETC.) --- */
+
+.permanent-title-container {
+    /* This styles the container itself, you can leave it empty if you want */
+    font-size: 11px;
+    color: #F2D7EE; /* This is the gold/orange text color */
+    /* ... other container styles ... */
+}
+
+/* This targets ALL links inside the purple container */
+.permanent-title-container a {
+    color: #FF5BDA; /* Light Sky Blue color for links */
+    text-decoration: underline;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.permanent-title-container a:hover {
+    color: #FFB7FE; /* Lighter blue for hover */
+}
+
+/* --- Style for links ONLY inside an EXPIRED code box --- */
+.expired-code-box .title-container a {
+    color: #CD2F2F; /* Pale Yellow - looks good on the red background */
+    text-decoration: underline;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* --- Hover effect for the expired code links --- */
+.expired-code-box .title-container a:hover {
+    filter: brightness(1.2); /* A subtle pop on hover */
+}
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||| |||||||||||||||||||||||||*/        
         .code-header {
             display: flex;
             align-items: center;
@@ -763,7 +984,152 @@ margin: 10px auto;
             clear: both;
             display: table;
         }
-        
+
+    /*|||||||| active yellow check box color and shit  ||||| ||||||||||||||||||||| |||||||||||||||||||||||||||||*/      
+ /* ========================================================== */
+/*           PARENT FOOTER - THIS IS THE MAIN FIX             */
+/* ========================================================== */
+/* This rule targets the container holding the checkbox and the button */
+.code-footer, .permanent-code-footer {
+    display: flex;                  /* Turns it into a flex container */
+    justify-content: space-between; /* MAGIC! Puts first item on left, last on right */
+    align-items: center;            /* Vertically aligns everything neatly */
+}
+
+/* ========================================================== */
+/*                 BM Codes CHECKBOX STYLES                     */
+/* ========================================================== */
+/* This no longer needs the margin-right: auto */
+.bmredeem-checkbox {
+    display: flex;
+    align-items: center; 
+    /* The 'margin-right: auto' has been REMOVED from here */
+}
+
+/* --- The rest of your styles are perfect and remain unchanged --- */
+
+.bmredeem-checkbox input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #FF0009;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.bmredeem-checkbox input[type="checkbox"]:checked::before {
+    content: "✓";
+    position: absolute;
+    color: #FF4D53;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 3px #000;
+}
+
+.bmredeem-checkbox label {
+    color: #ffc600;
+    font-size: 14px;
+    cursor: pointer;
+    text-shadow: 1px 1px 0 #000;
+}
+
+
+/* ========================================================== */
+/*                  Active Codes CHECKBOX STYLES                     */
+/* ========================================================== */
+/* This no longer needs the margin-right: auto */
+.actredeem-checkbox {
+    display: flex;
+    align-items: center; 
+    /* The 'margin-right: auto' has been REMOVED from here */
+}
+
+/* --- The rest of your styles are perfect and remain unchanged --- */
+
+.actredeem-checkbox input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #FFD31E;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.actredeem-checkbox input[type="checkbox"]:checked::before {
+    content: "✓";
+    position: absolute;
+    color: #FFDC4D;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 3px #000;
+}
+
+.actredeem-checkbox label {
+    color: #ffc600;
+    font-size: 14px;
+    cursor: pointer;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* ========================================================== */
+/*                 PERM Codes CHECKBOX STYLES                     */
+/* ========================================================== */
+/* This no longer needs the margin-right: auto */
+.permredeem-checkbox {
+    display: flex;
+    align-items: center; 
+    /* The 'margin-right: auto' has been REMOVED from here */
+}
+
+/* --- The rest of your styles are perfect and remain unchanged --- */
+
+.permredeem-checkbox input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #FF1FE2;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.permredeem-checkbox input[type="checkbox"]:checked::before {
+    content: "✓";
+    position: absolute;
+    color: #FF78F1;
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 3px #000;
+}
+
+.permredeem-checkbox label {
+    color: #ffc600;
+    font-size: 14px;
+    cursor: pointer;
+    text-shadow: 1px 1px 0 #000;
+}
+
+  /*|||||||| check box color and shit  |||||||||||||*/      
         .redeem-checkbox {
             display: flex;
             align-items: center;
@@ -776,7 +1142,7 @@ margin: 10px auto;
             -webkit-appearance: none;
             width: 18px;
             height: 18px;
-            border: 2px solid #ffc600;
+            border: 2px solid #878787;
             border-radius: 3px;
             background: rgba(0, 0, 0, 0.3);
             position: relative;
@@ -787,7 +1153,7 @@ margin: 10px auto;
         .redeem-checkbox input[type="checkbox"]:checked::before {
             content: "✓";
             position: absolute;
-            color: #ffc600;
+            color: #E5E5E5;
             font-size: 14px;
             font-weight: bold;
             top: 50%;
@@ -820,6 +1186,7 @@ margin: 10px auto;
             text-shadow: 2px 2px 0 #000, 0 0 10px rgba(124, 255, 124, 0.7);
             z-index: 10;
             pointer-events: none;
+
         }
         
         .redeemed .code-text {
@@ -837,7 +1204,7 @@ margin: 10px auto;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-15deg);
-            font-size: 16px;
+            font-size: 24px;
             font-weight: bold;
             color: #7cff7c;
             text-shadow: 2px 2px 0 #000, 0 0 10px rgba(124, 255, 124, 0.7);
@@ -848,7 +1215,12 @@ margin: 10px auto;
         .permanent-redeemed .permanent-code-text {
             color: #7cff7c !important;
         }
-        
+
+/* Brute-force style for testing */
+.permanent-code-box.permanent-redeemed {
+    border: 2px solid #44ff44 !important; /* A bright, ugly, unmissable green border */
+}
+/* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         .expired-text {
             color: #ff4444;
             font-weight: bold;
@@ -927,7 +1299,7 @@ margin: 10px auto;
             object-fit: cover;
             border: 2px solid #ffc600;
         }
-
+/* Normal blue preview button ||||||||||||| ||||||||||||||||||||| ||||||||||||||||||||| ||||||||||||||||||||||||*/
         .preview-btn {
             background: linear-gradient(to bottom, #4a90e2, #2a70c2);
             border: 1px solid #6ba8ff;
@@ -951,6 +1323,78 @@ margin: 10px auto;
             box-shadow: 0 0 4px #6ba8ff;
         }
 
+        /* perm active preview button ||||||||||||||||*/
+        .prempreview-btn {
+            background: linear-gradient(to bottom, #B634D7, #AA2EC9);
+            border: 1px solid #DE57FF;
+            color: #FFFFFF;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0;
+            transition: all 0.3s;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-family: 'Chakra Petch', sans-serif;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .prempreview-btn:hover {
+            background: linear-gradient(to bottom, #AA2EC9, #B634D7);
+            transform: scale(1.05);
+            box-shadow: 0 0 4px #DE57FF;
+        }
+
+        /* active preview button ||||||||||||||||*/
+        .activepreview-btn {
+            background: linear-gradient(to bottom, #ff7c00, #e56a00);
+            border: 1px solid #6ba8ff;
+            color: #FFFFFF;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0;
+            transition: all 0.3s;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-family: 'Chakra Petch', sans-serif;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .activepreview-btn:hover {
+            background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
+            transform: scale(1.05);
+            box-shadow: 0 0 4px #6ba8ff;
+        }
+
+        /* expire preview button ||||||||||||||||*/
+        .exppreview-btn {
+            background: linear-gradient(to bottom, #EE2222, #DF2525);
+            border: 1px solid #FF5757;
+            color: #FFFFFF;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0;
+            transition: all 0.3s;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-family: 'Chakra Petch', sans-serif;
+            text-shadow: 1px 1px 0 #000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .exppreview-btn:hover {
+            background: linear-gradient(to bottom, #DF2525, #EE2222);
+            transform: scale(1.05);
+            box-shadow: 0 0 4px #FF5757;
+        }
+        /*||||||||||||||| ||||||||||||| ||||||||||||||||||||| ||||||||||||||||||||||||*/
         .image-preview-modal {
             display: none;
             position: fixed;
@@ -992,7 +1436,7 @@ margin: 10px auto;
             font-weight: bold;
         }
 
-        /* Info content sections |||||||||||||||||||||*/
+        /* Info content sections ||||||||||| ||||||||||||||||||||| |||||||||||||||||||||||||||||||*/
         #info-section .info-content {
             background: linear-gradient(to bottom, #555, #333);
             border: 2px solid #888;
@@ -1029,7 +1473,7 @@ margin: 10px auto;
             color: #ffffff;
         }
 
-    /* Style for the new "View Roadmap" button |||||||||||||||||||||*/
+    /* Style for the new "View Roadmap" button |||||||||||||| ||||||||||||||||||||| ||||||||||||||||||||||||||||*/
         .roadmap-button {
             background: linear-gradient(to bottom, #333, #111); /* Dark grey to black gradient */
             color: white;
@@ -1057,7 +1501,7 @@ margin: 10px auto;
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.1); /* Subtle white glow */
         }
 
-/* Style for the new extra button inside the Black Market Vendor box |||||||||||||||||||||*/
+/* Style for the new extra button inside the Black Market Vendor box ||||||| ||||||||||||||||||||| |||||||||||||||||||||||||||||||||||*/
         .black-market-extra-btn {
             background: linear-gradient(to bottom, #777, #555); /* Gray gradient */
             border: 1px solid #999;
@@ -1090,7 +1534,7 @@ margin: 10px auto;
             align-items: center;
         }
 
-        /* Base style for small Black Market buttons */
+        /* Base style for small Black Market buttons  |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         .bm-small-btn {
             padding: 4px 8px; /* Reduced padding */
             font-size: 10px; /* Reduced font size */
@@ -1111,26 +1555,26 @@ margin: 10px auto;
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
         }
 
-        /* Specific style for the Static Image button */
+        /* Specific style for the Static Image button  ||||||||||||||||||||| ||||||||||||||||||||| |||||||||||||||||||||*/
         .bm-static-image-btn {
-            background: linear-gradient(to bottom, #777, #555); /* Gray gradient */
-            border: 1px solid #999;
+            background: linear-gradient(to bottom, #FF7A7F, #C92B31); /* Gray gradient */
+            border: 1px solid #DA0007;
             color: #fff;
         }
 
         .bm-static-image-btn:hover {
-            background: linear-gradient(to bottom, #888, #666);
+            background: linear-gradient(to bottom, #C92B31, #FF7A7F);
         }
 
-        /* Specific style for the MapGenie button */
+        /* Specific style for the MapGenie button  ||||||||||||||||||||| ||||||||||||||||||||| |||||||||||||||||||||*/
         .bm-mapgenie-btn {
-            background: linear-gradient(to bottom, #4a90e2, #2a70c2); /* Blue gradient */
-            border: 1px solid #6ba8ff;
+            background: linear-gradient(to bottom, #C92B31, #FF7A7F); /* Blue gradient */
+            border: 1px solid #DA0007;
             color: #fff;
         }
 
         .bm-mapgenie-btn:hover {
-            background: linear-gradient(to bottom, #5aa0ff, #3a80e2);
+            background: linear-gradient(to bottom, #FF7A7F, #C92B31);
         }
 
         /* Ensure .redeem-checkbox is properly ordered in the footer */
@@ -1140,35 +1584,7 @@ margin: 10px auto;
             margin-right: 0; /* Ensure no conflicting right margin */
         }
 
-        /* === Responsive Adjustments for Black Market Vendor Buttons === |||||||||||||||||||||*/
-        @media (max-width: 600px) { /* Adjust max-width as needed for your definition of "mobile" */
-            .black-market-buttons-group {
-                flex-direction: column; /* Stack buttons vertically */
-                width: 100%; /* Ensure the group takes full width */
-                gap: 5px; /* Reduce gap when stacked */
-                margin-right: 0; /* Remove any lingering right margin */
-            }
-
-            .bm-small-btn {
-                width: 100%; /* Make each button take full width */
-                max-width: 100%; /* Ensure it doesn't exceed its container */
-                margin: 0; /* Remove any external margins that might interfere */
-            }
-
-            /* Adjust the code-footer itself for mobile if buttons wrap */
-            .code-footer {
-                flex-direction: column; /* Stack footer elements vertically */
-                align-items: flex-start; /* Align elements to the left */
-                gap: 10px; /* Space between the button group and the checkbox */
-            }
-
-            .code-footer .redeem-checkbox {
-                margin-left: 0; /* Remove auto-margin that pushes it right */
-            }
-        }
-
-
-        /* New group for active code's action buttons (COPY and optional PREVIEW) |||||||||||||||||||||*/
+        /* New group for active code's action buttons (COPY and optional PREVIEW) ||||||||||| |||||||||||||||||||||||||||||||*/
         .active-code-buttons-group {
             display: flex;
             gap: 10px; /* Space between preview and copy buttons */
@@ -1186,7 +1602,7 @@ margin: 10px auto;
             border-top: 1px solid rgba(255, 198, 0, 0.3);
         }
 
-        /* Make sure the redeem checkbox explicitly stays left */
+        /* Make sure the redeem checkbox explicitly stays left  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         /* This overrides any previous 'order' or 'margin-left: auto' */
         .code-footer .redeem-checkbox {
             order: unset; /* Remove any explicit order that might be set */
@@ -1200,38 +1616,10 @@ margin: 10px auto;
             margin: 0; /* Remove any external margins */
         }
         
-        /* === Mobile Responsiveness for Active Code Footer === |||||||||||||||||||||*/
-        @media (max-width: 600px) {
-            /* Make the entire footer stack vertically on small screens */
-            .code-footer {
-                flex-direction: column;
-                align-items: flex-start; /* Align contents to the left */
-                gap: 10px; /* Space between stacked elements */
-            }
-            
-            /* Make the button group stack vertically and take full width */
-            .active-code-buttons-group {
-                flex-direction: column;
-                width: 100%;
-                margin-left: 0; /* Remove auto margin when stacked */
-                gap: 5px; /* Smaller gap when stacked */
-            }
-            
-            /* Make individual buttons in the group take full width */
-            .active-code-buttons-group .small-copy-btn,
-            .active-code-buttons-group .preview-btn {
-                width: 100%;
-                max-width: 100%;
-            }
-            
-            /* Adjust redeem checkbox margin for mobile stacking */
-            .code-footer .redeem-checkbox {
-                margin-right: 0; /* Remove auto-margin when stacked */
-            }
-        }
 
+/*  ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
-        /* Utility class to hide elements |||||||||||||||||||||*/
+        /* Utility class to hide elements ||||||||||||| |||||||||||||||||||||||||||||*/
         .hidden {
             display: none !important;
         }
@@ -1277,7 +1665,7 @@ margin: 10px auto;
             line-height: 1.2;
         }
 
-        /* New wrapper for the top-most horizontal buttons |||||||||||||||||||||*/
+        /* New wrapper for the top-most horizontal buttons ||||||| |||||||||||||||||||||||||||||||||||*/
         .top-header-buttons {
             display: flex;
             justify-content: center; /* Center the buttons within the row */
@@ -1301,9 +1689,172 @@ margin: 10px auto;
             text-decoration: underline;
         }
 
-/* Hide any label that follows a checked checkbox within redeem-checkbox  |||||||||||||||||||||*/
-.redeem-checkbox input:checked + label {
+/* Hide any label that follows a checked checkbox within redeem-checkbox  |||||| ||||||||||||||||||||||||||||||||||||*/
+.redeem-checkbox input:checked + label,
+.bmredeem-checkbox input:checked + label,
+.permredeem-checkbox input:checked + label,
+.actredeem-checkbox input:checked + label {
     display: none;
+}
+
+/* flash text pulse for drops and limited time shit  |||||| ||||||||||||||||||||||||||||||||||*/  
+.drops-pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* date added text for boxes |||||||| ||||||||||||||||||||||||||||||||||*/
+/* Active Codes Date Added */
+.code-box .date-added {
+    font-size: 0.8em;
+    color: #FFC247; /* Yellow/Orange */
+    margin: -10px 0 8px 0; /* Positive margins only */
+    font-style: italic;
+}
+
+/* Permanent/Drops Codes Date Added */
+.permanent-code-box .date-added {
+    font-size: 0.75em;
+    color: #F011FF; /* Green */
+    margin: 3px 0 6px 0; /* Positive margins only */
+    font-style: normal;
+    font-weight: bold;
+}
+
+/* Black Market Date Added */
+.black-market-code-box .date-added {
+    font-size: 0.7em;
+    color: #FF6B47; /* Red/Orange */
+    margin: 2px 0 5px 0; /* Positive margins only */
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Expired Codes Date Added */
+.expired-code-box .date-added {
+    font-size: 0.7em;
+    color: #888888; /* Gray */
+    margin: -10px 0 5px 0; /* Positive margins only */
+    font-style: italic;
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+/* === Mobile Responsiveness for Active Code Footer === ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/* =================================================================== */
+/*           ⭐ UNIFIED & ENHANCED MOBILE STYLES ⭐                  */
+/*   (Replaces all other @media blocks for a consistent experience)   */
+/* =================================================================== */
+@media (max-width: 768px) {
+
+    /* --- 1. Global & Container Adjustments --- */
+    body {
+        /* Reduce padding on the sides for more content space */
+        padding: 10px;
+        /* Slightly increase base font size for better readability */
+        font-size: 16px; 
+    }
+
+    .container {
+        /* Reduce padding inside the main container */
+        padding: 15px;
+    }
+
+    /* --- 2. Typography for Smaller Screens --- */
+    h1, h2, h3 {
+        /* Slightly smaller headings to save vertical space */
+        font-size: 12px;
+    }
+    
+    .title-text {
+        font-size: 14px; /* Make the main header text smaller */
+    }
+
+    /* --- 3. Main Page Buttons (Info, Collapse, etc.) --- */
+    /* Target all primary action buttons for a consistent look */
+    .info-button,
+    .collapse-btn,
+    .collapse-btn-exp,
+    .collapse-btn-Perm,
+    .collapse-btn-BlackMarket,
+    .roadmap-button {
+        display: block;  /* Make them block-level to stack */
+        width: 100%;     /* Make them full-width for an organized look */
+        margin: 10px 0;  /* Consistent vertical spacing, no horizontal auto-margin */
+        padding: 14px;   /* Increase padding for a larger, easier tap area */
+        font-size: 15px; /* Slightly larger font for readability */
+    }
+    
+    .rewards-link {
+        padding: 12px; /* Make the redeem link easier to tap */
+    }
+
+    /* --- 4. Code Box Footers (The most important part!) --- */
+    /* Target all footer variations */
+    .code-footer,
+    .permanent-code-footer {
+        flex-direction: column; /* Stack all items vertically */
+        align-items: stretch;   /* Stretch items to full width */
+        gap: 15px;              /* Increase space between stacked items (checkbox and button group) */
+    }
+
+    /* --- 5. Button Groups within Footers --- */
+    /* Target all button groups for consistent stacking */
+    .active-code-buttons-group,
+    .black-market-buttons-group {
+        display: flex;
+        flex-direction: column; /* Stack buttons inside the group vertically */
+        width: 100%;            /* Make the group take full width */
+        gap: 8px;               /* Space between stacked buttons */
+        margin: 0;              /* Reset any margins */
+    }
+
+    /* --- 6. Individual Buttons within Footers --- */
+    /* Make ALL buttons inside footers full-width and easy to tap */
+    .small-copy-btn,
+    .permanent-copy-btn,
+    .expired-copy-btn,
+    .preview-btn,
+    .prempreview-btn,
+    .activepreview-btn,
+    .exppreview-btn,
+    .bm-small-btn {
+        width: 100%;
+        padding: 12px;     /* Generous padding for easy tapping */
+        font-size: 14px;   /* Clear, readable text */
+        margin: 0;         /* Reset margins */
+    }
+
+    /* --- 7. Checkboxes in Footers --- */
+    /* Ensure checkboxes align nicely at the top of the stacked footer */
+    .redeem-checkbox,
+    .permredeem-checkbox,
+    .actredeem-checkbox,
+    .bmredeem-checkbox {
+        margin: 0;  /* Remove any auto margins */
+        order: -1;  /* Force the checkbox to always appear first (at the top) */
+        padding-bottom: 5px; /* Add a little space below the checkbox */
+    }
+    
+    /* Make the checkbox label larger and easier to read/tap */
+    .redeem-checkbox label,
+    .permredeem-checkbox label,
+    .actredeem-checkbox label,
+    .bmredeem-checkbox label {
+        font-size: 16px;
+    }
 }
 
     </style>
@@ -1327,11 +1878,16 @@ margin: 10px auto;
             <img src="https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png" alt="Right Icon" class="icon">
         </div>
         
-        <div class="social-links">
-            <a href="https://x.com/xsmashx88x" target="_blank">🐦 Twitter</a>
-            <a href="https://discord.com/users/97484502628052992" target="_blank">💬 Discord</a>
-            <a href="https://www.reddit.com/user/smashcanuckgamer/" target="_blank">👾 Reddit</a>
-        </div>
+<!-- === START: High-Tech Contact Me Section === -->
+<div class="contact-me-section">
+<h4 class="contact-me-title">Connect/Contact</h4>
+<div class="social-links">
+<a href="https://x.com/xsmashx88x" target="_blank">🐦 Twitter</a>
+<a href="https://discord.com/users/97484502628052992" target="_blank">💬 Discord</a>
+<a href="https://www.reddit.com/user/smashcanuckgamer/" target="_blank">👾 Reddit</a>
+</div>
+</div>
+<!-- === END: High-Tech Contact Me Section === -->
 
 
 
@@ -1388,6 +1944,7 @@ margin: 10px auto;
             <div class="info-content">
                 <p><strong>Change Log | Last Updated : 9/26/2025</strong></p>
                 <ul>
+                    <li><b>9/26/2025:</b> Fixed/Added : Just some small tweaks..</li>
                     <li><b>9/26/2025:</b> Fixed/Added : Few Things... Might or Might Not Notice :)</li>                    
                     <li><b>9/25/2025:</b> Fixed : Should Be More Mobile Friendly</li>
                     <li><b>9/25/2025:</b> Added : Hide Buttons Option (should stick on refresh)</li>  
@@ -1442,10 +1999,11 @@ margin: 10px auto;
             </div>
         </div>
 
-        <button class="collapse-btn-Perm" onclick="togglePermanent()" id="permanent-toggle-btn">
-            🎁 [View] Drops + Limited Time Codes + More ⌛    <br>
-<small style="font-size: 0.9em; opacity: 0.9; color: #14F8FF;">!Updated 9/26/2025!</small>
-        </button>
+<button class="collapse-btn-Perm" onclick="togglePermanent()" id="permanent-toggle-btn">
+    🎁 [View] Drops + Limited Time Codes + More ⌛
+    <br>
+    <small style="font-size: 0.9em; opacity: 0.9; color: #14F8FF;" class="drops-pulse">!Updated 9/26/2025!</small>
+</button>
         
         <div id="permanent-section" class="permanent-section">
             <h2>🎁 Drops + Limited Time Codes + More ⌛</h2>
@@ -1454,8 +2012,10 @@ margin: 10px auto;
             </div>
         </div>
 
-        <h2>👍 Active BL4 SHiFT Codes (New At Top) 🗝️ <small style="font-size: 0.7em; opacity: 0.8;"> </small>
-        </button></h2>
+<h1>👍 Active BL4 SHiFT Codes (New At Top) 🗝️ 
+    <br>
+    <small style="font-size: 0.7em; opacity: 0.8; color: #FFD114;" class="drops-pulse"> </small>
+</h1>
         <div id="active-codes-container">
             <!-- Active codes will be inserted here by JavaScript -->
         </div>
@@ -1465,7 +2025,7 @@ margin: 10px auto;
         </button>
         
         <div id="expired-section" class="expired-section">
-            <h2>❌ Expired Codes : Damn Look At Them All 👎</h2>
+            <h3>❌ Expired Codes : Damn Look At Them All 👎</h3>
             <div id="expired-codes-container">
                 <!-- Expired codes will be inserted here by JavaScript -->
             </div>
@@ -1492,14 +2052,16 @@ const ALL_CODES_CONFIG = [
     {
         code: "BHRBJ-ZWHT3-W6JBK-BT3BB-CW3ZK",
         expires: createDate(2025, 9, 26, 4, 19, 0, 1), // 4:19 PM
-        title: '1 Gold Key - <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">Via Twit</a> | 9/24/2025',
+        title: '1 Gold Key - <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">Via Twit</a>',
+        dateAdded: "2025-09-24",
         icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png",
         showCopyButton: true
     },
     {
         code: "JSX3J-B6SBJ-CXTBC-B3T3B-BZZZT",
         expires: createDate(2025, 9, 26, 4, 19, 0, 1), // 4:19 PM
-        title: '1 Gold Key - <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">Via Twit</a> | 9/24/2025',
+        title: '1 Gold Key - <a href="https://x.com/DuvalMagic/status/1970946292131188745" target="_blank">Via Twit</a>',
+        dateAdded: "2025-09-24",
         icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/blkey50.png"
     },
     {
@@ -1597,9 +2159,10 @@ const ALL_CODES_CONFIG = [
 
 const PERMANENT_CODES = [
         {
-        code: "Discord  |  Borderlands Bundles + Single Items | 9/26/2025",
+        code: "Discord  |  Borderlands Bundles + Single Items",
         title: 'Click On Shop, Look for the Borderlands 4 Image or Scroll down and will find it. <br>Items Range from $10.99CAD to $5.99CAD Being The Lowest<br><br>NO ETA ON WHEN IT GOES AWAY, COULD BE A WEEK OR MONTH OR MONTHS FROM NOW<br><br> [Click the preview button to see video of the effects]',
-        icon: "🎁",
+        dateAdded: "9/26/2025",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/gift.png",
         showCopyButton: false,
         showPreviewButton: true,
         imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/gh-pages/smaller%20%20cbr%20%20%20%202025-09-26%2012-09-25_1.mp4",
@@ -1607,7 +2170,7 @@ const PERMANENT_CODES = [
     {
         code: "Twitch Drops 1 : Watch, Drop, and Roll ECHO-4 Drone Skin cosmetic",
         title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>August 29, 2025 - September 29, 2025<br><br>• Watch any livestream in the Borderlands 4 category on the official <a href="http://twitch.tv/Borderlands" target="_blank">Borderlands 4 Twitch channel</a> or <a href="https://www.twitch.tv/gearboxofficial" target="_blank">Gearbox Twitch channel</a> for 20 minutes and claim the reward',
-        icon: "🎁",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/gift.png",
         showCopyButton: false,
         showPreviewButton: true,
         imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_Echobot_Drop_Wide_textless.png",
@@ -1616,7 +2179,7 @@ const PERMANENT_CODES = [
     {
         code: "Twitch Drops 2 : Forsaken Chaos Legendary shotgun",
         title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> for 2 hours and claim the reward',
-        icon: "🎁",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/gift.png",
         showCopyButton: false,
         showPreviewButton: true,
         imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_ForsakenChaos.png",
@@ -1625,7 +2188,7 @@ const PERMANENT_CODES = [
     {
         code: "Twitch Drops 3 : Midnight Defiance Legendary sniper rifle",
         title: '<a href="https://borderlands.2k.com/twitch-drops/" target="_blank">Read About It Here Or Via Info Below</a><br><br>September 11, 2025 - September 30, 2025<br><br>• Watch any Borderlands 4 Twitch livestream in the <a href="https://www.twitch.tv/directory/category/borderlands-4" target="_blank">Borderlands 4 category</a> hosted by a <a href="https://borderlands.2k.com/borderlands-4/partnered-creators/" target="_blank">partnered creator</a> for 2 hours and claim the reward',
-        icon: "🎁",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/gift.png",
         showCopyButton: false,
         showPreviewButton: true,
         imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4_MidnightDefiance.png",
@@ -1634,7 +2197,7 @@ const PERMANENT_CODES = [
     {
         code: "JS63J-JSCWJ-CFTBW-3TJ3J-WJS5R",
         title: 'Break Free cosmetics pack and Legendary Ripper shield <br><br>• [Break Free] Vault Hunter Skin (for Vex, Rafa, Amon, and Harlowe)<br>• [Firebreak] Legendary Ripper Shield (with minimum level of 25)<br>• [Break Free] ECHO-4 Drone Skin<br>• [Kn0x] ECHO-4 Drone Skin',
-        icon: "🎁",
+        icon: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/gift.png",
         showCopyButton: true,
         showPreviewButton: true,
         imagePreview: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/breakfree.png",
@@ -1671,6 +2234,17 @@ const BLACK_MARKET_EXTRA_CONFIG = {
     imageUrl: "https://raw.githubusercontent.com/xsmashx88x/Shift-Codes/refs/heads/gh-pages/BL4-Black-Market-Location-003-Grindstone-of-the-Worthysep25-oct2.jpg", // <--- !!! REPLACE THIS WITH THE ACTUAL IMAGE URL !!!
 };
         // =======================================================  
+
+        // Helper function to format the date added
+function formatDateAdded(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+    });
+}
+
 
 // Helper for Black Market Vendor's weekly refresh
         function getNextVendorRefresh() {
@@ -1716,33 +2290,38 @@ const BLACK_MARKET_EXTRA_CONFIG = {
             const isRedeemed = getBlackMarketRedemptionStatus();
             const redeemedClass = isRedeemed ? 'redeemed' : '';
 
-            return `
-                <div class="black-market-code-box ${redeemedClass}" id="black-market-vendor">
-                    <div class="code-header">
-                        ${iconHtml}
-                        <div class="title-container">${BLACK_MARKET_VENDOR.title}</div>
-                    </div>
-                    <div class="code-text">Black Market Vendor</div>
-                    <div class="expire-date">Next refresh: ${formatDate(nextRefresh, 'Refreshes:')}</div>
-                    <div class="countdown">Refreshes in: ${days}d ${hours}h ${minutes}m ${seconds}s</div>
-                ${BLACK_MARKET_VENDOR.staticImageCredit ? `<div class="black-market-credit">${BLACK_MARKET_VENDOR.staticImageCredit}</div>` : ''}
-<div class="code-footer">
-                        <div class="black-market-buttons-group"> <!-- Now this is first -->
-                            <button class="bm-small-btn bm-static-image-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.staticImageLocation}')">
-                                📍 View Location (STATIC IMAGE) | IS CURRENT
-                            </button>
-                            <button class="bm-small-btn bm-mapgenie-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.mapGenieLocation}')">
-                                📍 View Location (MAPGENIE) | MIGHT BE SLOW/WRONG
-                            </button>
-                        </div>
-                        <div class="redeem-checkbox"> <!-- Now this is second -->
-                            <input type="checkbox" id="bm-redeemed" ${isRedeemed ? 'checked' : ''} 
-                                onchange="handleBlackMarketRedemptionChange(this, document.getElementById('black-market-vendor'))">
-                            <label for="bm-redeemed">💰</label>
-                        </div>
-                    </div>
-            `;
-        }
+    return `
+        <div class="black-market-code-box ${redeemedClass}" id="black-market-vendor">
+            <div class="code-header">
+                ${iconHtml}
+                <div class="title-container">${BLACK_MARKET_VENDOR.title}</div>
+            </div>
+            <!-- SAME SIMPLE VERSION -->
+            ${BLACK_MARKET_VENDOR.dateAdded ? `
+                <div class="date-added">Added Here On : ${formatDateAdded(BLACK_MARKET_VENDOR.dateAdded)}</div>
+            ` : ''}
+            <div class="code-text">Black Market Vendor</div>
+            <div class="expire-date">Next refresh: ${formatDate(nextRefresh, 'Refreshes:')}</div>
+            <div class="countdown">Refreshes in: ${days}d ${hours}h ${minutes}m ${seconds}s</div>
+            ${BLACK_MARKET_VENDOR.staticImageCredit ? `<div class="black-market-credit">${BLACK_MARKET_VENDOR.staticImageCredit}</div>` : ''}
+            <div class="code-footer">
+                <div class="black-market-buttons-group">
+                    <button class="bm-small-btn bm-static-image-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.staticImageLocation}')">
+                        📍 View Location (STATIC IMAGE) | IS CURRENT
+                    </button>
+                    <button class="bm-small-btn bm-mapgenie-btn" onclick="openImagePreview('${BLACK_MARKET_VENDOR.mapGenieLocation}')">
+                        📍 View Location (MAPGENIE) | MIGHT BE SLOW/WRONG
+                    </button>
+                </div>
+                <div class="bmredeem-checkbox">
+                    <input type="checkbox" id="bm-redeemed" ${isRedeemed ? 'checked' : ''} 
+                        onchange="handleBlackMarketRedemptionChange(this, document.getElementById('black-market-vendor'))">
+                    <label for="bm-redeemed">💰</label>
+                </div>
+            </div>
+        </div>
+    `;
+}
 
         function updateVendorTimer() {
             const vendorBox = document.getElementById('black-market-vendor');
@@ -2123,33 +2702,37 @@ function openRoadmapImage() {
             let previewButtonHtml = '';
             if (hasPreviewButton && codeData.imagePreview) { 
                 previewButtonHtml = `
-                    <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
+                    <button class="prempreview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
                         📷 PREVIEW
                     </button>
                 `;
             }
             
-            return `
-                <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
-                    <div class="permanent-code-header">
-                        ${iconHtml}
-                        <div class="permanent-code-text">${codeData.code}</div>
-                    </div>
-                    <div class="permanent-title-container">${codeData.title}</div>
-                    ${expiresDate ? `<div class="expire-date">Expires: ${formatDate(expiresDate)}</div>` : ''}
-                    ${countdownHtml}
-                    <div class="permanent-code-footer">
-                        <div class="redeem-checkbox">
-                            <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
-                                onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))">
-                            <label for="permanent-redeemed-${index}">🎁</label>
-                        </div>
-                        ${copyButtonHtml}
-                        ${previewButtonHtml}
-                    </div>
+    return `
+        <div class="permanent-code-box clearfix ${redeemedClass}" id="permanent-${index}">
+            <div class="permanent-code-header">
+                ${iconHtml}
+                <div class="permanent-code-text">${codeData.code}</div>
+            </div>
+                    <!-- DATE UNDER TITLE BUT ABOVE OTHER CONTENT -->
+            ${codeData.dateAdded ? `
+                <div class="date-added">Added Here On : ${formatDateAdded(codeData.dateAdded)}</div>
+            ` : ''}
+            <div class="permanent-title-container">${codeData.title}</div>
+            ${expiresDate ? `<div class="expire-date">Expires: ${formatDate(expiresDate)}</div>` : ''}
+            ${countdownHtml}
+            <div class="permanent-code-footer">
+                <div class="permredeem-checkbox">
+                    <input type="checkbox" id="permanent-redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
+                        onchange="handlePermanentRedemptionChange('${codeData.code}', this, document.getElementById('permanent-${index}'))">
+                    <label for="permanent-redeemed-${index}">🎁</label>
                 </div>
-            `;
-        }
+                ${copyButtonHtml}
+                ${previewButtonHtml}
+            </div>
+        </div>
+    `;
+}
 
         function createActiveCodeBox(codeData, index) {
             const hasCopyButton = codeData.showCopyButton !== false;
@@ -2183,11 +2766,14 @@ function openRoadmapImage() {
                     <span id="copied-active-${index}" class="copied-message">✓ Copied!</span>
                 `;
             }
+
+                // Auto-generate date added if not provided
+    const dateAdded = codeData.dateAdded || new Date().toISOString().split('T')[0];
             
             let previewButtonHtml = '';
             if (hasPreviewButton && codeData.imagePreview) { 
                 previewButtonHtml = `
-                    <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
+                    <button class="activepreview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
                         📷 PREVIEW
                     </button>
                 `;
@@ -2199,11 +2785,15 @@ function openRoadmapImage() {
                         ${iconHtml}
                         <div class="title-container">${codeData.title}</div>
                     </div>
+            <!-- DATE UNDER TITLE BUT ABOVE OTHER CONTENT -->
+            ${codeData.dateAdded ? `
+                <div class="date-added">Added Here On : ${formatDateAdded(codeData.dateAdded)}</div>
+            ` : ''}
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expires: ${formatDate(expiresDate)}</div>
                     <div class="countdown">Time left: ${days}d ${hours}h ${minutes}m</div>
 <div class="code-footer">
-                <div class="redeem-checkbox">
+                <div class="actredeem-checkbox">
                     <input type="checkbox" id="redeemed-${index}" ${isRedeemed ? 'checked' : ''} 
                         onchange="handleRedemptionChange('${codeData.code}', this, document.getElementById('active-${index}'))">
                     <label for="redeemed-${index}">👍</label>
@@ -2217,6 +2807,7 @@ function openRoadmapImage() {
             `;
         }
 
+
         function createExpiredCodeBox(codeData, index) {
             const hasPreviewButton = codeData.showPreviewButton;
             const isRedeemed = getRedemptionStatus(codeData.code);
@@ -2226,7 +2817,7 @@ function openRoadmapImage() {
             let previewButtonHtml = '';
             if (hasPreviewButton && codeData.imagePreview) { 
                 previewButtonHtml = `
-                    <button class="preview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
+                    <button class="exppreview-btn" onclick="openImagePreview('${codeData.imagePreview}')">
                         📷 PREVIEW
                     </button>
                 `;
@@ -2250,6 +2841,10 @@ function openRoadmapImage() {
                         ${iconHtml}
                         <div class="title-container">${codeData.title}</div>
                     </div>
+                            <!-- SAME SIMPLE VERSION FOR EXPIRED CODES -->
+            ${codeData.dateAdded ? `
+                <div class="date-added">Added Here On : ${formatDateAdded(codeData.dateAdded)}</div>
+            ` : ''}
                     <div class="code-text">${codeData.code}</div>
                     <div class="expire-date">Expired: ${formatDate(expiresDate)}</div>
 <div class="code-footer">
@@ -2261,7 +2856,7 @@ function openRoadmapImage() {
                 <!-- NEW: Wrapper for copy and preview buttons (reusing active-code-buttons-group for consistent styling) -->
                 <div class="active-code-buttons-group">
                     ${previewButtonHtml} 
-                    <button class="small-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
+                    <button class="expired-copy-btn" onclick="copyToClipboard('${codeData.code}', ${index}, 'expired')">
                         COPY
                     </button>
                     <span id="copied-expired-${index}" class="copied-message">✓ Copied!</span>
